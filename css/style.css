@@ -423,7 +423,7 @@ section { padding-block: var(--section-pad); }
 }
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
   gap: clamp(2.5rem, 6vw, 6rem);
   align-items: center;
 }
@@ -524,7 +524,7 @@ section { padding-block: var(--section-pad); }
 .hero-portrait-wrapper {
   position: relative;
   width: 100%;
-  max-width: 480px;
+  max-width: 640px;
   margin: 0 auto;
   aspect-ratio: 3 / 4;
 }
@@ -1463,7 +1463,7 @@ section { padding-block: var(--section-pad); }
   .split,
   .split--even { grid-template-columns: 1fr; }
 
-  .hero-grid .hero-visual { order: -1; max-width: 320px; }
+  .hero-grid .hero-visual { order: -1; max-width: 420px; }
   .orbit-badge { width: 100px; height: 100px; left: -10px; bottom: 18px; }
   .portrait-band .split { grid-template-columns: 1fr; }
   .portrait-band .split .blend-photo { order: -1; max-width: 320px; }  /* photo first on mobile */
