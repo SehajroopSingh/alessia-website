@@ -96,6 +96,13 @@ the submit handler in `js/main.js` (section 6b).
   in each page's `<head>`).
 - Animations are subtle on purpose, and automatically switch off for visitors whose
   system asks for reduced motion.
+- **Printing works**: any page prints as a clean black-on-white document (navigation,
+  buttons and decoration are stripped, and CV accordions open automatically). Until the
+  CV PDF exists, "print the CV page" is a perfectly presentable stand-in.
+- Small details that are easy to miss but deliberate: the browser-tab icon
+  (`images/favicon.svg`), the numbered section labels on the homepage, the drop cap on
+  the About page, the faint paper grain over the background, and the colophon line in
+  the footer. Each is marked with a comment where it lives.
 - Every number shown on the site is real. Please keep it that way — the site's
   credibility depends on it. Where something isn't available yet (photos, PDFs, article
   links) there's an elegant placeholder instead of an invention.

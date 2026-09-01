@@ -81,6 +81,62 @@ img, svg { max-width: 100%; height: auto; display: block; }
 
 ::selection { background: var(--accent); color: var(--paper); }
 
+/* Warm-tinted, unobtrusive scrollbar */
+html { scrollbar-color: #C4BBAB transparent; }
+
+/* Keyboard focus: a clear clay ring instead of the browser default */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Typographic niceties: no orphan words in headings, tidy paragraph rags */
+h1, h2, h3 { text-wrap: balance; }
+p { text-wrap: pretty; }
+
+/* List bullets & numbers pick up the accent */
+li::marker { color: var(--accent); }
+
+/* A whisper of paper grain over the whole page (invisible on purpose —
+   it just stops large cream areas from feeling flat). Remove this block
+   if you ever want a perfectly smooth background. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='120' height='120' filter='url(%23n)' opacity='0.5'/></svg>");
+  opacity: 0.045;
+  mix-blend-mode: multiply;
+}
+
+/* The whole page eases in on arrival */
+@media (prefers-reduced-motion: no-preference) {
+  body { animation: page-in 0.5s ease both; }
+}
+@keyframes page-in { from { opacity: 0; } to { opacity: 1; } }
+
+/* Anchored sections never hide under the sticky header, and a case study
+   arrived at by link glows briefly so the reader knows where they landed */
+[id] { scroll-margin-top: 100px; }
+.case:target { animation: target-fade 1.8s ease 0.15s both; }
+@keyframes target-fade {
+  from { background: rgba(168, 85, 46, 0.09); }
+  to   { background: transparent; }
+}
+
+/* External links (opening a new tab) get a small "outward" arrow */
+a[target="_blank"]:not(.btn)::after {
+  content: "\2197";
+  font-size: 0.8em;
+  margin-left: 0.3em;
+  color: var(--accent);
+}
+
 /* Accessible "skip to content" link — appears on keyboard focus */
 .skip-link {
   position: absolute;
@@ -242,8 +298,10 @@ section { padding-block: var(--section-pad); }
   background: color-mix(in srgb, var(--paper) 88%, transparent);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid transparent;   /* hairline appears on scroll */
+  transition: border-color 0.35s ease;
 }
+.site-header.is-scrolled { border-bottom-color: var(--line); }
 
 .nav-bar {
   display: flex;
@@ -1006,6 +1064,7 @@ section { padding-block: var(--section-pad); }
   font-size: clamp(2.2rem, 4.5vw, 3.6rem);
   line-height: 1;
   color: var(--ink);
+  font-variant-numeric: tabular-nums;  /* digits keep width while counting up */
 }
 .stat .stat-value .unit { font-size: 0.55em; color: var(--accent); }
 .stat .stat-caption {
@@ -1119,6 +1178,17 @@ section { padding-block: var(--section-pad); }
    18b. SIGNATURE INTERACTIONS
    (rotating badge, drawn underlines, word reveals, hover flourishes)
    -------------------------------------------------------------------------- */
+
+/* Drop cap — used once, on the About essay. Add class="dropcap" to any
+   paragraph that should open with one. */
+.dropcap::first-letter {
+  float: left;
+  font-family: var(--serif);
+  font-size: 3.4em;
+  line-height: 0.78;
+  padding: 0.06em 0.14em 0 0;
+  color: var(--accent);
+}
 
 /* Rotating circular text badge — overlaps the hero arch like a wax stamp.
    The SVG spins slowly; hovering pauses it. */
@@ -1317,4 +1387,39 @@ section { padding-block: var(--section-pad); }
   .stats-grid { grid-template-columns: 1fr 1fr; }
   .form-grid { grid-template-columns: 1fr; }
   .hero-actions .btn { width: 100%; text-align: center; }
+}
+
+
+/* ==========================================================================
+   20. PRINT
+   --------------------------------------------------------------------------
+   Printing any page (especially the CV) produces a clean black-on-white
+   document: navigation, buttons and decoration disappear, accordions are
+   opened automatically by js/main.js before printing.
+   ========================================================================== */
+@media print {
+  body { background: #fff; color: #000; font-size: 11pt; }
+  body::before { display: none; }                /* no grain on paper */
+
+  .site-header nav, .nav-toggle, .site-footer .footer-links,
+  .btn, .hero-actions, .filter-bar, .marquee, .orbit-badge,
+  .scroll-cue, .shot-row, .ph, .arch-frame,
+  form, .form-note { display: none !important; }
+
+  .site-header { position: static; border-bottom: 1px solid #000; }
+  .section-dark { background: #fff; color: #000; }
+  .section-dark h2, .section-dark h3, .section-dark .body-copy { color: #000; }
+  .section--soft { background: #fff; }
+
+  section { padding-block: 1.2rem; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  [data-split] .split-word { transform: none !important; }
+  .u-draw { background: none; }
+
+  a { color: #000; text-decoration: none; }
+  a[target="_blank"]:not(.btn)::after { content: ""; }
+  .accordion summary::after { display: none; }
+  .accordion summary { padding: 0.8rem 0 0.2rem; }
+  .case { grid-template-columns: 1fr; gap: 0.75rem; page-break-inside: avoid; }
+  .case-meta { position: static; }
 }

@@ -34,6 +34,45 @@
   }
 
   /* ------------------------------------------------------------------
+     1b. HEADER HAIRLINE
+     The header's bottom border only appears once the page is scrolled,
+     so the top of each page starts perfectly clean.
+     ------------------------------------------------------------------ */
+  var header = document.querySelector(".site-header");
+  if (header) {
+    var headerTicking = false;
+    var updateHeader = function () {
+      header.classList.toggle("is-scrolled", window.scrollY > 12);
+      headerTicking = false;
+    };
+    window.addEventListener("scroll", function () {
+      if (!headerTicking) {
+        headerTicking = true;
+        requestAnimationFrame(updateHeader);
+      }
+    }, { passive: true });
+    updateHeader();
+  }
+
+  /* ------------------------------------------------------------------
+     1c. PRINTING
+     Before printing, open every accordion so nothing is hidden on
+     paper; afterwards, close the ones we opened.
+     ------------------------------------------------------------------ */
+  window.addEventListener("beforeprint", function () {
+    document.querySelectorAll(".accordion details:not([open])").forEach(function (d) {
+      d.setAttribute("data-print-opened", "");
+      d.open = true;
+    });
+  });
+  window.addEventListener("afterprint", function () {
+    document.querySelectorAll("[data-print-opened]").forEach(function (d) {
+      d.open = false;
+      d.removeAttribute("data-print-opened");
+    });
+  });
+
+  /* ------------------------------------------------------------------
      2. REVEAL ON SCROLL
      Elements with class "reveal" fade in when they enter the viewport.
      With reduced motion (or old browsers) everything is shown at once.
@@ -311,6 +350,14 @@
         "mailto:alessiacanuto@hotmail.com" +
         "?subject=" + encodeURIComponent(subject) +
         "&body=" + encodeURIComponent(bodyLines.join("\n"));
+
+      // Let the visitor know what just happened (the note is aria-live,
+      // so screen readers announce it too).
+      var statusNote = contactForm.querySelector("[data-form-status]");
+      if (statusNote) {
+        statusNote.textContent =
+          "Your email app should now be open with the message ready — nothing is sent until you press send there.";
+      }
     });
   }
 })();
