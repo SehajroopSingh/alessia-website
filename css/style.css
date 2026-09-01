@@ -1735,6 +1735,12 @@ section { padding-block: var(--section-pad); }
        The photo is unframed; its edges feather into the band. --- */
 .portrait-band { background: #CCC9BE; }
 .portrait-band .body-copy { color: #45403A; }  /* darker for contrast on greige */
+.portrait-band .label { color: #8C4526; }      /* deeper clay for contrast on greige */
+
+/* When the band is pinned, size the headline and portrait so the whole
+   opening — label, statement, photo and paragraphs — fits one screen */
+.scene-on.scene--veil .display-l { font-size: clamp(1.8rem, 3.4vw, 3.3rem); margin-bottom: 0.75rem; }
+.scene-on.scene--veil .blend-photo { max-width: min(440px, 46vh); }
 .blend-photo {
   position: relative;
   max-width: 440px;

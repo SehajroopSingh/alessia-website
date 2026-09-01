@@ -46,26 +46,22 @@
 
 <main id="main">
 
-  <!-- ═══════════════════ OPENING — the essay, not the biography ═══════════════════ -->
-  <section class="hero" aria-labelledby="about-heading">
+  <!-- ═══════════════════ OPENING — one continuous band ═══════════════════
+       The About label, the opening statement, the portrait and the three
+       paragraphs all live in a single band coloured like the photograph's
+       own wall, so the unframed portrait dissolves straight into the page.
+       Scroll stop: the band pins while the three paragraphs sharpen into
+       focus one by one — the veil lifting. Delete data-scene from the
+       wrapper div to turn the pinning off. -->
+  <div class="scene scene--veil" data-scene style="--scene-length: 2.6;">
+  <section class="portrait-band scene-viewport" aria-labelledby="about-heading">
     <div class="container">
       <span class="label reveal">About</span>
       <h1 id="about-heading" class="display-l" data-split style="max-width: 20em;">
         I am interested in what happens when systems change faster than the people and
         institutions <em class="u-draw">inside</em> them.
       </h1>
-    </div>
-  </section>
-
-  <!-- Scroll stop: this section pins while the portrait holds and the three
-       paragraphs sharpen into focus one by one — the veil lifting.
-       The band's background is the wall colour sampled from the photo's own
-       edges, so the unframed portrait dissolves straight into the page.
-       Delete data-scene from the wrapper div to turn the pinning off. -->
-  <div class="scene scene--veil" data-scene style="--scene-length: 2.6;">
-  <section class="section--tight portrait-band scene-viewport" aria-label="Introduction">
-    <div class="container">
-      <div class="split">
+      <div class="split" style="margin-top: clamp(1.5rem, 4vh, 3rem);">
         <!-- To change the photo, replace images/portrait.jpg -->
         <div class="blend-photo reveal">
           <img src="images/portrait.jpg" alt="Portrait of Alessia Canuto">
