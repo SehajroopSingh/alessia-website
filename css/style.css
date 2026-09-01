@@ -520,6 +520,75 @@ section { padding-block: var(--section-pad); }
   border-color: rgba(247, 242, 234, 0.55);
 }
 
+/* New hero portrait — centered, no arch, colorful background */
+.hero-portrait-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  aspect-ratio: 3 / 4;
+}
+.hero-portrait-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: -60px;
+  background: 
+    radial-gradient(ellipse 80% 60% at 50% 20%, var(--accent-soft) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 80% at 50% 80%, #FDE8E0 0%, transparent 60%),
+    linear-gradient(160deg, var(--paper-soft) 0%, #FFF0E6 50%, var(--paper-soft) 100%);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  filter: blur(40px);
+  opacity: 0.6;
+  z-index: 0;
+  animation: portrait-glow 8s ease-in-out infinite alternate;
+}
+@keyframes portrait-glow {
+  0% { transform: scale(1) rotate(0deg); opacity: 0.5; }
+  100% { transform: scale(1.1) rotate(3deg); opacity: 0.7; }
+}
+.hero-portrait-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  background: linear-gradient(160deg, var(--accent) 0%, #FFB380 40%, #FFD6B3 100%);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  z-index: 0;
+  opacity: 0.3;
+}
+.hero-portrait {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 25%;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  z-index: 1;
+  box-shadow: 
+    0 0 0 4px var(--paper),
+    0 20px 60px -10px rgba(232, 122, 94, 0.3),
+    0 10px 40px -5px rgba(26, 22, 18, 0.15);
+  transition: transform 0.6s cubic-bezier(0.22, 0.65, 0.2, 1), box-shadow 0.4s ease;
+}
+.hero-portrait:hover {
+  transform: scale(1.02);
+  box-shadow: 
+    0 0 0 4px var(--paper),
+    0 30px 80px -10px rgba(232, 122, 94, 0.4),
+    0 15px 50px -5px rgba(26, 22, 18, 0.2);
+}
+
+/* Hero entrance animation for new portrait */
+.js .hero-visual .hero-portrait-wrapper {
+  opacity: 0;
+  transform: translateY(40px) scale(0.9);
+  transition: opacity 1s cubic-bezier(0.22, 0.65, 0.2, 1) 0.3s,
+              transform 1.2s cubic-bezier(0.22, 0.65, 0.2, 1) 0.3s;
+}
+.js .hero-visual.is-visible .hero-portrait-wrapper {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
 
 /* ==========================================================================
    8. EDITORIAL COMPONENTS
@@ -1361,7 +1430,7 @@ section { padding-block: var(--section-pad); }
   .js .rule-reveal .article-card::before { transform: scaleX(1); }
   .js .rule-reveal .article-card { border-top-color: var(--ink); }
   .js .rule-reveal .article-card--featured { border-top-color: var(--accent); }
-  .js .hero-visual .arch-frame { clip-path: none; transition: none; }
+  .js .hero-visual .hero-portrait-wrapper { opacity: 1; transform: none; transition: none; }
   .js .hero-visual .orbit-badge { opacity: 1; transform: none; }
   .js .arch-reveal .arch-frame { clip-path: none; transition: none; }
   .js .reveal.veil-lift { filter: none; }
@@ -1510,12 +1579,17 @@ section { padding-block: var(--section-pad); }
    springy overshoot curve.
    ========================================================================== */
 
-/* --- Hero: the arch wipes upward; the rotating badge springs in after --- */
-.js .hero-visual .arch-frame {
-  clip-path: inset(100% 0 0 0);
-  transition: clip-path 1.1s cubic-bezier(0.22, 0.65, 0.2, 1) 0.25s;
+/* --- Hero: the portrait fades up; the rotating badge springs in after --- */
+.js .hero-visual .hero-portrait-wrapper {
+  opacity: 0;
+  transform: translateY(40px) scale(0.9);
+  transition: opacity 1s cubic-bezier(0.22, 0.65, 0.2, 1) 0.3s,
+              transform 1.2s cubic-bezier(0.22, 0.65, 0.2, 1) 0.3s;
 }
-.js .hero-visual.is-visible .arch-frame { clip-path: inset(0 0 0 0); }
+.js .hero-visual.is-visible .hero-portrait-wrapper {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
 .js .hero-visual .orbit-badge {
   opacity: 0;
   transform: scale(0.4) rotate(-30deg);
@@ -1802,7 +1876,7 @@ section { padding-block: var(--section-pad); }
 
   .site-header nav, .nav-toggle, .site-footer .footer-links,
   .btn, .hero-actions, .filter-bar, .marquee, .orbit-badge,
-  .scroll-cue, .shot-row, .ph, .arch-frame,
+  .scroll-cue, .shot-row, .ph, .hero-portrait-wrapper,
   form, .form-note { display: none !important; }
 
   .site-header { position: static; border-bottom: 1px solid #000; }
