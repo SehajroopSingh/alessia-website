@@ -110,8 +110,12 @@
     </div>
   </div>
 
-  <!-- ═══════════════════════ THE CENTRAL QUESTION ═══════════════════════ -->
-  <section id="question" aria-labelledby="question-heading">
+  <!-- ═══════════════════════ THE CENTRAL QUESTION ═══════════════════════
+       This section is a scroll SCENE: on desktop it pins while the five
+       areas light up one by one under your scroll. Delete data-scene from
+       the wrapper div to turn that off. -->
+  <div class="scene scene--question" data-scene style="--scene-length: 3;">
+  <section id="question" class="scene-viewport" aria-labelledby="question-heading">
     <div class="container">
       <span class="label reveal">01 — The question behind the work</span>
       <h2 id="question-heading" class="display-l reveal" style="max-width: 18em;">
@@ -124,23 +128,23 @@
         </p>
         <div>
           <div class="areas-grid reveal">
-            <div class="area">
+            <div class="area" data-scene-item>
               <h3>Policy</h3>
               <p>How institutions regulate, govern and respond to change.</p>
             </div>
-            <div class="area">
+            <div class="area" data-scene-item>
               <h3>Sustainability</h3>
               <p>How organisations translate environmental expectations, regulation and data into action.</p>
             </div>
-            <div class="area">
+            <div class="area" data-scene-item>
               <h3>AI Governance</h3>
               <p>How emerging technologies challenge existing frameworks of accountability, responsibility and regulation.</p>
             </div>
-            <div class="area">
+            <div class="area" data-scene-item>
               <h3>Behaviour</h3>
               <p>How cognitive biases, incentives, emotions and social norms shape the way people interpret and respond to systems.</p>
             </div>
-            <div class="area area--wide">
+            <div class="area area--wide" data-scene-item>
               <h3>&amp; Building</h3>
               <p>What changes when you stop studying a technology from the outside and start building with it.</p>
             </div>
@@ -149,16 +153,20 @@
       </div>
     </div>
   </section>
+  </div>
 
-  <!-- ═══════════════ THE WORK I KEEP COMING BACK TO ═══════════════ -->
-  <section class="section--soft" aria-labelledby="three-projects-heading">
+  <!-- ═══════════════ THE WORK I KEEP COMING BACK TO ═══════════════
+       Scroll SCENE: pins while projects 01, 02 and 03 build in one at a
+       time. Delete data-scene from the wrapper div to turn that off. -->
+  <div class="scene scene--projects" data-scene style="--scene-length: 3.2;">
+  <section class="section--soft scene-viewport" aria-labelledby="three-projects-heading">
     <div class="container">
       <span class="label reveal">02 — The work I keep coming back to</span>
       <h2 id="three-projects-heading" class="display-l reveal">Three projects. <em class="u-draw">One question.</em></h2>
 
       <div style="margin-top: 3.5rem;">
 
-        <article class="project-row reveal">
+        <article class="project-row reveal" data-scene-item>
           <div>
             <span class="big-number">01</span>
             <p class="project-kicker">ESG / CSRD</p>
@@ -177,7 +185,7 @@
           </div>
         </article>
 
-        <article class="project-row reveal">
+        <article class="project-row reveal" data-scene-item>
           <div>
             <span class="big-number">02</span>
             <p class="project-kicker">AI Governance</p>
@@ -197,7 +205,7 @@
           </div>
         </article>
 
-        <article class="project-row reveal">
+        <article class="project-row reveal" data-scene-item>
           <div>
             <span class="big-number">03</span>
             <p class="project-kicker">Policy / Behaviour</p>
@@ -220,9 +228,12 @@
       </div>
     </div>
   </section>
+  </div>
 
-  <!-- ═══════════════════════════ MEMSURF ═══════════════════════════ -->
-  <section class="section-dark" id="memsurf" aria-labelledby="memsurf-heading">
+  <!-- ═══════════════════════════ MEMSURF ═══════════════════════════
+       data-zoom makes this dark section scale up to full size as it
+       scrolls into view (desktop only). Remove the attribute to disable. -->
+  <section class="section-dark" id="memsurf" data-zoom aria-labelledby="memsurf-heading">
     <div class="container">
       <span class="label reveal">03 — The entrepreneurial thread</span>
       <h2 id="memsurf-heading" class="display-l reveal" style="max-width: 16em;">
@@ -314,17 +325,24 @@
         </p>
       </div>
 
-      <!-- A quiet diagram: systems are experienced through human perception -->
-      <div class="diagram reveal" role="img" aria-label="Diagram: a system passes through human perception, interpretation and decision before producing an outcome">
-        <span class="node">System</span>
-        <span class="arrow" aria-hidden="true">&rarr;</span>
-        <span class="node node--veil">Human perception</span>
-        <span class="arrow" aria-hidden="true">&rarr;</span>
-        <span class="node">Interpretation</span>
-        <span class="arrow" aria-hidden="true">&rarr;</span>
-        <span class="node">Decision</span>
-        <span class="arrow" aria-hidden="true">&rarr;</span>
-        <span class="node">Outcome</span>
+      <!-- A quiet diagram: systems are experienced through human perception.
+           Scroll SCENE: the diagram pins and connects node by node as you
+           scroll. Delete data-scene from the wrapper div to turn that off. -->
+      <div class="scene scene--diagram" data-scene style="--scene-length: 2.6;">
+      <div class="scene-viewport">
+        <span class="label label--ink" style="text-align: center;">How a system becomes an outcome</span>
+        <div class="diagram" role="img" aria-label="Diagram: a system passes through human perception, interpretation and decision before producing an outcome">
+          <span class="node" data-scene-item>System</span>
+          <span class="arrow" data-scene-item aria-hidden="true">&rarr;</span>
+          <span class="node node--veil" data-scene-item>Human perception</span>
+          <span class="arrow" data-scene-item aria-hidden="true">&rarr;</span>
+          <span class="node" data-scene-item>Interpretation</span>
+          <span class="arrow" data-scene-item aria-hidden="true">&rarr;</span>
+          <span class="node" data-scene-item>Decision</span>
+          <span class="arrow" data-scene-item aria-hidden="true">&rarr;</span>
+          <span class="node" data-scene-item>Outcome</span>
+        </div>
+      </div>
       </div>
     </div>
   </section>

@@ -1391,6 +1391,60 @@ section { padding-block: var(--section-pad); }
 
 
 /* ==========================================================================
+   19b. SCROLL SCENES (homepage)
+   --------------------------------------------------------------------------
+   A "scene" is a section that pins while you scroll: the wrapper
+   (<div class="scene" data-scene>) is taller than the screen, its content
+   sticks at the top, and js/main.js converts your scroll progress through
+   the wrapper into steps — cards appearing 1, 2, 3… — before the page
+   releases and normal scrolling resumes. Scrolling back up rewinds it.
+
+   Scenes only activate on larger screens without reduced-motion; on
+   mobile (and with JavaScript off) every section behaves normally.
+   To remove a scene: delete data-scene from its wrapper in index.html.
+   ========================================================================== */
+.scene-on { height: calc(var(--scene-length, 2.6) * 100vh); }
+.scene-on .scene-viewport {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding-block: 80px 20px;   /* keeps pinned content clear of the sticky header */
+}
+.scene-on [data-scene-item] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.scene-on [data-scene-item].is-on { opacity: 1; transform: none; }
+
+/* Per-scene compression so pinned content fits one screen comfortably.
+   (The !important below beats an inline margin in the HTML.) */
+.scene-on.scene--question .display-l { font-size: clamp(1.9rem, 3.3vw, 3.2rem); }
+.scene-on.scene--question .area { padding-block: 1.3rem; }
+.scene-on.scene--question .area p { font-size: 0.92rem; }
+.scene-on.scene--projects .display-l { margin-bottom: 0.5rem; font-size: clamp(1.9rem, 3.3vw, 3.2rem); }
+.scene-on.scene--projects .container > div { margin-top: 1.5rem !important; }
+.scene-on.scene--projects .project-row { padding-block: clamp(1rem, 2.4vh, 2rem); }
+.scene-on.scene--projects .project-row .body-copy { font-size: 0.9rem; }
+.scene-on.scene--projects .project-question { font-size: 1.15rem; }
+.scene-on.scene--projects .big-number { font-size: clamp(2.6rem, 5vw, 4.2rem); }
+.scene-on.scene--diagram .diagram { margin-top: 1.5rem; }
+
+/* The MemSurf section zooms up to full size as it scrolls into view.
+   --zoom-progress (0 → 1) is set by js/main.js while scenes are armed. */
+.scenes-armed [data-zoom] {
+  transform: scale(calc(0.93 + 0.07 * var(--zoom-progress, 1)));
+  border-radius: calc((1 - var(--zoom-progress, 1)) * 36px);
+  transform-origin: 50% 15%;
+  will-change: transform;
+}
+
+
+/* ==========================================================================
    20. PRINT
    --------------------------------------------------------------------------
    Printing any page (especially the CV) produces a clean black-on-white
@@ -1422,4 +1476,10 @@ section { padding-block: var(--section-pad); }
   .accordion summary { padding: 0.8rem 0 0.2rem; }
   .case { grid-template-columns: 1fr; gap: 0.75rem; page-break-inside: avoid; }
   .case-meta { position: static; }
+
+  /* Scroll scenes flatten back to ordinary sections on paper */
+  .scene-on { height: auto !important; }
+  .scene-on .scene-viewport { position: static !important; height: auto !important; overflow: visible !important; }
+  .scene-on [data-scene-item] { opacity: 1 !important; transform: none !important; }
+  .scenes-armed [data-zoom] { transform: none !important; border-radius: 0 !important; }
 }

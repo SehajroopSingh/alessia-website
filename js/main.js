@@ -163,6 +163,83 @@
   }
 
   /* ------------------------------------------------------------------
+     2c. SCROLL SCENES (homepage)
+     Sections wrapped in <div class="scene" data-scene> pin on screen
+     while scrolling; progress through the tall wrapper drives their
+     [data-scene-item] children on one at a time (and off again when
+     scrolling back up). The MemSurf section ([data-zoom]) scales up
+     as it enters. Scenes arm only on large screens without reduced
+     motion — everywhere else the sections behave normally.
+     ------------------------------------------------------------------ */
+  (function () {
+    var scenes = document.querySelectorAll("[data-scene]");
+    var zoomEl = document.querySelector("[data-zoom]");
+    if (!scenes.length && !zoomEl) return;
+
+    var canArm =
+      !prefersReducedMotion &&
+      window.innerWidth > 900 &&
+      window.innerHeight > 640 &&
+      "IntersectionObserver" in window;
+
+    if (!canArm) {
+      // Static fallback: every scene item simply visible
+      scenes.forEach(function (scene) {
+        scene.querySelectorAll("[data-scene-item]").forEach(function (item) {
+          item.classList.add("is-on");
+        });
+      });
+      return;
+    }
+
+    document.documentElement.classList.add("scenes-armed");
+
+    var tracked = [];
+    scenes.forEach(function (scene) {
+      scene.classList.add("scene-on");
+      var items = scene.querySelectorAll("[data-scene-item]");
+      items.forEach(function (item) {
+        // Scene items are driven by scroll progress, not the reveal fade
+        item.classList.remove("reveal", "reveal-delay-1", "reveal-delay-2", "reveal-delay-3");
+      });
+      tracked.push({ el: scene, items: items });
+    });
+
+    function update() {
+      var vh = window.innerHeight;
+
+      tracked.forEach(function (scene) {
+        var rect = scene.el.getBoundingClientRect();
+        var travel = rect.height - vh;
+        var p = travel > 0 ? Math.min(Math.max(-rect.top / travel, 0), 1) : 1;
+        var n = scene.items.length;
+        for (var i = 0; i < n; i++) {
+          scene.items[i].classList.toggle("is-on", p >= (i + 1) / (n + 1));
+        }
+      });
+
+      if (zoomEl) {
+        var zr = zoomEl.getBoundingClientRect();
+        var zp = Math.min(Math.max((vh - zr.top) / (vh * 0.85), 0), 1);
+        zoomEl.style.setProperty("--zoom-progress", zp.toFixed(4));
+      }
+    }
+
+    var sceneTicking = false;
+    window.addEventListener("scroll", function () {
+      if (!sceneTicking) {
+        sceneTicking = true;
+        requestAnimationFrame(function () {
+          update();
+          sceneTicking = false;
+        });
+      }
+    }, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  })();
+
+  /* ------------------------------------------------------------------
      3. ANIMATED STATISTICS
      Any element like <span data-count="42" data-suffix="K+">42K+</span>
      counts up from zero when scrolled into view.

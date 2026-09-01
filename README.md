@@ -62,6 +62,15 @@ In `work.html`, copy one whole `<article class="case"> … </article>` block. Gi
 In `js/main.js`, find `starters = { … }` (section 6). Each entry is the text inserted
 when a visitor picks that topic. The visitor can always edit it before sending.
 
+### Turn a scroll "scene" on or off
+On desktop, three homepage sections **pin in place** while you scroll: the central
+question (its four areas light up one by one), the three projects (01, 02, 03 appear in
+turn) and the system→outcome diagram (connects node by node). The MemSurf section also
+zooms up to full size as it arrives. Each one is marked with a `data-scene` (or
+`data-zoom`) attribute in `index.html` and a comment right above it — **delete the
+attribute to switch that scene off**. On phones, and for visitors who prefer reduced
+motion, the page automatically behaves like a normal scrolling page.
+
 ### Change the words on the rotating badge
 The little spinning stamp on the homepage hero lives in `index.html` — search for
 `orbit-badge`. The words are inside the `<textPath>` tag. Keep the text roughly the
