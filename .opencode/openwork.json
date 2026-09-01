@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "workspace": {
+    "name": "alessia-website-main",
+    "createdAt": 1788254706000,
+    "preset": "starter"
+  },
+  "authorizedRoots": [
+    "/Users/alli/Downloads/alessia-website-main"
+  ],
+  "reload": null
+}
