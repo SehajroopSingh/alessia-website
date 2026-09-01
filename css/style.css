@@ -33,25 +33,27 @@
    ========================================================================== */
 :root {
   /* ----- Colours ----- */
-  --paper:      #F7F2EA;   /* main warm off-white background */
-  --paper-soft: #EFE8DB;   /* slightly deeper cream, for alternating sections */
-  --ink:        #221F1B;   /* near-black warm charcoal — main text */
-  --ink-soft:   #5C564D;   /* muted warm grey — secondary text */
-  --ink-faint:  #8A8378;   /* faint grey — metadata, captions */
-  --line:       rgba(34, 31, 27, 0.16);  /* thin divider lines */
-  --accent:     #A8552E;   /* clay / terracotta accent — used sparingly */
-  --accent-soft:#C4795442; /* translucent accent for subtle fills */
-  --dark:       #26221D;   /* background of the dark (MemSurf) section */
-  --dark-text:  #F1EBDF;   /* cream text on dark backgrounds */
+  --paper:      #FFF8F3;   /* warm cream background */
+  --paper-soft: #FEF3EB;   /* slightly deeper peach cream, for alternating sections */
+  --ink:        #1A1612;   /* deep warm charcoal — main text */
+  --ink-soft:   #6B5B4F;   /* muted warm taupe — secondary text */
+  --ink-faint:  #A69688;   /* faint warm grey — metadata, captions */
+  --line:       rgba(26, 22, 18, 0.12);  /* thin divider lines */
+  --accent:     #E87A5E;   /* warm coral/peach accent */
+  --accent-soft:#E87A5E33; /* translucent accent for subtle fills */
+  --accent-deep:#C65D3E;   /* deeper coral for hover states */
+  --dark:       #1A1612;   /* background of the dark section */
+  --dark-text:  #FFF8F3;   /* cream text on dark backgrounds */
 
   /* ----- Fonts ----- */
-  --serif: "Fraunces", "Georgia", "Times New Roman", serif;
-  --sans:  "Inter", "Helvetica Neue", Arial, sans-serif;
+  --serif: "Playfair Display", "Georgia", "Times New Roman", serif;
+  --sans:  "DM Sans", "Helvetica Neue", Arial, sans-serif;
+  --script: "Dancing Script", "Brush Script MT", cursive;
 
   /* ----- Rhythm ----- */
-  --section-pad: clamp(4.5rem, 10vw, 8.5rem);  /* vertical space between sections */
-  --container:   1200px;                        /* max content width */
-  --container-narrow: 780px;                    /* max width for essay-style text */
+  --section-pad: clamp(4.5rem, 10vw, 8.5rem);
+  --container:   1200px;
+  --container-narrow: 780px;
 }
 
 
