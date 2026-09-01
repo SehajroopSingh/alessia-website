@@ -32,18 +32,42 @@
    1. DESIGN TOKENS — change the look of the whole site from here
    ========================================================================== */
 :root {
-  /* ----- Colours ----- */
-  --paper:      #FFF8F3;   /* warm cream background */
-  --paper-soft: #FEF3EB;   /* slightly deeper peach cream, for alternating sections */
-  --ink:        #1A1612;   /* deep warm charcoal — main text */
-  --ink-soft:   #6B5B4F;   /* muted warm taupe — secondary text */
-  --ink-faint:  #A69688;   /* faint warm grey — metadata, captions */
-  --line:       rgba(26, 22, 18, 0.12);  /* thin divider lines */
-  --accent:     #E87A5E;   /* warm coral/peach accent */
-  --accent-soft:#E87A5E33; /* translucent accent for subtle fills */
-  --accent-deep:#C65D3E;   /* deeper coral for hover states */
-  --dark:       #1A1612;   /* background of the dark section */
-  --dark-text:  #FFF8F3;   /* cream text on dark backgrounds */
+  /* ----- Base Colours (White background, no black) ----- */
+  --paper:      #FFFFFF;   /* pure white background */
+  --paper-soft: #F5F9FF;   /* very pale blue for alternating sections */
+  --ink:        #131FAA;   /* Trendy Dark Blue — main text */
+  --ink-soft:   #228EE3;   /* Bleu de France — secondary text */
+  --ink-faint:  #6B7FAE;   /* muted blue-grey — metadata, captions */
+  --line:       rgba(19, 31, 170, 0.12);  /* thin divider lines */
+
+  /* ----- Category Accents ----- */
+  /* Blue — Comms & Policy */
+  --blue:           #131FAA;   /* Trendy Dark Blue */
+  --blue-light:     #228EE3;   /* Bleu de France */
+  --blue-soft:      rgba(19, 31, 170, 0.1);
+  --blue-soft-light:rgba(34, 142, 227, 0.1);
+
+  /* Purple — Entrepreneurship & AI */
+  --purple:         #6633C6;   /* Hot Violet */
+  --purple-light:   #9A5BD4;   /* Amethyst */
+  --purple-soft:    rgba(102, 51, 198, 0.1);
+  --purple-soft-light:rgba(154, 91, 212, 0.1);
+
+  /* Green — Sustainability & CSRD */
+  --green:          #5AA136;   /* Gecko Green */
+  --green-light:    #8BC633;   /* Tree Frog Green */
+  --green-soft:     rgba(90, 161, 54, 0.1);
+  --green-soft-light:rgba(139, 198, 51, 0.1);
+
+  /* ----- Default accent (blue for general use) ----- */
+  --accent:         var(--blue);
+  --accent-light:   var(--blue-light);
+  --accent-soft:    var(--blue-soft);
+  --accent-deep:    #0D1780;   /* darker blue for hover */
+
+  /* Dark section (MemSurf) — deep blue */
+  --dark:           #0A0F5C;   /* very dark blue */
+  --dark-text:      #FFFFFF;   /* white text on dark */
 
   /* ----- Fonts ----- */
   --serif: "Playfair Display", "Georgia", "Times New Roman", serif;
@@ -483,7 +507,7 @@ section { padding-block: var(--section-pad); }
   border-radius: 999px 999px 12px 12px;
   border: 1px solid var(--line);
   background:
-    linear-gradient(160deg, var(--paper-soft) 0%, #E7DECD 60%, var(--paper-soft) 100%);
+    linear-gradient(160deg, var(--paper-soft) 0%, rgba(34, 142, 227, 0.15) 60%, var(--paper-soft) 100%);
   aspect-ratio: 4 / 5.2;
   display: flex;
   align-items: flex-end;
@@ -516,8 +540,8 @@ section { padding-block: var(--section-pad); }
   border-radius: inherit;
 }
 .arch-frame--photo::before {
-  /* the inner keyline turns cream so it reads over the photo */
-  border-color: rgba(247, 242, 234, 0.55);
+  /* the inner keyline turns pale blue so it reads over the photo */
+  border-color: rgba(34, 142, 227, 0.3);
 }
 
 
@@ -698,8 +722,39 @@ section { padding-block: var(--section-pad); }
   font-weight: 650;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--accent);
+  display: block;
 }
+
+/* Category-specific colors for work cards */
+.work-card[data-categories*="policy"] .work-cat,
+.work-card[data-categories*="communications"] .work-cat {
+  color: var(--blue-light);
+}
+.work-card[data-categories*="policy"]:hover,
+.work-card[data-categories*="communications"]:hover {
+  background: var(--blue-soft);
+}
+
+.work-card[data-categories*="entrepreneurship"] .work-cat,
+.work-card[data-categories*="ai"] .work-cat {
+  color: var(--purple-light);
+}
+.work-card[data-categories*="entrepreneurship"]:hover,
+.work-card[data-categories*="ai"]:hover {
+  background: var(--purple-soft);
+}
+
+.work-card[data-categories*="esg"] .work-cat,
+.work-card[data-categories*="research"] .work-cat,
+.work-card[data-categories*="behaviour"] .work-cat {
+  color: var(--green-light);
+}
+.work-card[data-categories*="esg"]:hover,
+.work-card[data-categories*="research"]:hover,
+.work-card[data-categories*="behaviour"]:hover {
+  background: var(--green-soft);
+}
+
 .work-card h3 { font-size: 1.25rem; font-weight: 460; margin: 0; }
 .work-card p { color: var(--ink-soft); font-size: 0.95rem; margin: 0; flex: 1; }
 .work-card .text-link { margin-top: 0.5rem; }
@@ -721,6 +776,7 @@ section { padding-block: var(--section-pad); }
 .article-card h3 a { color: inherit; text-decoration: none; }
 .article-card h3 a:hover { color: var(--accent); }
 .article-card p { color: var(--ink-soft); font-size: 0.95rem; margin: 0; flex: 1; }
+.article-card .meta { color: var(--ink-faint); }
 
 /* Featured article — bigger, with accent border */
 .article-card--featured { border-top-color: var(--accent); }
@@ -745,7 +801,7 @@ section { padding-block: var(--section-pad); }
   font-family: var(--serif);
   font-style: italic;
   font-size: 1.5rem;
-  color: var(--accent);
+  color: var(--blue-light);
 }
 .doc-card h3 { font-size: 1.15rem; font-weight: 480; margin: 0; }
 .doc-card p { font-size: 0.88rem; color: var(--ink-soft); margin: 0; flex: 1; }
@@ -756,20 +812,25 @@ section { padding-block: var(--section-pad); }
   color: var(--ink-faint);
 }
 
+/* Category-specific doc cards */
+.doc-card:nth-child(1) .doc-icon { color: var(--blue-light); }  /* CV */
+.doc-card:nth-child(2) .doc-icon { color: var(--purple-light); } /* Master's thesis */
+.doc-card:nth-child(3) .doc-icon { color: var(--green-light); }  /* Bachelor's thesis */
+
 
 /* ==========================================================================
-   10. DARK SECTION — MemSurf
+   10. DARK SECTION — MemSurf (Entrepreneurship/AI = Purple)
    ========================================================================== */
 .section-dark {
   background: var(--dark);
   color: var(--dark-text);
 }
-.section-dark .label { color: #D08B60; }
+.section-dark .label { color: var(--purple-light); }
 .section-dark h2, .section-dark h3 { color: var(--dark-text); }
-.section-dark .body-copy { color: #BDB4A4; }
+.section-dark .body-copy { color: rgba(255,255,255,0.85); }
 .section-dark .body-copy strong { color: var(--dark-text); }
-.section-dark .rule { border-color: rgba(241, 235, 223, 0.15); }
-.section-dark .pull-quote { color: var(--dark-text); border-left-color: #D08B60; }
+.section-dark .rule { border-color: rgba(154, 91, 212, 0.2); }
+.section-dark .pull-quote { color: var(--dark-text); border-left-color: var(--purple-light); }
 
 .memsurf-stats {
   display: flex;
@@ -788,8 +849,7 @@ section { padding-block: var(--section-pad); }
   font-size: 0.74rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #9E958442;
-  color: #9E9584;
+  color: rgba(154, 91, 212, 0.6);
   margin-top: 0.6rem;
 }
 
@@ -801,7 +861,7 @@ section { padding-block: var(--section-pad); }
   margin-top: 3rem;
 }
 .shot-tile {
-  border: 1px solid rgba(241, 235, 223, 0.2);
+  border: 1px solid rgba(154, 91, 212, 0.2);
   border-radius: 14px;
   aspect-ratio: 9 / 16;
   display: flex;
@@ -812,8 +872,8 @@ section { padding-block: var(--section-pad); }
   font-size: 0.7rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #9E9584;
-  background: linear-gradient(170deg, rgba(241,235,223,0.05), rgba(241,235,223,0.01));
+  color: var(--purple-light);
+  background: linear-gradient(170deg, rgba(154,91,212,0.05), rgba(154,91,212,0.01));
 }
 
 
@@ -880,11 +940,33 @@ section { padding-block: var(--section-pad); }
   transition: all 0.25s;
 }
 .filter-btn:hover { border-color: var(--ink); color: var(--ink); }
-.filter-btn[aria-pressed="true"] {
+
+/* Category-specific active states */
+.filter-btn[data-filter="policy"][aria-pressed="true"],
+.filter-btn[data-filter="communications"][aria-pressed="true"] {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
+}
+.filter-btn[data-filter="ai"][aria-pressed="true"],
+.filter-btn[data-filter="entrepreneurship"][aria-pressed="true"] {
+  background: var(--purple);
+  border-color: var(--purple);
+  color: #fff;
+}
+.filter-btn[data-filter="esg"][aria-pressed="true"],
+.filter-btn[data-filter="research"][aria-pressed="true"],
+.filter-btn[data-filter="behaviour"][aria-pressed="true"] {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+.filter-btn[data-filter="all"][aria-pressed="true"] {
   background: var(--ink);
   border-color: var(--ink);
   color: var(--paper);
 }
+
 /* Hidden by the filter script */
 .is-filtered-out { display: none !important; }
 
@@ -901,7 +983,7 @@ section { padding-block: var(--section-pad); }
 .journey-map { width: 100%; min-width: 640px; }
 .journey-map .graticule { stroke: var(--line); stroke-width: 0.5; }
 .journey-map .route {
-  stroke: var(--accent);
+  stroke: var(--blue-light);
   stroke-width: 1;
   fill: none;
   stroke-dasharray: 4 5;
@@ -926,7 +1008,7 @@ section { padding-block: var(--section-pad); }
   font-size: 11px;
   fill: var(--ink-faint);
 }
-.journey-map .city.is-active .city-dot { fill: var(--accent); }
+.journey-map .city.is-active .city-dot { fill: var(--blue-light); }
 .journey-map .city.is-active .city-label { fill: var(--ink); }
 .journey-map .city.is-dim { opacity: 0.28; }
 
@@ -970,6 +1052,11 @@ section { padding-block: var(--section-pad); }
   font-weight: 650;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+  color: var(--blue-light);
+  margin-bottom: 0.5rem;
+}
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 0.5rem;
 }
@@ -977,10 +1064,6 @@ section { padding-block: var(--section-pad); }
 
 /* ==========================================================================
    13b. CASE STUDIES (Work page)
-   --------------------------------------------------------------------------
-   Each case study is an <article class="case"> with a meta column on the
-   left and the story on the right. The story uses .case-part blocks:
-   Context / Question / What I did / What emerged / What I learned.
    ========================================================================== */
 .case {
   display: grid;
@@ -991,16 +1074,65 @@ section { padding-block: var(--section-pad); }
 }
 .case:target { scroll-margin-top: 90px; }
 .case-meta { position: sticky; top: 100px; align-self: start; }
+
+/* Category-specific colors for case meta */
 .case-meta .work-cat {
   font-family: var(--sans);
   font-size: 0.7rem;
   font-weight: 650;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--accent);
   display: block;
   margin-bottom: 0.9rem;
 }
+
+/* Blue — Policy & Comms */
+.case[data-categories*="policy"] .work-cat,
+.case[data-categories*="communications"] .work-cat {
+  color: var(--blue-light);
+}
+.case[data-categories*="policy"] .case-meta h2::after,
+.case[data-categories*="communications"] .case-meta h2::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--blue-light);
+  margin-top: 0.5rem;
+}
+
+/* Purple — Entrepreneurship & AI */
+.case[data-categories*="entrepreneurship"] .work-cat,
+.case[data-categories*="ai"] .work-cat {
+  color: var(--purple-light);
+}
+.case[data-categories*="entrepreneurship"] .case-meta h2::after,
+.case[data-categories*="ai"] .case-meta h2::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--purple-light);
+  margin-top: 0.5rem;
+}
+
+/* Green — ESG & Sustainability & Research */
+.case[data-categories*="esg"] .work-cat,
+.case[data-categories*="research"] .work-cat,
+.case[data-categories*="behaviour"] .work-cat {
+  color: var(--green-light);
+}
+.case[data-categories*="esg"] .case-meta h2::after,
+.case[data-categories*="research"] .case-meta h2::after,
+.case[data-categories*="behaviour"] .case-meta h2::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--green-light);
+  margin-top: 0.5rem;
+}
+
 .case-meta h2 { font-size: clamp(1.5rem, 2.6vw, 2.1rem); font-weight: 430; margin-bottom: 1rem; }
 .case-meta .meta { display: block; line-height: 2; letter-spacing: 0.1em; }
 
@@ -1105,8 +1237,8 @@ section { padding-block: var(--section-pad); }
   background:
     repeating-linear-gradient(-45deg,
       transparent 0 14px,
-      rgba(34,31,27,0.025) 14px 15px),
-    linear-gradient(165deg, var(--paper-soft), #E7DECD);
+      rgba(19, 31, 170, 0.025) 14px 15px),
+    linear-gradient(165deg, var(--paper-soft), rgba(34, 142, 227, 0.1));
   display: flex;
   align-items: center;
   justify-content: center;
