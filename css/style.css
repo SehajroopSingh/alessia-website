@@ -513,6 +513,7 @@ section { padding-block: var(--section-pad); }
   line-height: 1;
   color: transparent;
   -webkit-text-stroke: 1px var(--ink-faint);
+  display: inline-block;   /* so it can scale during its entrance */
 }
 
 /* Scrolling marquee strip of disciplines */
@@ -613,7 +614,7 @@ section { padding-block: var(--section-pad); }
   color: var(--accent);
   font-style: italic;
 }
-.diagram .arrow { color: var(--ink-faint); font-size: 1rem; }
+.diagram .arrow { color: var(--ink-faint); font-size: 1rem; display: inline-block; }
 
 
 /* ==========================================================================
@@ -1164,12 +1165,16 @@ section { padding-block: var(--section-pad); }
    Elements with class "reveal" fade in as they enter the viewport
    (handled by js/main.js). With reduced motion, everything stays visible.
    ========================================================================== */
-.reveal {
+/* Hidden-until-revealed styles are gated behind the "js" class (added by
+   js/main.js), so with JavaScript off every element is simply visible. */
+.js .reveal {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 .reveal.is-visible { opacity: 1; transform: none; }
+/* .reveal-stage is observed like .reveal but doesn't fade itself —
+   it just gains .is-visible so its children can run their own entrances. */
 .reveal-delay-1 { transition-delay: 0.12s; }
 .reveal-delay-2 { transition-delay: 0.24s; }
 .reveal-delay-3 { transition-delay: 0.36s; }
@@ -1330,7 +1335,14 @@ section { padding-block: var(--section-pad); }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .reveal { opacity: 1; transform: none; transition: none; }
+  .reveal, .js .reveal { opacity: 1; transform: none; transition: none; }
+  .js [data-cascade] > *,
+  .js .rule-reveal .article-card > * { opacity: 1; transform: none; transition: none; }
+  .js .rule-reveal .article-card::before { transform: scaleX(1); }
+  .js .rule-reveal .article-card { border-top-color: var(--ink); }
+  .js .rule-reveal .article-card--featured { border-top-color: var(--accent); }
+  .js .hero-visual .arch-frame { clip-path: none; transition: none; }
+  .js .hero-visual .orbit-badge { opacity: 1; transform: none; }
   .marquee-track { animation: none; flex-wrap: wrap; width: auto; }
   .scroll-cue .cue-line { animation: none; }
   .orbit-badge svg { animation: none; }
@@ -1442,6 +1454,117 @@ section { padding-block: var(--section-pad); }
   transform-origin: 50% 15%;
   will-change: transform;
 }
+
+
+/* ==========================================================================
+   19c. SECTION-SPECIFIC ENTRANCES
+   --------------------------------------------------------------------------
+   Every part of the homepage arrives in its own way — like the reference
+   site, where no two sections move alike:
+
+     hero            arch portrait wipes up, badge springs in
+     question scene  areas wipe open sideways (newspaper columns)
+     projects scene  rows slide in from alternating sides, numbers stamp down
+     memsurf         zooms up to full-bleed (see 19b)
+     diagram scene   nodes pop like stamps, arrows grow from the left
+     selected work   cards cascade in like a dealt deck  (data-cascade)
+     numbers         blocks cascade while the figures count up
+     thinking        each card's top rule draws across, then the text rises
+
+   Easings: entrances use a soft ease-out; "stamp"-style arrivals use a
+   springy overshoot curve.
+   ========================================================================== */
+
+/* --- Hero: the arch wipes upward; the rotating badge springs in after --- */
+.js .hero-visual .arch-frame {
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 1.1s cubic-bezier(0.22, 0.65, 0.2, 1) 0.25s;
+}
+.js .hero-visual.is-visible .arch-frame { clip-path: inset(0 0 0 0); }
+.js .hero-visual .orbit-badge {
+  opacity: 0;
+  transform: scale(0.4) rotate(-30deg);
+  transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.1s,
+              opacity 0.4s ease 1.1s;
+}
+.js .hero-visual.is-visible .orbit-badge { opacity: 1; transform: none; }
+
+/* --- Question scene: areas wipe open horizontally --- */
+.scene-on.scene--question [data-scene-item] {
+  transform: none;
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.8s cubic-bezier(0.22, 0.65, 0.2, 1), opacity 0.35s ease;
+}
+.scene-on.scene--question [data-scene-item].is-on {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+}
+
+/* --- Projects scene: rows slide from alternating sides, numbers stamp --- */
+.scene-on.scene--projects [data-scene-item] {
+  opacity: 0;
+  transform: translateX(-72px);
+  transition: opacity 0.55s ease, transform 0.75s cubic-bezier(0.22, 0.65, 0.2, 1);
+}
+.scene-on.scene--projects [data-scene-item]:nth-of-type(even) { transform: translateX(72px); }
+.scene-on.scene--projects [data-scene-item].is-on { opacity: 1; transform: none; }
+.scene-on.scene--projects [data-scene-item] .big-number {
+  opacity: 0;
+  transform: scale(1.7);
+  transition: opacity 0.4s ease 0.15s,
+              transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s;
+}
+.scene-on.scene--projects [data-scene-item].is-on .big-number { opacity: 1; transform: none; }
+
+/* --- Diagram scene: nodes pop like stamps, arrows grow from the left --- */
+.scene-on.scene--diagram .node[data-scene-item] {
+  transform: scale(0.5);
+  transition: opacity 0.3s ease, transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.scene-on.scene--diagram .arrow[data-scene-item] {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: opacity 0.3s ease, transform 0.45s cubic-bezier(0.22, 0.65, 0.2, 1);
+}
+.scene-on.scene--diagram [data-scene-item].is-on { opacity: 1; transform: none; }
+
+/* --- Cascade: children of a data-cascade container deal in one by one
+       (per-child delays are set by js/main.js) --- */
+.js [data-cascade] > * {
+  opacity: 0;
+  transform: translateY(26px) scale(0.985);
+  transition: opacity 0.65s cubic-bezier(0.22, 0.65, 0.2, 1),
+              transform 0.65s cubic-bezier(0.22, 0.65, 0.2, 1);
+}
+.js [data-cascade].is-visible > * { opacity: 1; transform: none; }
+
+/* --- Thinking cards: the top rule draws across, then the text rises --- */
+.js .rule-reveal .article-card { border-top-color: transparent; position: relative; }
+.js .rule-reveal .article-card::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.8s cubic-bezier(0.22, 0.65, 0.2, 1);
+}
+.js .rule-reveal .article-card--featured::before { background: var(--accent); }
+.js .rule-reveal .article-card > * {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
+}
+.js .rule-reveal .article-card:nth-child(2)::before { transition-delay: 0.2s; }
+.js .rule-reveal .article-card:nth-child(2) > * { transition-delay: 0.5s; }
+.js .rule-reveal .article-card:nth-child(3)::before { transition-delay: 0.4s; }
+.js .rule-reveal .article-card:nth-child(3) > * { transition-delay: 0.7s; }
+.js .rule-reveal.is-visible .article-card::before { transform: scaleX(1); }
+.js .rule-reveal.is-visible .article-card > * { opacity: 1; transform: none; }
 
 
 /* ==========================================================================

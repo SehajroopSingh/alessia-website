@@ -105,6 +105,11 @@ the submit handler in `js/main.js` (section 6b).
   in each page's `<head>`).
 - Animations are subtle on purpose, and automatically switch off for visitors whose
   system asks for reduced motion.
+- Every homepage section arrives in its own way — the arch wipes up, the question's
+  areas wipe open sideways, the projects slide in from alternating sides while their
+  numbers stamp down, MemSurf zooms, the diagram pops together, the work cards cascade,
+  and the article rules draw themselves. These all live in one commented block of
+  `css/style.css` (section 19c) if you ever want to adjust or remove one.
 - **Printing works**: any page prints as a clean black-on-white document (navigation,
   buttons and decoration are stripped, and CV accordions open automatically). Until the
   CV PDF exists, "print the CV page" is a perfectly presentable stand-in.

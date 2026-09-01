@@ -17,6 +17,10 @@
 (function () {
   "use strict";
 
+  // Everything hidden-until-animated in the CSS is gated behind this class,
+  // so the site is fully visible if JavaScript ever fails to run.
+  document.documentElement.classList.add("js");
+
   var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ------------------------------------------------------------------
@@ -75,9 +79,20 @@
   /* ------------------------------------------------------------------
      2. REVEAL ON SCROLL
      Elements with class "reveal" fade in when they enter the viewport.
+     ".reveal-stage" elements don't fade themselves — they just gain
+     .is-visible so their children can run their own entrances (the arch
+     wipe, card cascades, rule draws… see css section 19c).
+     A "data-cascade" container gets staggered delays on its children.
      With reduced motion (or old browsers) everything is shown at once.
      ------------------------------------------------------------------ */
-  var revealEls = document.querySelectorAll(".reveal");
+  var revealEls = document.querySelectorAll(".reveal, .reveal-stage");
+
+  function applyCascade(el) {
+    if (!el.hasAttribute("data-cascade")) return;
+    Array.prototype.forEach.call(el.children, function (child, i) {
+      child.style.transitionDelay = Math.min(i * 80, 640) + "ms";
+    });
+  }
 
   if (prefersReducedMotion || !("IntersectionObserver" in window)) {
     revealEls.forEach(function (el) { el.classList.add("is-visible"); });
@@ -86,6 +101,7 @@
       function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
+            applyCascade(entry.target);
             entry.target.classList.add("is-visible");
             revealObserver.unobserve(entry.target);
           }
