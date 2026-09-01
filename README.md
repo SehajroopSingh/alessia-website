@@ -62,6 +62,11 @@ In `work.html`, copy one whole `<article class="case"> … </article>` block. Gi
 In `js/main.js`, find `starters = { … }` (section 6). Each entry is the text inserted
 when a visitor picks that topic. The visitor can always edit it before sending.
 
+### Change the words on the rotating badge
+The little spinning stamp on the homepage hero lives in `index.html` — search for
+`orbit-badge`. The words are inside the `<textPath>` tag. Keep the text roughly the
+same length so it fits the circle.
+
 ### Change navigation or footer links
 The header and footer are repeated at the top/bottom of **every** HTML page (that's the
 one trade-off of having no build step). If you rename a page, update the links in all

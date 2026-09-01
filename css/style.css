@@ -1115,11 +1115,158 @@ section { padding-block: var(--section-pad); }
 .reveal-delay-2 { transition-delay: 0.24s; }
 .reveal-delay-3 { transition-delay: 0.36s; }
 
+/* --------------------------------------------------------------------------
+   18b. SIGNATURE INTERACTIONS
+   (rotating badge, drawn underlines, word reveals, hover flourishes)
+   -------------------------------------------------------------------------- */
+
+/* Rotating circular text badge — overlaps the hero arch like a wax stamp.
+   The SVG spins slowly; hovering pauses it. */
+.hero-visual { position: relative; }
+.orbit-badge {
+  position: absolute;
+  left: -44px;
+  bottom: 40px;
+  width: 130px;
+  height: 130px;
+  z-index: 2;
+  text-decoration: none;
+  display: block;
+}
+.orbit-badge svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  animation: orbit-spin 28s linear infinite;
+}
+.orbit-badge:hover svg { animation-play-state: paused; }
+.orbit-badge .orbit-ring { fill: var(--paper); stroke: var(--line); }
+.orbit-badge text {
+  font-family: var(--sans);
+  font-size: 7.5px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  fill: var(--ink-soft);
+}
+.orbit-badge .orbit-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  color: var(--accent);
+  transition: transform 0.35s ease;
+}
+.orbit-badge:hover .orbit-center { transform: translateY(4px); }
+@keyframes orbit-spin { to { transform: rotate(360deg); } }
+
+/* Drawn underline — a marker line that draws itself under key words
+   once the surrounding block is revealed (or the heading has animated). */
+.u-draw {
+  background-image: linear-gradient(to right, var(--accent), var(--accent));
+  background-repeat: no-repeat;
+  background-position: 0 96%;
+  background-size: 0% 0.07em;
+  padding-bottom: 0.06em;
+  transition: background-size 0.9s cubic-bezier(0.25, 0.6, 0.2, 1) 0.45s;
+}
+.is-visible .u-draw,
+.split-visible .u-draw { background-size: 100% 0.07em; }
+
+/* Word-by-word headline reveal.
+   js/main.js wraps each word of a [data-split] heading in a masked span;
+   the words rise into place with a slight stagger. */
+[data-split] .split-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-right: 0.06em;
+  margin-right: -0.06em;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+[data-split] .split-word {
+  display: inline-block;
+  transform: translateY(115%);
+  transition: transform 0.9s cubic-bezier(0.22, 0.65, 0.2, 1);
+}
+[data-split].split-visible .split-word { transform: none; }
+
+/* Buttons: an arrow slides in on hover (and keyboard focus) */
+.btn::after {
+  content: "\2192";
+  display: inline-block;
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  vertical-align: bottom;
+  transition: max-width 0.35s ease, opacity 0.35s ease, margin-left 0.35s ease;
+}
+.btn:hover::after,
+.btn:focus-visible::after { max-width: 1.2em; opacity: 1; margin-left: 0.55em; }
+
+/* Text links: the arrow nudges forward on hover */
+.text-link::after { display: inline-block; transition: transform 0.3s ease; }
+.text-link:hover::after { transform: translateX(5px); }
+
+/* Nav & footer links: underline draws in from the left on hover */
+.nav-links a,
+.footer-links a {
+  background-image: linear-gradient(to right, var(--accent), var(--accent));
+  background-repeat: no-repeat;
+  background-position: left calc(100% - 0.15em);
+  background-size: 0% 1px;
+  transition: color 0.25s, background-size 0.35s ease;
+}
+.nav-links a:hover,
+.footer-links a:hover { background-size: 100% 1px; }
+
+/* Work & document cards: gentle lift, title warms to the accent */
+.work-card { transition: background 0.3s, transform 0.35s ease, box-shadow 0.35s ease; }
+.work-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgba(34, 31, 27, 0.07);
+}
+.work-card h3 { transition: color 0.3s; }
+.work-card:hover h3 { color: var(--accent); }
+.doc-card { transition: transform 0.35s ease, box-shadow 0.35s ease; }
+.doc-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgba(34, 31, 27, 0.07);
+}
+
+/* Photo & screenshot tiles: resting polaroid tilt, straighten on hover */
+.tilt-grid > * { transition: transform 0.45s ease; }
+.tilt-grid > *:nth-child(odd) { transform: rotate(-1.3deg); }
+.tilt-grid > *:nth-child(even) { transform: rotate(1.1deg); }
+.tilt-grid > *:hover { transform: rotate(0deg) translateY(-5px); }
+
+/* Stats: the number warms to the accent on hover */
+.stat .stat-value { transition: color 0.3s; }
+.stat:hover .stat-value { color: var(--accent); }
+
+/* Marquee: pause when the reader hovers to read it */
+.marquee:hover .marquee-track { animation-play-state: paused; }
+
+/* Accordions: the answer eases in when opened */
+.accordion details[open] .accordion-body { animation: acc-open 0.45s ease; }
+@keyframes acc-open {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .marquee-track { animation: none; flex-wrap: wrap; width: auto; }
   .scroll-cue .cue-line { animation: none; }
+  .orbit-badge svg { animation: none; }
+  .u-draw { background-size: 100% 0.07em; transition: none; }
+  [data-split] .split-word { transform: none; transition: none; }
+  .tilt-grid > * { transform: none; }
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
 
@@ -1133,6 +1280,7 @@ section { padding-block: var(--section-pad); }
   .split--even { grid-template-columns: 1fr; }
 
   .hero-grid .hero-visual { order: -1; max-width: 320px; }
+  .orbit-badge { width: 100px; height: 100px; left: -10px; bottom: 18px; }
 
   .project-row { grid-template-columns: 1fr; gap: 1.25rem; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }

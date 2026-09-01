@@ -47,7 +47,7 @@
     <div class="container">
       <div class="hero-grid">
         <div>
-          <h1 id="hero-name" class="display-xl hero-name reveal">Alessia<br>Canuto</h1>
+          <h1 id="hero-name" class="display-xl hero-name" data-split>Alessia<br>Canuto</h1>
           <p class="hero-role reveal reveal-delay-1">Policy, Technology &amp; Sustainability</p>
           <p class="hero-statement reveal reveal-delay-1">
             I work at the intersection of policy analysis, ESG regulation and AI governance,
@@ -55,7 +55,7 @@
             experience and navigate them.
           </p>
           <p class="hero-tagline reveal reveal-delay-2">
-            Policy analyst by training. <em>Builder by practice.</em>
+            Policy analyst by training. <em class="u-draw">Builder by practice.</em>
           </p>
           <div class="hero-actions reveal reveal-delay-2">
             <a class="btn btn--solid" href="work.html">Explore my work</a>
@@ -74,6 +74,20 @@
           <div class="arch-frame" role="img" aria-label="Placeholder for a professional portrait of Alessia Canuto">
             <span class="ph-note" style="font-family: var(--sans); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); text-align: center; line-height: 1.8;">Portrait<br>to come</span>
           </div>
+          <!-- Rotating stamp badge — spins slowly, pauses on hover, links down
+               to the central question. Text lives on the SVG circle below. -->
+          <a class="orbit-badge" href="#question" aria-label="Scroll to the question behind the work">
+            <svg viewBox="0 0 130 130" aria-hidden="true">
+              <circle class="orbit-ring" cx="65" cy="65" r="64"/>
+              <defs>
+                <path id="orbit-circle" d="M 65,65 m -47,0 a 47,47 0 1,1 94,0 a 47,47 0 1,1 -94,0"/>
+              </defs>
+              <text>
+                <textPath href="#orbit-circle">Policy&#160;&#160;·&#160;&#160;Technology&#160;&#160;·&#160;&#160;Sustainability&#160;&#160;·&#160;&#160;</textPath>
+              </text>
+            </svg>
+            <span class="orbit-center" aria-hidden="true">&darr;</span>
+          </a>
         </div>
       </div>
     </div>
@@ -93,7 +107,7 @@
     <div class="container">
       <span class="label reveal">The question behind the work</span>
       <h2 id="question-heading" class="display-l reveal" style="max-width: 18em;">
-        How do we design systems that work better for the people who have to <em>navigate</em> them?
+        How do we design systems that work better for the people who have to <em class="u-draw">navigate</em> them?
       </h2>
       <div class="split" style="margin-top: 3rem;">
         <p class="lede reveal">
@@ -132,7 +146,7 @@
   <section class="section--soft" aria-labelledby="three-projects-heading">
     <div class="container">
       <span class="label reveal">The work I keep coming back to</span>
-      <h2 id="three-projects-heading" class="display-l reveal">Three projects. <em>One question.</em></h2>
+      <h2 id="three-projects-heading" class="display-l reveal">Three projects. <em class="u-draw">One question.</em></h2>
 
       <div style="margin-top: 3.5rem;">
 
@@ -204,7 +218,7 @@
     <div class="container">
       <span class="label reveal">The entrepreneurial thread</span>
       <h2 id="memsurf-heading" class="display-l reveal" style="max-width: 16em;">
-        I don't just study emerging technology. <em>I build with it.</em>
+        I don't just study emerging technology. <em class="u-draw">I build with it.</em>
       </h2>
 
       <div class="split" style="margin-top: 3.5rem;">
@@ -251,7 +265,7 @@
 
       <!-- Placeholder tiles: swap for real product screenshots later.
            Replace a tile with: <img src="images/memsurf-1.png" alt="MemSurf quiz screen"> -->
-      <div class="shot-row reveal">
+      <div class="shot-row tilt-grid reveal">
         <div class="shot-tile">Product<br>screenshot</div>
         <div class="shot-tile">Adaptive quiz<br>flow</div>
         <div class="shot-tile">Lesson<br>structure</div>
@@ -458,7 +472,7 @@
   <!-- ═══════════════════ CLOSING CTA ═══════════════════ -->
   <section class="section--soft" aria-labelledby="cta-heading">
     <div class="container" style="text-align: center;">
-      <h2 id="cta-heading" class="display-l reveal">Let's <em>talk.</em></h2>
+      <h2 id="cta-heading" class="display-l reveal">Let's <em class="u-draw">talk.</em></h2>
       <p class="body-copy reveal" style="margin-inline: auto;">
         Working on a policy question, a sustainability challenge, an emerging technology
         or an interesting idea? I'd like to hear about it.

@@ -58,6 +58,72 @@
   }
 
   /* ------------------------------------------------------------------
+     2b. WORD-BY-WORD HEADLINE REVEAL
+     Headings with data-split have each word wrapped in a masked span,
+     then the words rise into place with a slight stagger when the
+     heading scrolls into view. Skipped entirely under reduced motion
+     (the heading simply appears, fully readable).
+     ------------------------------------------------------------------ */
+  var splitEls = document.querySelectorAll("[data-split]");
+
+  function wrapWord(contents) {
+    var mask = document.createElement("span");
+    mask.className = "split-mask";
+    var word = document.createElement("span");
+    word.className = "split-word";
+    mask.appendChild(word);
+    word.appendChild(contents);
+    return mask;
+  }
+
+  function splitWords(el) {
+    Array.prototype.slice.call(el.childNodes).forEach(function (node) {
+      if (node.nodeType === 3) {
+        // Text node: wrap each word, keep the spaces between them
+        var frag = document.createDocumentFragment();
+        node.textContent.split(/(\s+)/).forEach(function (part) {
+          if (!part) return;
+          if (/^\s+$/.test(part)) {
+            frag.appendChild(document.createTextNode(part));
+          } else {
+            frag.appendChild(wrapWord(document.createTextNode(part)));
+          }
+        });
+        el.replaceChild(frag, node);
+      } else if (node.nodeType === 1 && node.tagName !== "BR") {
+        // Element node (e.g. an <em> phrase): treat it as one unit
+        var placeholder = document.createTextNode("");
+        el.replaceChild(placeholder, node);
+        el.replaceChild(wrapWord(node), placeholder);
+      }
+    });
+    // Stagger the words, capped so long headings don't take forever
+    var words = el.querySelectorAll(".split-word");
+    for (var i = 0; i < words.length; i++) {
+      words[i].style.transitionDelay = Math.min(i * 70, 600) + "ms";
+    }
+  }
+
+  if (splitEls.length && !prefersReducedMotion && "IntersectionObserver" in window) {
+    splitEls.forEach(splitWords);
+    var splitObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("split-visible");
+            splitObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0 }
+    );
+    splitEls.forEach(function (el) { splitObserver.observe(el); });
+  } else {
+    // No animation: make sure any drawn underlines still appear
+    splitEls.forEach(function (el) { el.classList.add("split-visible"); });
+  }
+
+  /* ------------------------------------------------------------------
      3. ANIMATED STATISTICS
      Any element like <span data-count="42" data-suffix="K+">42K+</span>
      counts up from zero when scrolled into view.
