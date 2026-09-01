@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Journey | Alessia Canuto</title>
+  <meta name="description" content="The geography of Alessia Canuto's education and professional experience — Rome, Brussels, Berlin, Nice, Edinburgh, Prague, Astana and Los Angeles.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container nav-bar">
+    <a class="brand" href="index.html">Alessia <span>Canuto</span></a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+    <nav aria-label="Main navigation">
+      <ul class="nav-links" id="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="thinking.html">Thinking</a></li>
+        <li><a href="journey.html" aria-current="page">Journey</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ═══════════════════ PAGE INTRO ═══════════════════ -->
+  <section class="hero" aria-labelledby="journey-heading">
+    <div class="container">
+      <span class="label reveal">Journey</span>
+      <h1 id="journey-heading" class="display-l reveal" style="max-width: 18em;">
+        Eight cities. <em>One way of thinking.</em>
+      </h1>
+      <p class="lede reveal" style="margin-top: 1.5rem; max-width: 56ch;">
+        International experience is not simply a line on my CV. It has shaped how I think.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ THE MAP ═══════════════════
+       Cities are plotted by their real coordinates on an editorial route map.
+       The year buttons below highlight where each chapter happened. -->
+  <section class="section--tight" aria-label="Map of places studied and worked" style="padding-top: 0;">
+    <div class="container">
+
+      <!-- Year filters -->
+      <div class="filter-bar reveal" data-year-bar role="group" aria-label="Filter the map by year">
+        <button class="filter-btn" data-year="all" aria-pressed="true">All years</button>
+        <button class="filter-btn" data-year="2022" aria-pressed="false">2022</button>
+        <button class="filter-btn" data-year="2023" aria-pressed="false">2023</button>
+        <button class="filter-btn" data-year="2024" aria-pressed="false">2024</button>
+        <button class="filter-btn" data-year="2025" aria-pressed="false">2025</button>
+        <button class="filter-btn" data-year="2026" aria-pressed="false">2026</button>
+      </div>
+
+      <div class="map-wrap reveal">
+        <svg class="journey-map" viewBox="0 0 1000 480" role="img"
+             aria-label="Route map connecting Rome with Edinburgh, Brussels, Berlin, Nice, Prague, Astana and Los Angeles">
+
+          <!-- Subtle latitude / longitude grid -->
+          <g class="graticule" aria-hidden="true">
+            <line x1="0" y1="80"  x2="1000" y2="80"/>
+            <line x1="0" y1="160" x2="1000" y2="160"/>
+            <line x1="0" y1="240" x2="1000" y2="240"/>
+            <line x1="0" y1="320" x2="1000" y2="320"/>
+            <line x1="0" y1="400" x2="1000" y2="400"/>
+            <line x1="125" y1="0" x2="125" y2="480"/>
+            <line x1="250" y1="0" x2="250" y2="480"/>
+            <line x1="375" y1="0" x2="375" y2="480"/>
+            <line x1="500" y1="0" x2="500" y2="480"/>
+            <line x1="625" y1="0" x2="625" y2="480"/>
+            <line x1="750" y1="0" x2="750" y2="480"/>
+            <line x1="875" y1="0" x2="875" y2="480"/>
+          </g>
+
+          <!-- Dashed routes radiating from Rome -->
+          <g aria-hidden="true">
+            <path class="route" d="M679,246 Q615,140 604,96"/>
+            <path class="route" d="M679,246 Q640,180 640,151"/>
+            <path class="route" d="M679,246 Q695,185 683,133"/>
+            <path class="route" d="M679,246 Q662,222 654,227"/>
+            <path class="route" d="M679,246 Q700,200 688,159"/>
+            <path class="route" d="M679,246 Q830,120 959,147"/>
+            <path class="route" d="M679,246 Q350,120 56,330"/>
+          </g>
+
+          <!-- Cities. data-city ids are used by the year filters. -->
+          <g class="city" data-city="losangeles" transform="translate(56,330)">
+            <circle class="city-dot" r="5"/>
+            <text class="city-label" x="14" y="0">Los Angeles</text>
+            <text class="city-role" x="14" y="15">Entrepreneurship</text>
+          </g>
+
+          <g class="city" data-city="edinburgh" transform="translate(604,96)">
+            <circle class="city-dot" r="5"/>
+            <text class="city-label" x="-12" y="0" text-anchor="end">Edinburgh</text>
+            <text class="city-role" x="-12" y="15" text-anchor="end">Study</text>
+          </g>
+
+          <g class="city" data-city="brussels" transform="translate(640,151)">
+            <circle class="city-dot" r="5"/>
+            <text class="city-label" x="-12" y="0" text-anchor="end">Brussels</text>
+            <text class="city-role" x="-12" y="15" text-anchor="end">Study · Research</text>
+          </g>
+
+          <g class="city" data-city="berlin" transform="translate(683,133)">
+            <circle class="city-dot" r="5"/>
+            <text class="city-label" x="12" y="-6">Berlin</text>
+            <text class="city-role" x="12" y="9">Study</text>
+          </g>
+
+          <g class="city" data-city="prague" transform="translate(688,159)">
+            <circle class="city-dot" r="5"/>
+            <text class="city-label" x="12" y="10">Prague</text>
+            <text class="city-role" x="12" y="25">Writing</text>
+          </g>
+
+          <g class="city" data-city="nice" transform="translate(654,227)">
+            <circle class="city-dot" r="5"/>
+            <text class="city-label" x="-12" y="4" text-anchor="end">Nice</text>
+            <text class="city-role" x="-12" y="19" text-anchor="end">Study · Research</text>
+          </g>
+
+          <g class="city" data-city="rome" transform="translate(679,246)">
+            <circle class="city-dot" r="6"/>
+            <text class="city-label" x="14" y="14">Rome</text>
+            <text class="city-role" x="14" y="29">Study · Work</text>
+          </g>
+
+          <g class="city" data-city="astana" transform="translate(959,147)">
+            <circle class="city-dot" r="5"/>
+            <text class="city-label" x="-14" y="0" text-anchor="end">Astana</text>
+            <text class="city-role" x="-14" y="15" text-anchor="end">Work</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="map-legend reveal">
+        <span><b>Study</b> — degrees &amp; exchanges</span>
+        <span><b>Work</b> — consulting &amp; writing</span>
+        <span><b>Research</b> — policy &amp; AI projects</span>
+        <span><b>Entrepreneurship</b> — MemSurf</span>
+      </div>
+
+      <!-- ═══════════ YEAR PANELS ═══════════
+           Each panel lists what happened that year. data-cities controls
+           which dots light up on the map when the year is selected. -->
+      <div style="margin-top: 3.5rem;">
+
+        <div class="year-panel is-active" data-year-panel="all" data-cities="">
+          <p class="body-copy">
+            Select a year to see where that chapter happened. The through-line: a base in
+            Rome, graduate study and policy research across Europe, and work that has
+            steadily widened — from Edinburgh to Astana to Los Angeles.
+          </p>
+        </div>
+
+        <div class="year-panel" data-year-panel="2022" data-cities="edinburgh">
+          <div class="year-entries">
+            <div class="year-entry">
+              <span class="tag">Study</span>
+              <h4>Edinburgh</h4>
+              <p>Erasmus+ exchange at the University of Edinburgh.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="year-panel" data-year-panel="2023" data-cities="rome edinburgh astana">
+          <div class="year-entries">
+            <div class="year-entry">
+              <span class="tag">Study</span>
+              <h4>Rome / Edinburgh</h4>
+              <p>Completing the BA in Philosophy, Politics and Economics at Luiss.</p>
+            </div>
+            <div class="year-entry">
+              <span class="tag">Work</span>
+              <h4>International policy writing</h4>
+              <p>EU columns for The Astana Times; correspondent writing for the Organization for World Peace.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="year-panel" data-year-panel="2024" data-cities="rome brussels berlin nice">
+          <div class="year-entries">
+            <div class="year-entry">
+              <span class="tag">Study</span>
+              <h4>Rome / Brussels / Berlin / Nice</h4>
+              <p>Joint MA in Global Economic Governance and Public Affairs (Luiss + CIFE), across four cities.</p>
+            </div>
+            <div class="year-entry">
+              <span class="tag">Research</span>
+              <h4>Brussels</h4>
+              <p>Policy research and analysis with Dreamocracy.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="year-panel" data-year-panel="2025" data-cities="rome brussels">
+          <div class="year-entries">
+            <div class="year-entry">
+              <span class="tag">Work</span>
+              <h4>Rome</h4>
+              <p>ESG, CSRD/ESRS and behavioural communication consulting with Disal Consulting.</p>
+            </div>
+            <div class="year-entry">
+              <span class="tag">Research</span>
+              <h4>Brussels</h4>
+              <p>Policy and AI research — public-interest interventions and AI governance work.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="year-panel" data-year-panel="2026" data-cities="rome losangeles">
+          <div class="year-entries">
+            <div class="year-entry">
+              <span class="tag">Work</span>
+              <h4>Rome</h4>
+              <p>Consulting across policy, ESG and communication.</p>
+            </div>
+            <div class="year-entry">
+              <span class="tag">Entrepreneurship</span>
+              <h4>Los Angeles</h4>
+              <p>Co-founding and operating MemSurf, an AI-native learning app.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ WHAT THE GEOGRAPHY MEANS ═══════════════════ -->
+  <section class="section--soft" aria-labelledby="geo-heading">
+    <div class="container container--narrow prose">
+      <span class="label reveal">Why it matters</span>
+      <h2 id="geo-heading" class="display-m reveal">The same questions, seen from different places</h2>
+      <p class="body-copy reveal">
+        Studying and working across these cities means having seen the same questions from
+        different institutional vantage points: the EU from inside Brussels and from a
+        Central Asian newsroom's perspective; sustainability from a regulator's frame and
+        from the data architecture of a multinational; technology from European policy
+        debates and from a startup in California.
+      </p>
+      <p class="body-copy reveal">
+        That habit — deliberately switching vantage points — is probably the most useful
+        thing the geography has taught me.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ PHOTO PLACEHOLDERS ═══════════════════
+       Swap any tile for a real photo:
+       <img class="ph--square" src="images/rome.jpg" alt="Rome"> -->
+  <section aria-labelledby="photos-heading">
+    <div class="container">
+      <span class="label reveal">In pictures</span>
+      <h2 id="photos-heading" class="display-m reveal">Places, eventually in photographs</h2>
+      <div class="reveal" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1.25rem; margin-top: 2.5rem;">
+        <div class="ph ph--square"><span class="ph-note">Rome</span></div>
+        <div class="ph ph--square"><span class="ph-note">Brussels</span></div>
+        <div class="ph ph--square"><span class="ph-note">Berlin</span></div>
+        <div class="ph ph--square"><span class="ph-note">Nice</span></div>
+        <div class="ph ph--square"><span class="ph-note">Edinburgh</span></div>
+        <div class="ph ph--square"><span class="ph-note">Prague</span></div>
+        <div class="ph ph--square"><span class="ph-note">Astana</span></div>
+        <div class="ph ph--square"><span class="ph-note">Los Angeles</span></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-name">Alessia Canuto</div>
+        <div class="footer-role">Policy, Technology &amp; Sustainability</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="thinking.html">Thinking</a></li>
+        <li><a href="journey.html">Journey</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="https://www.linkedin.com/in/alessia-canuto-451a84226" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+    <p class="footer-copy">&copy; 2026 Alessia Canuto</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
