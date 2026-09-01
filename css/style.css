@@ -1396,6 +1396,8 @@ section { padding-block: var(--section-pad); }
 
   .hero-grid .hero-visual { order: -1; max-width: 320px; }
   .orbit-badge { width: 100px; height: 100px; left: -10px; bottom: 18px; }
+  .portrait-band .split { grid-template-columns: 1fr; }
+  .portrait-band .split .blend-photo { order: -1; max-width: 320px; }  /* photo first on mobile */
 
   .project-row { grid-template-columns: 1fr; gap: 1.25rem; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1740,10 +1742,18 @@ section { padding-block: var(--section-pad); }
 /* When the band is pinned, size the headline and portrait so the whole
    opening — label, statement, photo and paragraphs — fits one screen */
 .scene-on.scene--veil .display-l { font-size: clamp(1.8rem, 3.4vw, 3.3rem); margin-bottom: 0.75rem; }
-.scene-on.scene--veil .blend-photo { max-width: min(440px, 46vh); }
+.scene-on.scene--veil .blend-photo { max-width: min(480px, 50vh); }
+/* Text on the left, portrait on the right (mirroring the homepage hero),
+   vertically centred against each other */
+.portrait-band .split {
+  align-items: center;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+}
+.portrait-band .split .blend-photo { order: 2; }
 .blend-photo {
   position: relative;
-  max-width: 440px;
+  max-width: 480px;
+  margin-inline: auto;   /* centred within its column */
 }
 .blend-photo img { display: block; width: 100%; }
 .blend-photo::after {
