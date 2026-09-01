@@ -18,7 +18,7 @@
   <meta property="og:title" content="CV | Alessia Canuto">
   <meta property="og:description" content="Interactive CV of Alessia Canuto — experience, education, certifications, skills, languages and selected publications, with downloadable documents.">
 
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=2">
 </head>
 <body>
 
@@ -69,7 +69,7 @@
   <!-- ═══════════════════ EXPANDABLE CV SECTIONS ═══════════════════ -->
   <section class="section--tight" aria-label="CV sections" style="padding-top: 0;">
     <div class="container container--narrow">
-      <div class="accordion reveal">
+      <div class="accordion reveal-stage" data-cascade>
 
         <details open>
           <summary>Profile</summary>
@@ -276,7 +276,7 @@
       <span class="label reveal">Documents</span>
       <h2 id="docs-heading" class="display-l reveal">Library</h2>
 
-      <div class="doc-grid reveal" style="margin-top: 2.5rem;">
+      <div class="doc-grid reveal-stage paper-cascade" data-cascade style="margin-top: 2.5rem;">
         <div class="doc-card">
           <span class="doc-icon">Aa</span>
           <h3>Curriculum Vitae</h3>
@@ -337,6 +337,6 @@
   </div>
 </footer>
 
-<script src="js/main.js"></script>
+<script src="js/main.js?v=2"></script>
 </body>
 </html>

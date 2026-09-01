@@ -62,6 +62,11 @@ In `work.html`, copy one whole `<article class="case"> … </article>` block. Gi
 In `js/main.js`, find `starters = { … }` (section 6). Each entry is the text inserted
 when a visitor picks that topic. The visitor can always edit it before sending.
 
+### If your edits don't show up in the browser
+Every page loads `css/style.css?v=2` and `js/main.js?v=2`. If you change the CSS or
+JavaScript and a browser stubbornly shows the old version, bump the number (`?v=3`)
+in all the HTML files — a find-and-replace of `?v=2` → `?v=3` across the folder.
+
 ### Turn a scroll "scene" on or off
 On desktop, three homepage sections **pin in place** while you scroll: the central
 question (its four areas light up one by one), the three projects (01, 02, 03 appear in
@@ -110,6 +115,12 @@ the submit handler in `js/main.js` (section 6b).
   numbers stamp down, MemSurf zooms, the diagram pops together, the work cards cascade,
   and the article rules draw themselves. These all live in one commented block of
   `css/style.css` (section 19c) if you ever want to adjust or remove one.
+- Each inner page has its own signature too (section 19d of the CSS): About's text
+  sharpens from a blur ("the veil lifts") with a reading-progress line under the header;
+  Work's case studies converge from both sides and filters re-deal the results with a
+  live count; Thinking's essay titles take a highlighter sweep on hover; Journey's map
+  assembles west-to-east while its routes march like a flight path; the CV's documents
+  lay down like papers; and the Contact form assembles field by field.
 - **Printing works**: any page prints as a clean black-on-white document (navigation,
   buttons and decoration are stripped, and CV accordions open automatically). Until the
   CV PDF exists, "print the CV page" is a perfectly presentable stand-in.

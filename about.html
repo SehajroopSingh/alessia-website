@@ -18,13 +18,15 @@
   <meta property="og:title" content="About | Alessia Canuto">
   <meta property="og:description" content="About Alessia Canuto — a consultant working at the intersection of policy analysis, ESG regulation, AI governance and behavioural science.">
 
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=2">
 </head>
 <body>
 
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header">
+  <!-- Reading-progress hairline — fills as you read down the page -->
+  <div class="read-progress" aria-hidden="true"><span></span></div>
   <div class="container nav-bar">
     <a class="brand" href="index.html">Alessia <span>Canuto</span></a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
@@ -59,7 +61,7 @@
     <div class="container">
       <div class="split">
         <!-- Portrait placeholder — replace with a real photograph later -->
-        <div class="reveal">
+        <div class="reveal-stage arch-reveal">
           <div class="arch-frame" role="img" aria-label="Placeholder for a portrait of Alessia Canuto" style="max-width: 380px;">
             <span style="font-family: var(--sans); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); text-align: center; line-height: 1.8;">Portrait<br>to come</span>
           </div>
@@ -97,24 +99,24 @@
     <div class="container container--narrow prose">
       <span class="label reveal">The deeper lens</span>
       <h2 id="lens-heading" class="display-m reveal">Cognitive bias, and the veil we work through</h2>
-      <p class="body-copy dropcap reveal">
+      <p class="body-copy dropcap reveal veil-lift">
         Running through all of this is a deeper interest in cognitive bias as the lens
         through which we perceive and interpret the world. We do not observe systems from
         outside them; we perceive them through assumptions, incentives, experience and
         cognitive shortcuts.
       </p>
-      <blockquote class="pull-quote reveal">
+      <blockquote class="pull-quote reveal veil-lift quote-grow">
         Some philosophical traditions call this distance between reality and perception
         <em>Maya</em> — the veil through which we experience the world.
       </blockquote>
-      <p class="body-copy reveal">
+      <p class="body-copy reveal veil-lift">
         I treat this as an intellectual lens rather than a doctrine. Taking the veil
         seriously changes how you read a regulation, structure a report, or design a
         product: you stop asking only <em>"is this system correct?"</em> and start asking
         <em>"how will a person, with limited attention and their own incentives, actually
         experience this?"</em>
       </p>
-      <p class="body-copy reveal">
+      <p class="body-copy reveal veil-lift">
         That conviction ultimately led me to co-found MemSurf. Studying how people learn,
         decide and misjudge is one thing; building a product whose success depends entirely
         on getting those things right is another. Entrepreneurship, for me, is not a
@@ -130,7 +132,7 @@
       <span class="label reveal">Method</span>
       <h2 id="how-heading" class="display-l reveal">How I work</h2>
 
-      <div class="areas-grid reveal" style="margin-top: 3rem; max-width: 62rem;">
+      <div class="areas-grid reveal-stage" data-cascade style="margin-top: 3rem; max-width: 62rem;">
         <div class="area">
           <h3>I move between disciplines.</h3>
           <p>Complex problems rarely respect disciplinary boundaries.</p>
@@ -166,7 +168,7 @@
       <span class="label reveal">Questions, answered</span>
       <h2 id="faq-heading" class="display-l reveal">FAQ</h2>
 
-      <div class="accordion reveal" style="margin-top: 2.5rem;">
+      <div class="accordion reveal-stage" data-cascade style="margin-top: 2.5rem;">
 
         <details>
           <summary>What do you actually work on?</summary>
@@ -294,6 +296,6 @@
   </div>
 </footer>
 
-<script src="js/main.js"></script>
+<script src="js/main.js?v=2"></script>
 </body>
 </html>

@@ -43,10 +43,17 @@
      so the top of each page starts perfectly clean.
      ------------------------------------------------------------------ */
   var header = document.querySelector(".site-header");
+  var progressBar = document.querySelector(".read-progress span");
   if (header) {
     var headerTicking = false;
     var updateHeader = function () {
       header.classList.toggle("is-scrolled", window.scrollY > 12);
+      if (progressBar) {
+        // Reading-progress hairline (About page)
+        var travel = document.documentElement.scrollHeight - window.innerHeight;
+        var read = travel > 0 ? window.scrollY / travel : 0;
+        progressBar.style.transform = "scaleX(" + Math.min(Math.max(read, 0), 1) + ")";
+      }
       headerTicking = false;
     };
     window.addEventListener("scroll", function () {
@@ -85,7 +92,7 @@
      A "data-cascade" container gets staggered delays on its children.
      With reduced motion (or old browsers) everything is shown at once.
      ------------------------------------------------------------------ */
-  var revealEls = document.querySelectorAll(".reveal, .reveal-stage");
+  var revealEls = document.querySelectorAll(".reveal, .reveal-stage, .paper-in");
 
   function applyCascade(el) {
     if (!el.hasAttribute("data-cascade")) return;
@@ -309,10 +316,21 @@
   if (filterBar) {
     var filterButtons = filterBar.querySelectorAll(".filter-btn");
     var filterItems = document.querySelectorAll("[data-categories]");
+    var filterCount = document.querySelector("[data-filter-count]");
+
+    function updateFilterCount(filter, visible) {
+      if (!filterCount) return;
+      filterCount.textContent =
+        filter === "all"
+          ? "Showing all " + filterItems.length + " case studies"
+          : "Showing " + visible + " of " + filterItems.length + " case studies";
+    }
 
     filterButtons.forEach(function (btn) {
       btn.addEventListener("click", function () {
         var filter = btn.getAttribute("data-filter");
+        var visible = 0;
+        var dealDelay = 0;
 
         filterButtons.forEach(function (b) {
           b.setAttribute("aria-pressed", b === btn ? "true" : "false");
@@ -322,9 +340,24 @@
           var cats = item.getAttribute("data-categories").split(/\s+/);
           var show = filter === "all" || cats.indexOf(filter) !== -1;
           item.classList.toggle("is-filtered-out", !show);
+          if (show) {
+            visible++;
+            // Re-deal the matching cases with a small staggered pop
+            if (!prefersReducedMotion) {
+              item.classList.remove("filter-pop");
+              void item.offsetWidth; // restart the animation
+              item.style.animationDelay = dealDelay + "ms";
+              item.classList.add("filter-pop");
+              dealDelay += 60;
+            }
+          }
         });
+
+        updateFilterCount(filter, visible);
       });
     });
+
+    updateFilterCount("all", filterItems.length);
   }
 
   /* ------------------------------------------------------------------

@@ -1343,6 +1343,21 @@ section { padding-block: var(--section-pad); }
   .js .rule-reveal .article-card--featured { border-top-color: var(--accent); }
   .js .hero-visual .arch-frame { clip-path: none; transition: none; }
   .js .hero-visual .orbit-badge { opacity: 1; transform: none; }
+  .js .arch-reveal .arch-frame { clip-path: none; transition: none; }
+  .js .reveal.veil-lift { filter: none; }
+  .js .quote-grow { border-left-color: var(--accent); }
+  .js .quote-grow::before { transform: scaleY(1); }
+  .js .case.reveal-stage .case-meta,
+  .js .case.reveal-stage > div:not(.case-meta) { opacity: 1; transform: none; transition: none; }
+  .filter-pop { animation: none; }
+  .js .paper-in, .js .paper-cascade > * { opacity: 1; transform: none; transition: none; }
+  .js svg[data-cascade] > * { opacity: 1; transform: none; transition: none; }
+  .js .journey-map .route { animation: none; }
+  .js .year-panel.is-active { animation: none; }
+  .js .journey-map .city.is-active .city-dot { animation: none; }
+  .js .form-assemble:not(.is-visible) .form-field input,
+  .js .form-assemble:not(.is-visible) .form-field select,
+  .js .form-assemble:not(.is-visible) .form-field textarea { border-bottom-color: var(--ink-faint); }
   .marquee-track { animation: none; flex-wrap: wrap; width: auto; }
   .scroll-cue .cue-line { animation: none; }
   .orbit-badge svg { animation: none; }
@@ -1568,6 +1583,143 @@ section { padding-block: var(--section-pad); }
 
 
 /* ==========================================================================
+   19d. PAGE SIGNATURES
+   --------------------------------------------------------------------------
+   Each inner page has its own identity, like the homepage sections:
+
+     About     the veil lifts — text sharpens from a blur; arch wipes open;
+               a reading-progress line runs under the header
+     Work      case studies converge (meta from the left, story from the
+               right); filtering re-deals the matching cases
+     Thinking  essay titles take a highlighter sweep on hover; the thesis
+               card settles like a paper laid on a desk
+     Journey   the map assembles (grid → routes → cities); routes march
+               like a flight path; year changes pulse the active cities
+     CV        sections cascade; document cards lay down like papers
+     Contact   the form assembles field by field; labels warm on focus
+   ========================================================================== */
+
+/* --- About: arch portrait wipes open from the left --- */
+.js .arch-reveal .arch-frame {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1.1s cubic-bezier(0.22, 0.65, 0.2, 1) 0.2s;
+}
+.js .arch-reveal.is-visible .arch-frame { clip-path: inset(0 0 0 0); }
+
+/* --- About: "the veil lifts" — content sharpens from a blur --- */
+.js .reveal.veil-lift {
+  filter: blur(14px);
+  transition: opacity 0.9s ease, transform 0.9s ease, filter 1.2s ease;
+}
+.reveal.veil-lift.is-visible { filter: none; }
+
+/* --- About: reading-progress hairline under the sticky header --- */
+.read-progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  pointer-events: none;
+}
+.read-progress span {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+/* --- Pull quotes: the accent border grows downward as the quote appears --- */
+.js .quote-grow { border-left-color: transparent; position: relative; }
+.js .quote-grow::before {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.9s cubic-bezier(0.22, 0.65, 0.2, 1) 0.2s;
+}
+.js .section-dark .quote-grow::before { background: #D08B60; }
+.js .quote-grow.is-visible::before { transform: scaleY(1); }
+
+/* --- Work: each case study converges from both sides --- */
+.js .case.reveal-stage .case-meta,
+.js .case.reveal-stage > div:not(.case-meta) {
+  opacity: 0;
+  transition: opacity 0.7s ease, transform 0.8s cubic-bezier(0.22, 0.65, 0.2, 1);
+}
+.js .case.reveal-stage .case-meta { transform: translateX(-36px); }
+.js .case.reveal-stage > div:not(.case-meta) { transform: translateX(36px); }
+.js .case.is-visible .case-meta,
+.js .case.is-visible > div:not(.case-meta) { opacity: 1; transform: none; }
+
+/* --- Work: filtered-in cases re-deal with a small pop --- */
+@keyframes filter-pop {
+  from { opacity: 0; transform: translateY(18px); }
+}
+.filter-pop { animation: filter-pop 0.45s ease both; }
+
+/* --- Thinking: essay titles take a highlighter sweep on hover --- */
+.article-card h3 a {
+  background-image: linear-gradient(var(--accent-soft), var(--accent-soft));
+  background-repeat: no-repeat;
+  background-position: 0 62%;
+  background-size: 0% 45%;
+  transition: background-size 0.45s cubic-bezier(0.22, 0.65, 0.2, 1), color 0.3s;
+}
+.article-card h3 a:hover { background-size: 100% 45%; }
+
+/* --- Thinking & CV: documents settle like papers laid on a desk --- */
+.js .paper-in {
+  opacity: 0;
+  transform: translateY(26px) rotate(2.2deg);
+  transition: opacity 0.6s ease, transform 0.75s cubic-bezier(0.22, 0.65, 0.2, 1);
+}
+.js .paper-in.is-visible { opacity: 1; transform: none; }
+.js .paper-cascade > *:nth-child(odd) { transform: translateY(26px) rotate(-2deg) scale(0.985); }
+.js .paper-cascade > *:nth-child(even) { transform: translateY(26px) rotate(2deg) scale(0.985); }
+.js .paper-cascade.is-visible > * { transform: none; }
+
+/* --- Journey: the map assembles (grid → routes → cities, west to east).
+       The svg carries data-cascade; its <g> children stagger in. --- */
+.js svg[data-cascade] > * {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.js svg[data-cascade].is-visible > * { opacity: 1; transform: none; }
+
+/* --- Journey: dashed routes march like a flight path --- */
+.js .journey-map .route { animation: route-march 1.4s linear infinite; }
+@keyframes route-march { to { stroke-dashoffset: -9; } }
+
+/* --- Journey: switching years eases the panel in and pulses active dots --- */
+.js .year-panel.is-active { animation: panel-in 0.45s ease both; }
+@keyframes panel-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+.journey-map .city-dot { transform-box: fill-box; transform-origin: center; }
+.js .journey-map .city.is-active .city-dot { animation: dot-pulse 0.6s ease; }
+@keyframes dot-pulse {
+  0%   { transform: scale(1); }
+  45%  { transform: scale(1.7); }
+  100% { transform: scale(1); }
+}
+
+/* --- Contact: the form assembles; borders ink in with their fields --- */
+.js .form-assemble:not(.is-visible) .form-field input,
+.js .form-assemble:not(.is-visible) .form-field select,
+.js .form-assemble:not(.is-visible) .form-field textarea { border-bottom-color: transparent; }
+.form-field:focus-within label { color: var(--accent); }
+
+
+/* ==========================================================================
    20. PRINT
    --------------------------------------------------------------------------
    Printing any page (especially the CV) produces a clean black-on-white
@@ -1575,6 +1727,19 @@ section { padding-block: var(--section-pad); }
    opened automatically by js/main.js before printing.
    ========================================================================== */
 @media print {
+  /* Blanket reset: nothing stays hidden or transformed on paper */
+  * {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    filter: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+  .js .rule-reveal .article-card { border-top-color: #000; }
+  .js .quote-grow { border-left-color: #000; }
+  .read-progress { display: none; }
+
   body { background: #fff; color: #000; font-size: 11pt; }
   body::before { display: none; }                /* no grain on paper */
 

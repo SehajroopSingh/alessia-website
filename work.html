@@ -18,7 +18,7 @@
   <meta property="og:title" content="Work | Alessia Canuto">
   <meta property="og:description" content="Case studies from Alessia Canuto's work across policy analysis, CSRD/ESRS sustainability reporting, AI governance research, behavioural communication and entrepreneurship.">
 
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=2">
 </head>
 <body>
 
@@ -69,6 +69,8 @@
         <button class="filter-btn" data-filter="communications" aria-pressed="false">Communications</button>
         <button class="filter-btn" data-filter="entrepreneurship" aria-pressed="false">Entrepreneurship</button>
       </div>
+      <!-- Live count, updated by the filter script -->
+      <p class="meta reveal" data-filter-count aria-live="polite" style="margin-top: 1.25rem;"></p>
     </div>
   </section>
 
@@ -79,7 +81,7 @@
     <div class="container">
 
       <!-- ─────────────── MEMSURF ─────────────── -->
-      <article class="case reveal" id="memsurf" data-categories="entrepreneurship ai behaviour">
+      <article class="case reveal-stage" id="memsurf" data-categories="entrepreneurship ai behaviour">
         <div class="case-meta">
           <span class="work-cat">Entrepreneurship · AI · Behaviour</span>
           <h2 class="serif">MemSurf</h2>
@@ -123,7 +125,7 @@
       </article>
 
       <!-- ─────────────── CSRD / ESRS DISCLOSURE ─────────────── -->
-      <article class="case reveal" id="csrd" data-categories="esg research communications">
+      <article class="case reveal-stage" id="csrd" data-categories="esg research communications">
         <div class="case-meta">
           <span class="work-cat">ESG / CSRD</span>
           <h2 class="serif">Designing better sustainability disclosure</h2>
@@ -164,7 +166,7 @@
       </article>
 
       <!-- ─────────────── AI GOVERNANCE RESEARCH ─────────────── -->
-      <article class="case reveal" id="ai-governance" data-categories="ai research policy">
+      <article class="case reveal-stage" id="ai-governance" data-categories="ai research policy">
         <div class="case-meta">
           <span class="work-cat">AI Governance</span>
           <h2 class="serif">Understanding AI before trying to govern it</h2>
@@ -211,7 +213,7 @@
       </article>
 
       <!-- ─────────────── DREAMOCRACY ─────────────── -->
-      <article class="case reveal" id="dreamocracy" data-categories="policy behaviour research">
+      <article class="case reveal-stage" id="dreamocracy" data-categories="policy behaviour research">
         <div class="case-meta">
           <span class="work-cat">Policy / Behaviour</span>
           <h2 class="serif">Dreamocracy — public-interest interventions</h2>
@@ -250,7 +252,7 @@
       </article>
 
       <!-- ─────────────── TAGETIK ESG DATA ─────────────── -->
-      <article class="case reveal" id="tagetik" data-categories="esg">
+      <article class="case reveal-stage" id="tagetik" data-categories="esg">
         <div class="case-meta">
           <span class="work-cat">ESG Data</span>
           <h2 class="serif">Tagetik sustainability data architecture</h2>
@@ -281,7 +283,7 @@
       </article>
 
       <!-- ─────────────── BEHAVIOURAL COMMUNICATION ─────────────── -->
-      <article class="case reveal" id="behavioural-comms" data-categories="behaviour communications">
+      <article class="case reveal-stage" id="behavioural-comms" data-categories="behaviour communications">
         <div class="case-meta">
           <span class="work-cat">Behaviour · Communications</span>
           <h2 class="serif">Behavioural communication for credit management</h2>
@@ -312,7 +314,7 @@
       </article>
 
       <!-- ─────────────── SME DIAGNOSTICS ─────────────── -->
-      <article class="case reveal" id="diagnostics" data-categories="behaviour research communications">
+      <article class="case reveal-stage" id="diagnostics" data-categories="behaviour research communications">
         <div class="case-meta">
           <span class="work-cat">Organisations</span>
           <h2 class="serif">SME organisational diagnostics</h2>
@@ -343,7 +345,7 @@
       </article>
 
       <!-- ─────────────── CENTER FOR BEHAVIORAL DECISIONS ─────────────── -->
-      <article class="case reveal" id="cbd" data-categories="behaviour communications research">
+      <article class="case reveal-stage" id="cbd" data-categories="behaviour communications research">
         <div class="case-meta">
           <span class="work-cat">Behaviour · Writing</span>
           <h2 class="serif">Center for Behavioral Decisions</h2>
@@ -373,7 +375,7 @@
       </article>
 
       <!-- ─────────────── THE ASTANA TIMES ─────────────── -->
-      <article class="case reveal" id="astana" data-categories="policy communications research">
+      <article class="case reveal-stage" id="astana" data-categories="policy communications research">
         <div class="case-meta">
           <span class="work-cat">Policy &amp; International Affairs</span>
           <h2 class="serif">The Astana Times</h2>
@@ -407,7 +409,7 @@
       </article>
 
       <!-- ─────────────── ORGANIZATION FOR WORLD PEACE ─────────────── -->
-      <article class="case reveal" id="owp" data-categories="policy research communications">
+      <article class="case reveal-stage" id="owp" data-categories="policy research communications">
         <div class="case-meta">
           <span class="work-cat">International Research</span>
           <h2 class="serif">The Organization for World Peace</h2>
@@ -436,7 +438,7 @@
       </article>
 
       <!-- ─────────────── DISAL CONSULTING (role overview) ─────────────── -->
-      <article class="case reveal" id="disal" data-categories="esg communications behaviour ai research">
+      <article class="case reveal-stage" id="disal" data-categories="esg communications behaviour ai research">
         <div class="case-meta">
           <span class="work-cat">Consulting</span>
           <h2 class="serif">Disal Consulting</h2>
@@ -504,6 +506,6 @@
   </div>
 </footer>
 
-<script src="js/main.js"></script>
+<script src="js/main.js?v=2"></script>
 </body>
 </html>

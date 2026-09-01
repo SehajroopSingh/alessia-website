@@ -18,7 +18,7 @@
   <meta property="og:title" content="Journey | Alessia Canuto">
   <meta property="og:description" content="The geography of Alessia Canuto's education and professional experience — Rome, Brussels, Berlin, Nice, Edinburgh, Prague, Astana and Los Angeles.">
 
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=2">
 </head>
 <body>
 
@@ -73,8 +73,10 @@
         <button class="filter-btn" data-year="2026" aria-pressed="false">2026</button>
       </div>
 
-      <div class="map-wrap reveal">
-        <svg class="journey-map" viewBox="0 0 1000 480" role="img"
+      <div class="map-wrap">
+        <!-- data-cascade makes the map assemble: grid, then routes, then
+             the cities in order — roughly west to east -->
+        <svg class="journey-map reveal-stage" data-cascade viewBox="0 0 1000 480" role="img"
              aria-label="Route map connecting Rome with Edinburgh, Brussels, Berlin, Nice, Prague, Astana and Los Angeles">
 
           <!-- Subtle latitude / longitude grid -->
@@ -155,7 +157,7 @@
         </svg>
       </div>
 
-      <div class="map-legend reveal">
+      <div class="map-legend reveal-stage" data-cascade>
         <span><b>Study</b> — degrees &amp; exchanges</span>
         <span><b>Work</b> — consulting &amp; writing</span>
         <span><b>Research</b> — policy &amp; AI projects</span>
@@ -311,6 +313,6 @@
   </div>
 </footer>
 
-<script src="js/main.js"></script>
+<script src="js/main.js?v=2"></script>
 </body>
 </html>
