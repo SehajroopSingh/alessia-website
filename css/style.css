@@ -1730,6 +1730,40 @@ section { padding-block: var(--section-pad); }
   100% { transform: scale(1); }
 }
 
+/* --- About: the portrait dissolves into a band coloured like the
+       photograph's own wall (#CCC9BE, sampled from the image edges).
+       The photo is unframed; its edges feather into the band. --- */
+.portrait-band { background: #CCC9BE; }
+.portrait-band .body-copy { color: #45403A; }  /* darker for contrast on greige */
+.blend-photo {
+  position: relative;
+  max-width: 440px;
+}
+.blend-photo img { display: block; width: 100%; }
+.blend-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to right,  #CCC9BE, transparent 16%),
+    linear-gradient(to left,   #CCC9BE, transparent 16%),
+    linear-gradient(to bottom, #CCC9BE, transparent 16%),
+    linear-gradient(to top,    #CCC9BE 6%, rgba(204, 201, 190, 0.85) 20%, transparent 58%);
+}
+
+/* --- About scenes: the veil vocabulary — items sharpen out of a blur
+       one by one as the pinned section is scrolled --- */
+.scene-on.scene--veil [data-scene-item] {
+  transform: none;
+  opacity: 0;
+  filter: blur(16px);
+  transition: opacity 0.6s ease, filter 1s ease;
+}
+.scene-on.scene--veil [data-scene-item].is-on { opacity: 1; filter: none; }
+.scene-on.scene--principles .display-l { font-size: clamp(1.9rem, 3.3vw, 3.2rem); }
+.scene-on.scene--principles .area { padding-block: 1.3rem; }
+
 /* --- Contact: the form assembles; borders ink in with their fields --- */
 .js .form-assemble:not(.is-visible) .form-field input,
 .js .form-assemble:not(.is-visible) .form-field select,
