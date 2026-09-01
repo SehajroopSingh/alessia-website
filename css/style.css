@@ -32,18 +32,30 @@
    1. DESIGN TOKENS — change the look of the whole site from here
    ========================================================================== */
 :root {
-  /* ----- Colours ----- */
-  --paper:      #FFF8F3;   /* warm cream background */
-  --paper-soft: #FEF3EB;   /* slightly deeper peach cream, for alternating sections */
-  --ink:        #1A1612;   /* deep warm charcoal — main text */
-  --ink-soft:   #6B5B4F;   /* muted warm taupe — secondary text */
-  --ink-faint:  #A69688;   /* faint warm grey — metadata, captions */
-  --line:       rgba(26, 22, 18, 0.12);  /* thin divider lines */
-  --accent:     #E87A5E;   /* warm coral/peach accent */
-  --accent-soft:#E87A5E33; /* translucent accent for subtle fills */
-  --accent-deep:#C65D3E;   /* deeper coral for hover states */
-  --dark:       #1A1612;   /* background of the dark section */
-  --dark-text:  #FFF8F3;   /* cream text on dark backgrounds */
+  /* ----- Colours: Neutral palette (70%) ----- */
+  --paper:      #FAFAF8;   /* warm white */
+  --paper-soft: #F3F3EE;   /* off-white, for alternating sections */
+  --ink:        #151515;   /* near-black — main text */
+  --ink-soft:   #525252;   /* muted grey — secondary text */
+  --ink-faint:  #A3A3A3;   /* faint grey — metadata, captions */
+  --line:       rgba(21, 21, 21, 0.08);  /* thin divider lines */
+
+  /* ----- Colours: Thread semantics (20%) ----- */
+  /* GOVERN — Policy & Governance */
+  --govern:     #6633C6;   /* Hot Violet — primary */
+  --govern-soft:#9A5BD4;   /* Amethyst — secondary/accent */
+
+  /* TRANSFORM — Sustainability */
+  --transform:  #5AA136;   /* Gecko Green — primary */
+  --transform-soft:#8BC633; /* Tree Frog Green — secondary/accent */
+
+  /* BUILD — Entrepreneurship */
+  --build:      #131FAA;   /* Trendy Dark Blue — primary */
+  --build-soft: #228EE3;   /* Bleu de France — secondary/accent */
+
+  /* ----- Colours: UI states ----- */
+  --dark:       #151515;   /* background of the dark section */
+  --dark-text:  #FAFAF8;   /* warm white text on dark backgrounds */
 
   /* ----- Fonts ----- */
   --serif: "Playfair Display", "Georgia", "Times New Roman", serif;
@@ -81,16 +93,16 @@ body {
 
 img, svg { max-width: 100%; height: auto; display: block; }
 
-::selection { background: var(--accent); color: var(--paper); }
+::selection { background: var(--govern); color: var(--paper); }
 
 /* Warm-tinted, unobtrusive scrollbar */
-html { scrollbar-color: #C4BBAB transparent; }
+html { scrollbar-color: var(--ink-faint) transparent; }
 
-/* Keyboard focus: a clear clay ring instead of the browser default */
+/* Keyboard focus: a clear ring using govern primary */
 a:focus-visible,
 button:focus-visible,
 summary:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--govern);
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -99,8 +111,8 @@ summary:focus-visible {
 h1, h2, h3 { text-wrap: balance; }
 p { text-wrap: pretty; }
 
-/* List bullets & numbers pick up the accent */
-li::marker { color: var(--accent); }
+/* List bullets & numbers pick up the govern primary */
+li::marker { color: var(--govern); }
 
 /* A whisper of paper grain over the whole page (invisible on purpose —
    it just stops large cream areas from feeling flat). Remove this block
@@ -127,7 +139,7 @@ body::before {
 [id] { scroll-margin-top: 100px; }
 .case:target { animation: target-fade 1.8s ease 0.15s both; }
 @keyframes target-fade {
-  from { background: rgba(168, 85, 46, 0.09); }
+  from { background: rgba(102, 51, 198, 0.09); }
   to   { background: transparent; }
 }
 
@@ -136,7 +148,7 @@ a[target="_blank"]:not(.btn)::after {
   content: "\2197";
   font-size: 0.8em;
   margin-left: 0.3em;
-  color: var(--accent);
+  color: var(--govern-soft);
 }
 
 /* Accessible "skip to content" link — appears on keyboard focus */
@@ -201,7 +213,7 @@ h1, h2, h3, .serif {
 h1 em, h2 em, h3 em {
   font-style: italic;
   font-weight: 340;
-  color: var(--accent);
+  color: var(--govern);
 }
 
 /* Small letterspaced uppercase label — the editorial "eyebrow" */
@@ -212,10 +224,15 @@ h1 em, h2 em, h3 em {
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--govern);
   margin-bottom: 1.25rem;
 }
 .label--ink { color: var(--ink-faint); }
+
+/* Thread-specific labels */
+.label--govern { color: var(--govern); }
+.label--transform { color: var(--transform); }
+.label--build { color: var(--build); }
 
 /* Body text that reads like an essay */
 .lede {
@@ -239,7 +256,7 @@ h1 em, h2 em, h3 em {
   border: 0;
   margin: 2.5rem 0;
   padding-left: 1.75rem;
-  border-left: 2px solid var(--accent);
+  border-left: 2px solid var(--govern);
   max-width: 30em;
 }
 
@@ -286,6 +303,11 @@ section { padding-block: var(--section-pad); }
   margin: 0;
 }
 
+/* Thread-coloured rules */
+.rule--govern { border-top-color: var(--govern); }
+.rule--transform { border-top-color: var(--transform); }
+.rule--build { border-top-color: var(--build); }
+
 /* Asymmetric offset — pushes a block right for editorial rhythm */
 .offset-right { margin-left: auto; max-width: 62ch; }
 
@@ -297,7 +319,7 @@ section { padding-block: var(--section-pad); }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid transparent;   /* hairline appears on scroll */
@@ -320,7 +342,7 @@ section { padding-block: var(--section-pad); }
   color: var(--ink);
   text-decoration: none;
 }
-.brand span { color: var(--accent); font-style: italic; }
+.brand span { color: var(--govern); font-style: italic; }
 
 .nav-links {
   display: flex;
@@ -344,7 +366,7 @@ section { padding-block: var(--section-pad); }
 .nav-links a:hover { color: var(--ink); }
 .nav-links a[aria-current="page"] {
   color: var(--ink);
-  border-bottom-color: var(--accent);
+  border-bottom-color: var(--govern);
 }
 
 /* Mobile menu toggle (hidden on desktop) */
@@ -671,6 +693,176 @@ section { padding-block: var(--section-pad); }
   background: transparent;
 }
 .area--wide h3 { color: var(--accent); }
+
+/* ==========================================================================
+   QUESTION CARDS — Jenna Kutcher style cards for central question
+   ========================================================================== */
+.question-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+.question-cards[data-cascade] > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.22, 0.65, 0.2, 1),
+              transform 0.8s cubic-bezier(0.22, 0.65, 0.2, 1);
+}
+.question-cards[data-cascade].is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+.question-cards[data-cascade].is-visible > *:nth-child(1) { transition-delay: 0.1s; }
+.question-cards[data-cascade].is-visible > *:nth-child(2) { transition-delay: 0.2s; }
+.question-cards[data-cascade].is-visible > *:nth-child(3) { transition-delay: 0.3s; }
+.question-cards[data-cascade].is-visible > *:nth-child(4) { transition-delay: 0.4s; }
+.question-cards[data-cascade].is-visible > *:nth-child(5) { transition-delay: 0.5s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .question-cards[data-cascade] > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+.q-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  transition: transform 0.4s cubic-bezier(0.22, 0.65, 0.2, 1),
+              box-shadow 0.4s cubic-bezier(0.22, 0.65, 0.2, 1),
+              border-color 0.3s ease;
+}
+.q-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--accent-soft) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+.q-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 48px -12px rgba(232, 122, 94, 0.25), 0 12px 24px -8px rgba(26, 22, 18, 0.1);
+  border-color: var(--accent);
+}
+.q-card:hover::before {
+  opacity: 1;
+}
+.q-card:hover .q-card-title { color: var(--accent); }
+.q-card:hover .q-card-num { color: var(--accent); }
+
+.q-card-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.04;
+  z-index: 0;
+  transition: transform 0.6s cubic-bezier(0.22, 0.65, 0.2, 1), opacity 0.4s ease;
+}
+.q-card:hover .q-card-bg {
+  transform: scale(1.1);
+  opacity: 0.08;
+}
+
+/* Area-specific background patterns */
+.q-card[data-area="policy"] .q-card-bg {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0L100 50L50 100L0 50Z' fill='none' stroke='%23E87A5E' stroke-width='0.5'/%3E%3C/svg%3E");
+}
+.q-card[data-area="sustainability"] .q-card-bg {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%23E87A5E' stroke-width='0.5'/%3E%3C/svg%3E");
+}
+.q-card[data-area="ai"] .q-card-bg {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M20 50Q50 20 80 50Q50 80 20 50' fill='none' stroke='%23E87A5E' stroke-width='0.5'/%3E%3C/svg%3E");
+}
+.q-card[data-area="behaviour"] .q-card-bg {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 10L90 50L50 90L10 50Z' fill='none' stroke='%23E87A5E' stroke-width='0.5'/%3E%3C/svg%3E");
+}
+.q-card[data-area="building"] .q-card-bg {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='15' y='15' width='70' height='70' rx='8' fill='none' stroke='%23E87A5E' stroke-width='0.5'/%3E%3C/svg%3E");
+}
+
+.q-card-content {
+  position: relative;
+  z-index: 1;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.q-card-num {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--ink-faint);
+  margin-bottom: 0.75rem;
+  transition: color 0.3s ease;
+}
+
+.q-card-title {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 1rem;
+  transition: color 0.3s ease;
+}
+
+.q-card-desc {
+  color: var(--ink-soft);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0;
+  flex: 1;
+}
+
+/* Wide card (building) */
+.q-card--wide {
+  grid-column: 1 / -1;
+}
+.q-card--wide .q-card-content {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 3rem;
+}
+.q-card--wide .q-card-num {
+  flex-shrink: 0;
+  margin-bottom: 0;
+  margin-top: 0.25rem;
+  font-size: 2rem;
+}
+.q-card--wide .q-card-title {
+  margin-bottom: 0.5rem;
+}
+.q-card--wide .q-card-desc {
+  max-width: 50ch;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .question-cards {
+    grid-template-columns: 1fr;
+  }
+  .q-card--wide {
+    grid-column: auto;
+  }
+  .q-card--wide .q-card-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .q-card--wide .q-card-num {
+    font-size: 1.5rem;
+    margin-top: 0;
+  }
+}
 
 /* Perception diagram: SYSTEM → PERCEPTION → … */
 .diagram {
@@ -1449,6 +1641,7 @@ section { padding-block: var(--section-pad); }
   .u-draw { background-size: 100% 0.07em; transition: none; }
   [data-split] .split-word { transform: none; transition: none; }
   .tilt-grid > * { transform: none; }
+  .scene-on.scene--question .q-card[data-scene-item] { opacity: 1; transform: none; transition: none; }
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
 
@@ -1538,8 +1731,8 @@ section { padding-block: var(--section-pad); }
 /* Per-scene compression so pinned content fits one screen comfortably.
    (The !important below beats an inline margin in the HTML.) */
 .scene-on.scene--question .display-l { font-size: clamp(1.9rem, 3.3vw, 3.2rem); }
-.scene-on.scene--question .area { padding-block: 1.3rem; }
-.scene-on.scene--question .area p { font-size: 0.92rem; }
+.scene-on.scene--question .q-card { padding: 2rem 1.5rem; }
+.scene-on.scene--question .q-card-desc { font-size: 0.92rem; }
 .scene-on.scene--projects .display-l { margin-bottom: 0.5rem; font-size: clamp(1.9rem, 3.3vw, 3.2rem); }
 .scene-on.scene--projects .container > div { margin-top: 1.5rem !important; }
 .scene-on.scene--projects .project-row { padding-block: clamp(1rem, 2.4vh, 2rem); }
@@ -1596,17 +1789,22 @@ section { padding-block: var(--section-pad); }
 }
 .js .hero-visual.is-visible .orbit-badge { opacity: 1; transform: none; }
 
-/* --- Question scene: areas wipe open horizontally --- */
-.scene-on.scene--question [data-scene-item] {
-  transform: none;
+/* --- Question scene: cards fade up with stagger --- */
+.scene-on.scene--question .q-card[data-scene-item] {
+  transform: translateY(40px);
   opacity: 0;
-  clip-path: inset(0 100% 0 0);
-  transition: clip-path 0.8s cubic-bezier(0.22, 0.65, 0.2, 1), opacity 0.35s ease;
+  transition: opacity 0.7s cubic-bezier(0.22, 0.65, 0.2, 1),
+              transform 0.8s cubic-bezier(0.22, 0.65, 0.2, 1);
 }
-.scene-on.scene--question [data-scene-item].is-on {
+.scene-on.scene--question .q-card[data-scene-item].is-on {
   opacity: 1;
-  clip-path: inset(0 0 0 0);
+  transform: translateY(0);
 }
+.scene-on.scene--question .q-card[data-scene-item].is-on:nth-child(1) { transition-delay: 0.1s; }
+.scene-on.scene--question .q-card[data-scene-item].is-on:nth-child(2) { transition-delay: 0.2s; }
+.scene-on.scene--question .q-card[data-scene-item].is-on:nth-child(3) { transition-delay: 0.3s; }
+.scene-on.scene--question .q-card[data-scene-item].is-on:nth-child(4) { transition-delay: 0.4s; }
+.scene-on.scene--question .q-card[data-scene-item].is-on:nth-child(5) { transition-delay: 0.5s; }
 
 /* --- Projects scene: rows slide from alternating sides, numbers stamp --- */
 .scene-on.scene--projects [data-scene-item] {
