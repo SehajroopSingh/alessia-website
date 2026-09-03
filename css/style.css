@@ -1976,7 +1976,15 @@ section { padding-block: var(--section-pad); }
 .scene-on.scene--diagram .diagram { margin-top: 1.5rem; }
 
 /* The MemSurf section zooms up to full size as it scrolls into view.
-   --zoom-progress (0 → 1) is set by js/main.js while scenes are armed. */
+   --zoom-progress (0 → 1) is set by js/main.js while scenes are armed.
+   It also rides up OVER the finished card deck: while scenes are armed
+   it overlaps the projects scene's final viewport-height of scroll
+   (the deck stays pinned beneath until fully covered). */
+.scenes-armed #memsurf {
+  margin-top: -100vh;
+  position: relative;
+  z-index: 5;
+}
 .scenes-armed [data-zoom] {
   transform: scale(calc(0.93 + 0.07 * var(--zoom-progress, 1)));
   border-radius: calc((1 - var(--zoom-progress, 1)) * 36px);
