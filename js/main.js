@@ -225,7 +225,10 @@
         // Scene items are driven by scroll progress, not the reveal fade
         item.classList.remove("reveal", "reveal-delay-1", "reveal-delay-2", "reveal-delay-3");
       });
-      tracked.push({ el: scene, items: items });
+      // data-scene-end="0.75" makes all items finish by 75% of the pin,
+      // leaving the remainder as a quiet reading hold before release.
+      var endF = parseFloat(scene.getAttribute("data-scene-end")) || 1;
+      tracked.push({ el: scene, items: items, endF: endF });
     });
 
     function update() {
@@ -239,7 +242,7 @@
         scene.el.style.setProperty("--sp", p.toFixed(4));
         var n = scene.items.length;
         for (var i = 0; i < n; i++) {
-          scene.items[i].classList.toggle("is-on", p >= (i + 1) / (n + 1));
+          scene.items[i].classList.toggle("is-on", p >= ((i + 1) / (n + 1)) * scene.endF);
         }
       });
 
