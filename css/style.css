@@ -1048,11 +1048,10 @@ section { padding-block: var(--section-pad); }
 .question-bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
 .question-bg img {
   position: absolute;
-  right: 0;
-  left: auto;
-  top: -12%;
-  width: 112%;
-  height: 124%;
+  inset: 0;
+  top: -9%;
+  width: 100%;
+  height: 118%;
   object-fit: cover;
   object-position: 50% 30%;
   will-change: transform;
