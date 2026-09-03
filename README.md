@@ -67,9 +67,9 @@ In `js/main.js`, find `starters = { … }` (section 6). Each entry is the text i
 when a visitor picks that topic. The visitor can always edit it before sending.
 
 ### If your edits don't show up in the browser
-Every page loads `css/style.css?v=5` and `js/main.js?v=5`. If you change the CSS or
-JavaScript and a browser stubbornly shows the old version, bump the number (`?v=6`)
-in all the HTML files — a find-and-replace of `?v=5` → `?v=6` across the folder.
+Every page loads `css/style.css?v=6` and `js/main.js?v=6`. If you change the CSS or
+JavaScript and a browser stubbornly shows the old version, bump the number (`?v=7`)
+in all the HTML files — a find-and-replace of `?v=6` → `?v=7` across the folder.
 
 ### Turn a scroll "scene" on or off
 On desktop, three homepage sections **pin in place** while you scroll: the central

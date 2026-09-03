@@ -53,6 +53,10 @@
   --build:      #131FAA;   /* Trendy Dark Blue — primary */
   --build-soft: #228EE3;   /* Bleu de France — secondary/accent */
 
+  /* Darker green for TEXT-sized Translate marks: #5AA136 is only ~3.2:1
+     on white, below WCAG AA for small text. Large uses keep the bright green. */
+  --translate-ink: #3F7A22;
+
   /* Default accent for generic UI (links, hovers, small marks): ANALYSE violet */
   --accent:      #6633C6;
   --accent-soft: rgba(102, 51, 198, 0.12);
@@ -235,13 +239,16 @@ h1 em, h2 em, h3 em {
 
 /* Action-specific labels (ANALYSE violet · TRANSLATE green · BUILD blue) */
 .label--analyse { color: var(--analyse); }
-.label--translate { color: var(--translate); }
+.label--translate { color: var(--translate-ink); }
 .label--build { color: var(--build); }
 .action--analyse { color: var(--analyse); }
-.action--translate { color: var(--translate); }
+.action--translate { color: var(--translate-ink); }
 .action--build { color: var(--build); }
+/* Large type can carry the bright green (3:1 large-text threshold) */
+.chapter-break .action--translate,
+.action-verb .action--translate { color: var(--translate); }
 .project-kicker.action--analyse, .work-cat.action--analyse { color: var(--analyse); }
-.project-kicker.action--translate, .work-cat.action--translate { color: var(--translate); }
+.project-kicker.action--translate, .work-cat.action--translate { color: var(--translate-ink); }
 .project-kicker.action--build, .work-cat.action--build { color: var(--build); }
 .section-dark .label--build { color: var(--build-soft); }
 
@@ -821,6 +828,18 @@ section { padding-block: var(--section-pad); }
   max-width: 26em;
 }
 
+/* Editorial photograph inside a case study */
+.case-photo { margin: 0 0 1.9rem; }
+.case-photo img { width: 100%; display: block; }
+.case-photo figcaption {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-top: 0.6rem;
+}
+
 /* Work filters carry the action colour code */
 .filter-btn[data-filter="analyse"]::before,
 .filter-btn[data-filter="translate"]::before,
@@ -837,7 +856,7 @@ section { padding-block: var(--section-pad); }
 .filter-btn[data-filter="translate"]::before { background: var(--translate); }
 .filter-btn[data-filter="build"]::before { background: var(--build); }
 .filter-btn[data-filter="analyse"][aria-pressed="true"] { background: var(--analyse); border-color: var(--analyse); color: #fff; }
-.filter-btn[data-filter="translate"][aria-pressed="true"] { background: var(--translate); border-color: var(--translate); color: #fff; }
+.filter-btn[data-filter="translate"][aria-pressed="true"] { background: var(--translate-ink); border-color: var(--translate-ink); color: #fff; }
 .filter-btn[data-filter="build"][aria-pressed="true"] { background: var(--build); border-color: var(--build); color: #fff; }
 .filter-btn[aria-pressed="true"]::before { background: #fff !important; }
 
@@ -1979,9 +1998,9 @@ section { padding-block: var(--section-pad); }
 /* --- About: the portrait dissolves into a band coloured like the
        photograph's own wall (#CCC9BE, sampled from the image edges).
        The photo is unframed; its edges feather into the band. --- */
-.portrait-band { background: #CCC9BE; }
+.portrait-band { --band: #E3E0DC; background: var(--band); }  /* sampled from the portrait's light edges */
 .portrait-band .body-copy { color: #45403A; }  /* darker for contrast on greige */
-.portrait-band .label { color: #8C4526; }      /* deeper clay for contrast on greige */
+.portrait-band .label { color: var(--accent); }
 
 /* When the band is pinned, size the headline and portrait so the whole
    opening — label, statement, photo and paragraphs — fits one screen */
@@ -2006,10 +2025,10 @@ section { padding-block: var(--section-pad); }
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(to right,  #CCC9BE, transparent 16%),
-    linear-gradient(to left,   #CCC9BE, transparent 16%),
-    linear-gradient(to bottom, #CCC9BE, transparent 16%),
-    linear-gradient(to top,    #CCC9BE 6%, rgba(204, 201, 190, 0.85) 20%, transparent 58%);
+    linear-gradient(to right,  var(--band), transparent 22%),
+    linear-gradient(to left,   var(--band), transparent 22%),
+    linear-gradient(to bottom, var(--band), transparent 22%),
+    linear-gradient(to top,    var(--band) 8%, color-mix(in srgb, var(--band) 85%, transparent) 24%, transparent 60%);
 }
 
 /* --- About scenes: the veil vocabulary — items sharpen out of a blur
