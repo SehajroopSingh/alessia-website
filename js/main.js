@@ -263,6 +263,30 @@
   })();
 
   /* ------------------------------------------------------------------
+     2d. PHOTO-BAND PARALLAX
+     Images inside [data-parallax] bands drift gently against the scroll
+     (a few percent, nothing more). Off under reduced motion.
+     ------------------------------------------------------------------ */
+  var parallaxImgs = document.querySelectorAll("[data-parallax] img");
+  if (parallaxImgs.length && !prefersReducedMotion) {
+    var plxTicking = false;
+    var updateParallax = function () {
+      var vh = window.innerHeight;
+      parallaxImgs.forEach(function (img) {
+        var rect = img.parentElement.getBoundingClientRect();
+        if (rect.bottom < 0 || rect.top > vh) return;
+        var progress = (rect.top + rect.height / 2 - vh / 2) / vh; // -1..1
+        img.style.transform = "translateY(" + (progress * -6).toFixed(2) + "%)";
+      });
+      plxTicking = false;
+    };
+    window.addEventListener("scroll", function () {
+      if (!plxTicking) { plxTicking = true; requestAnimationFrame(updateParallax); }
+    }, { passive: true });
+    updateParallax();
+  }
+
+  /* ------------------------------------------------------------------
      3. ANIMATED STATISTICS
      Any element like <span data-count="42" data-suffix="K+">42K+</span>
      counts up from zero when scrolled into view.

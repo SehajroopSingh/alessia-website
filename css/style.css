@@ -828,6 +828,111 @@ section { padding-block: var(--section-pad); }
   max-width: 26em;
 }
 
+/* ==========================================================================
+   HERO STAGE — the name sits BEHIND Alessia, in front of the background.
+   Three aligned layers: the photo, the giant name, and a cutout of her
+   (images/hero-cutout.png) rendered on top. The two images share identical
+   sizing rules, so they stay pixel-aligned at every viewport.
+   ========================================================================== */
+.hero-stage {
+  position: relative;
+  height: min(92vh, 940px);
+  min-height: 540px;
+  overflow: hidden;
+  background: #E9E7E3;
+  padding-block: 0;   /* cancel the default <section> padding */
+}
+.hero-stage .stage-bg,
+.hero-stage .stage-fg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 22%;
+}
+.hero-stage .stage-fg { z-index: 3; pointer-events: none; }
+.hero-stage .stage-name {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5vh;
+  font-family: var(--serif);
+  font-weight: 440;
+  line-height: 0.92;
+  font-size: clamp(4rem, 14.5vw, 13rem);
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  text-align: center;
+}
+.hero-stage .stage-name .stage-line2 { margin-top: clamp(0.5rem, 9vh, 7rem); }
+.hero-stage .orbit-badge { left: auto; right: clamp(1rem, 4vw, 3.5rem); bottom: clamp(1rem, 5vh, 3rem); z-index: 4; }
+@media (prefers-reduced-motion: no-preference) {
+  .js .hero-stage .stage-bg,
+  .js .hero-stage .stage-fg { animation: stage-in 1.7s cubic-bezier(0.22, 0.65, 0.2, 1) both; }
+}
+@keyframes stage-in {
+  from { transform: scale(1.045); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+/* The strip beneath the stage: eyebrow, statement, tagline, CTAs */
+.hero-strip { padding-block: clamp(2rem, 4vw, 3.5rem); border-bottom: 1px solid var(--line); }
+.hero-strip .hero-statement { margin-bottom: 1.25rem; }
+
+/* ==========================================================================
+   HOMEPAGE CHAPTERS — each scroll section gets its own colour wash
+   (soft, per BRIEF.md's 70/20/10 rule — the photographs carry the rest)
+   ========================================================================== */
+.chapter--analyse { background: color-mix(in srgb, var(--analyse) 5%, var(--paper)); }
+.chapter--translate { background: color-mix(in srgb, var(--translate) 6%, var(--paper)); }
+.chapter--build { background: color-mix(in srgb, var(--build) 4%, var(--paper)); }
+.section-dark--build { background: #0C1030; }   /* the Build-blue night chapter */
+
+/* Teaser rows carry their own photograph */
+.project-photo { margin: 0; }
+.project-photo img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+.scene-on.scene--projects .project-photo img { aspect-ratio: 16 / 9; max-height: 21vh; }
+
+/* Full-bleed photo band with a gentle parallax drift (the veil chapter) */
+.photo-band {
+  position: relative;
+  overflow: hidden;
+  height: min(62vh, 620px);
+}
+.photo-band img {
+  position: absolute;
+  left: 0;
+  top: -12%;
+  width: 100%;
+  height: 124%;
+  object-fit: cover;
+  will-change: transform;
+}
+.photo-band::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 35%, rgba(10, 12, 24, 0.55) 100%);
+}
+.photo-band .band-title {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  bottom: clamp(1.5rem, 5vh, 3rem);
+}
+.photo-band .band-title .label { color: rgba(255, 255, 255, 0.85); margin-bottom: 0.75rem; }
+.photo-band .band-title h2 { color: #fff; margin: 0; }
+
 /* Editorial photograph inside a case study */
 .case-photo { margin: 0 0 1.9rem; }
 .case-photo img { width: 100%; display: block; }
@@ -1031,12 +1136,12 @@ section { padding-block: var(--section-pad); }
   background: var(--dark);
   color: var(--dark-text);
 }
-.section-dark .label { color: #D08B60; }
+.section-dark .label { color: var(--build-soft); }
 .section-dark h2, .section-dark h3 { color: var(--dark-text); }
 .section-dark .body-copy { color: #BDB4A4; }
 .section-dark .body-copy strong { color: var(--dark-text); }
 .section-dark .rule { border-color: rgba(241, 235, 223, 0.15); }
-.section-dark .pull-quote { color: var(--dark-text); border-left-color: #D08B60; }
+.section-dark .pull-quote { color: var(--dark-text); border-left-color: var(--build-soft); }
 
 .memsurf-stats {
   display: flex;
@@ -1938,7 +2043,7 @@ section { padding-block: var(--section-pad); }
   transform-origin: top;
   transition: transform 0.9s cubic-bezier(0.22, 0.65, 0.2, 1) 0.2s;
 }
-.js .section-dark .quote-grow::before { background: #D08B60; }
+.js .section-dark .quote-grow::before { background: var(--build-soft); }
 .js .quote-grow.is-visible::before { transform: scaleY(1); }
 
 /* --- Work: each case study converges from both sides --- */
