@@ -1196,29 +1196,31 @@ section { padding-block: var(--section-pad); }
 .diagram-band .diagram .arrow { color: #fff; font-size: 1.35rem; }
 
 /* ==========================================================================
-   STAMP CTA — the closing portrait as a big tilted stamp: paper mat on a
-   pastel backing plate, slamming in from large to its resting angle,
-   with the "Let's talk." text (and its underline) following after.
+   STAMP CTA — the closing portrait as a big tilted postage stamp:
+   perforated white mat with a hard shadow tracing the scalloped edge,
+   slamming in from large to its resting angle, with the "Let's talk."
+   text (and its underline) following after.
    ========================================================================== */
-.cta-chapter .stamp-in { max-width: 470px; width: 100%; justify-self: end; }
+/* Settled size: as big as the column allows, capped so the stamp
+   (image + mat) always clears the pinned viewport's height */
+.cta-chapter .stamp-in { max-width: min(640px, calc((100vh - 200px) * 0.92)); width: 100%; justify-self: end; }
 .stamp-frame {
   position: relative;
-  background: #fff;
-  padding: 14px 14px 20px;
-  border: 2.5px solid var(--ink);
-  box-shadow: 10px 12px 0 var(--ink);
+  padding: 16px 16px 22px;
+  /* Perforated postage-stamp edges: a tiled radial gradient punches
+     half-circle notches all around the white mat */
+  background-color: transparent;
+  background-image: radial-gradient(circle, transparent 6px, #fff 6.5px);
+  background-size: 30px 30px;
+  background-position: -15px -15px;
+  /* the shadow follows the scalloped silhouette, not a rectangle */
+  filter: drop-shadow(9px 11px 0 rgba(26, 26, 26, 0.85));
   transform: rotate(-5deg);
 }
-.stamp-frame::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  transform: rotate(4.5deg) translate(8px, 12px);
-  background: color-mix(in srgb, var(--analyse) 16%, #fff);
-  border: 2.5px solid var(--ink);
-  z-index: -1;
-}
-.stamp-frame img { width: 100%; display: block; }
+/* A slightly squarer crop lets the stamp grow wide without growing
+   too tall for the screen; the position keeps her face in frame.
+   The thin ink rule is the stamp's printed frame line. */
+.stamp-frame img { width: 100%; display: block; aspect-ratio: 1 / 1.08; object-fit: cover; object-position: 50% 20%; border: 2px solid var(--ink); box-sizing: border-box; }
 /* Entrance: slams from big to its resting tilt, then the text follows */
 .js .stamp-in .stamp-frame {
   opacity: 0;
@@ -1231,7 +1233,7 @@ section { padding-block: var(--section-pad); }
 .cta-chapter div.reveal { transition-delay: 0.75s; }
 .cta-chapter .u-draw { transition-delay: 1.5s; }
 @media (max-width: 900px) {
-  .cta-chapter .stamp-in { max-width: 340px; justify-self: start; margin-top: 2rem; }
+  .cta-chapter .stamp-in { max-width: 380px; justify-self: start; margin-top: 2rem; }
 }
 
 /* Full-bleed photo band with a gentle parallax drift (the veil chapter) */
