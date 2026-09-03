@@ -235,6 +235,8 @@
         var rect = scene.el.getBoundingClientRect();
         var travel = rect.height - vh;
         var p = travel > 0 ? Math.min(Math.max(-rect.top / travel, 0), 1) : 1;
+        // Continuous progress for CSS-driven scrubbing (e.g. the stamp CTA)
+        scene.el.style.setProperty("--sp", p.toFixed(4));
         var n = scene.items.length;
         for (var i = 0; i < n; i++) {
           scene.items[i].classList.toggle("is-on", p >= (i + 1) / (n + 1));

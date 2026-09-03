@@ -2207,6 +2207,29 @@ section { padding-block: var(--section-pad); }
   to   { transform: rotate(var(--tilt)) translateY(-5px); }
 }
 
+/* --- CTA scene: everything scrubs 1:1 with the scroll (and reverses).
+       --sp (0→1) is the pinned scene's progress, set by js/main.js.
+       Stamp lands over the first ~42%, text follows, underline last. --- */
+.js .scene-on.scene--cta .stamp-in .stamp-frame {
+  opacity: min(1, calc(var(--sp, 0) / 0.1));
+  transform: scale(calc(1.72 - 0.72 * min(1, calc(var(--sp, 0) / 0.42))))
+             rotate(calc(-14deg + 9deg * min(1, calc(var(--sp, 0) / 0.42))));
+  transition: none;
+}
+.scene-on.scene--cta h2.reveal,
+.scene-on.scene--cta .body-copy.reveal,
+.scene-on.scene--cta div.reveal {
+  --tp: max(0, min(1, calc((var(--sp, 0) - 0.48) / 0.22)));
+  opacity: var(--tp);
+  transform: translateY(calc((1 - var(--tp)) * 26px));
+  transition: none;
+}
+.scene-on.scene--cta .u-draw {
+  --up: max(0, min(1, calc((var(--sp, 0) - 0.74) / 0.18)));
+  background-size: calc(var(--up) * 100%) 0.07em;
+  transition: none;
+}
+
 /* --- Cascade: children of a data-cascade container deal in one by one
        (per-child delays are set by js/main.js) --- */
 .js [data-cascade] > * {
