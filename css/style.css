@@ -889,7 +889,7 @@ section { padding-block: var(--section-pad); }
 .stage-core {
   position: relative;
   height: 100%;
-  aspect-ratio: 1200 / 1670;   /* close to the photo's own shape: only a sliver cropped */
+  aspect-ratio: 1200 / 1450;   /* wider than the photo: zoomed in, bottom cropped */
   max-width: 100%;
   flex: 0 0 auto;
 }
