@@ -273,10 +273,21 @@
     var updateParallax = function () {
       var vh = window.innerHeight;
       parallaxImgs.forEach(function (img) {
-        var rect = img.parentElement.getBoundingClientRect();
+        // Inside a pinned scene, drive the drift from the tall wrapper so
+        // the image keeps moving (slower than the scroll) through the pin.
+        var scene = img.closest(".scene-on");
+        var ref = scene || img.parentElement;
+        var rect = ref.getBoundingClientRect();
         if (rect.bottom < 0 || rect.top > vh) return;
-        var progress = (rect.top + rect.height / 2 - vh / 2) / vh; // -1..1
-        img.style.transform = "translateY(" + (progress * -6).toFixed(2) + "%)";
+        var progress, shift;
+        if (scene) {
+          progress = (rect.top + rect.height / 2 - vh / 2) / rect.height;
+          shift = Math.max(-8, Math.min(8, progress * -16));
+        } else {
+          progress = (rect.top + rect.height / 2 - vh / 2) / vh;
+          shift = progress * -6;
+        }
+        img.style.transform = "translateY(" + shift.toFixed(2) + "%)";
       });
       plxTicking = false;
     };

@@ -980,9 +980,9 @@ section { padding-block: var(--section-pad); }
 .question-bg img {
   position: absolute;
   left: 0;
-  top: -10%;
+  top: -12%;
   width: 100%;
-  height: 120%;
+  height: 124%;
   object-fit: cover;
   object-position: 18% 28%;
   will-change: transform;
@@ -1020,9 +1020,9 @@ section { padding-block: var(--section-pad); }
 .diagram-bg img {
   position: absolute;
   left: 0;
-  top: -10%;
+  top: -12%;
   width: 100%;
-  height: 120%;
+  height: 124%;
   object-fit: cover;
   object-position: 50% 35%;
   will-change: transform;
@@ -1047,7 +1047,25 @@ section { padding-block: var(--section-pad); }
   color: #fff;
   margin: 0 0 1rem;
 }
-.diagram-band .diagram { border: 0; margin-top: 1.25rem; padding: 0; gap: 1rem 1.3rem; }
+/* The pills cascade downward in a zigzag, arrows pointing diagonally */
+.diagram-band .diagram {
+  border: 0;
+  margin-top: 1.25rem;
+  padding: 0;
+  gap: 0.55rem;
+  flex-direction: column;
+  align-items: center;
+}
+.diagram-band .diagram .node:nth-of-type(1) { margin-right: min(26rem, 38vw); }
+.diagram-band .diagram .node:nth-of-type(3) { margin-left: min(10rem, 14vw); }
+.diagram-band .diagram .node:nth-of-type(5) { margin-right: min(12rem, 18vw); }
+.diagram-band .diagram .node:nth-of-type(7) { margin-left: min(20rem, 28vw); }
+.diagram-band .diagram .node:nth-of-type(9) { margin-right: min(2rem, 3vw); }
+.diagram-band .diagram .arrow { display: inline-block; transform: rotate(var(--arot, 0deg)); }
+.diagram-band .diagram .arrow:nth-of-type(2) { --arot: 40deg;  margin-right: min(10rem, 14vw); }
+.diagram-band .diagram .arrow:nth-of-type(4) { --arot: 140deg; margin-right: min(2rem, 3vw); }
+.diagram-band .diagram .arrow:nth-of-type(6) { --arot: 40deg;  margin-left: min(4rem, 6vw); }
+.diagram-band .diagram .arrow:nth-of-type(8) { --arot: 140deg; margin-left: min(8rem, 11vw); }
 .diagram-band .diagram .node {
   border: 2px solid var(--ink);
   border-radius: 999px;
@@ -2134,11 +2152,11 @@ section { padding-block: var(--section-pad); }
 .scene-on.scene--diagram .node:nth-of-type(7) { --tilt: 2deg;   --bob-delay: 1.5s; }
 .scene-on.scene--diagram .node:nth-of-type(9) { --tilt: -1.2deg; --bob-delay: 2s; }
 .scene-on.scene--diagram .arrow[data-scene-item] {
-  transform: scaleX(0);
-  transform-origin: left center;
-  transition: opacity 0.3s ease, transform 0.45s cubic-bezier(0.22, 0.65, 0.2, 1);
+  transform: scale(0) rotate(var(--arot, 0deg));
+  transform-origin: center;
+  transition: opacity 0.3s ease, transform 0.5s cubic-bezier(0.3, 1.5, 0.5, 1);
 }
-.scene-on.scene--diagram .arrow[data-scene-item].is-on { opacity: 1; transform: none; }
+.scene-on.scene--diagram .arrow[data-scene-item].is-on { opacity: 1; transform: rotate(var(--arot, 0deg)); }
 .scene-on.scene--diagram .node[data-scene-item].is-on {
   opacity: 1;
   transform: rotate(var(--tilt));
