@@ -27,7 +27,7 @@
   <meta property="og:title" content="Alessia Canuto | Policy, Technology &amp; Sustainability">
   <meta property="og:description" content="Alessia Canuto is a policy and sustainability professional working at the intersection of ESG regulation, AI governance, socioeconomic development, behavioural science and technology.">
 
-  <link rel="stylesheet" href="css/style.css?v=7">
+  <link rel="stylesheet" href="css/style.css?v=8">
 </head>
 <body>
 
@@ -124,10 +124,17 @@
        areas light up one by one under your scroll. Delete data-scene from
        the wrapper div to turn that off. -->
   <div class="scene scene--question" data-scene style="--scene-length: 3;">
-  <section id="question" class="scene-viewport chapter--analyse" aria-labelledby="question-heading">
+  <section id="question" class="scene-viewport question-hero" aria-labelledby="question-heading">
+    <!-- Background: the Edinburgh portrait, drifting slower than the page
+         (data-parallax). Alessia sits left, so the content aligns right. -->
+    <div class="question-bg" data-parallax aria-hidden="true">
+      <img src="images/question-edinburgh.jpg" alt="">
+    </div>
+    <div class="question-scrim" aria-hidden="true"></div>
     <div class="container">
+      <div class="question-content">
       <span class="label label--ink reveal">01 — The question</span>
-      <h2 id="question-heading" class="display-xxl" data-split style="max-width: 15em; margin-bottom: 0;">
+      <h2 id="question-heading" class="display-xxl" data-split style="margin-bottom: 0;">
         How do we design systems that work better for the people who have to <em class="u-draw">navigate</em> them?
       </h2>
       <p class="lede reveal" style="margin-top: 1.75rem; max-width: 62ch;">
@@ -158,6 +165,7 @@
           Development · Behavioural Science</strong> — the four subjects these three
           actions are applied to, in different combinations on every project.
         </p>
+      </div>
       </div>
     </div>
   </section>
@@ -547,6 +555,6 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=7"></script>
+<script src="js/main.js?v=8"></script>
 </body>
 </html>
