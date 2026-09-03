@@ -850,10 +850,10 @@ section { padding-block: var(--section-pad); }
     radial-gradient(40% 36% at 6% 84%, rgba(28, 10, 66, 0.12), transparent 70%);
   padding-block: 0;   /* cancel the default <section> padding */
   display: flex;
-  justify-content: center;   /* centres the full-height cutout core */
+  justify-content: flex-end;   /* the cutout's right edge rides the fold */
   /* Width of the "second page" sliver on the right (the magazine fold
      sits just left of it) — change this to widen/narrow the sliver */
-  --page2: clamp(56px, 7vw, 110px);
+  --page2: clamp(120px, 17.5vw, 260px);
 }
 /* Magazine-gutter shading: the left page eases into a dark crease, a
    thin highlight catches where the second page curves back up, then a
@@ -899,6 +899,7 @@ section { padding-block: var(--section-pad); }
 .stage-content .stage-content-inner {
   width: min(100% - 3rem, 1200px);
   margin-inline: auto;
+  padding-right: var(--page2);   /* the band is printed on the left page only */
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
   gap: clamp(1.5rem, 4vw, 3rem);
@@ -906,8 +907,6 @@ section { padding-block: var(--section-pad); }
 }
 .stage-content .hero-statement { max-width: 52ch; margin-bottom: 0; }
 .stage-content .hero-tagline { margin-bottom: 1rem; }
-/* keep the buttons clear of the rotating badge in the corner */
-.stage-content .stage-content-inner > div:last-child { padding-right: clamp(2rem, 4vw, 4rem); }
 /* The cutout keeps its full height, centred; on narrow screens it
    fills the width again (and crops) exactly as before. NO transform here —
    the name layer must be able to slot between the core's children. */
@@ -915,7 +914,8 @@ section { padding-block: var(--section-pad); }
   position: relative;
   height: 100%;
   aspect-ratio: 1200 / 1450;   /* wider than the photo: zoomed in, bottom cropped */
-  max-width: 100%;
+  max-width: calc(100% - var(--page2));   /* never spill past the fold */
+  margin-right: var(--page2);   /* right edge sits exactly on the crease */
   flex: 0 0 auto;
 }
 .hero-stage .stage-fg {
@@ -931,6 +931,7 @@ section { padding-block: var(--section-pad); }
 .hero-stage .stage-name {
   position: absolute;
   inset: 0;
+  right: var(--page2);   /* the name is printed on the left page only */
   z-index: 2;
   margin: 0;
   display: flex;
@@ -946,7 +947,9 @@ section { padding-block: var(--section-pad); }
   text-align: center;
 }
 .hero-stage .stage-name .stage-line2 { margin-top: clamp(0.5rem, 9vh, 7rem); }
-.hero-stage .orbit-badge { left: auto; right: calc(var(--page2) + clamp(1rem, 3vw, 2.5rem)); bottom: clamp(13rem, 30vh, 16rem); z-index: 6; }
+.hero-stage .orbit-badge { left: auto; right: calc(var(--page2) / 2); transform: translateX(50%); bottom: clamp(13rem, 30vh, 16rem); z-index: 6; }
+/* slightly slimmer buttons so the pair fits beside the fold */
+.hero-stage .btn { padding: 1rem 1.5rem; }
 /* Light-on-violet versions of the bottom band's text and buttons */
 .hero-stage .label--ink { color: rgba(255, 255, 255, 0.78); }
 .hero-stage .hero-statement { color: rgba(255, 255, 255, 0.94); }
@@ -2083,7 +2086,11 @@ section { padding-block: var(--section-pad); }
   .hero-stage::after { background: linear-gradient(180deg, transparent 26%, rgba(44, 22, 96, 0.38) 54%, rgba(32, 14, 76, 0.72) 100%); }
   /* the magazine fold needs room — skip it on small screens */
   .hero-stage::before { display: none; }
-  .hero-stage .orbit-badge { right: clamp(1rem, 4vw, 3.5rem); }
+  .hero-stage { justify-content: center; }
+  .stage-core { max-width: 100%; margin-right: 0; }
+  .hero-stage .stage-name { right: 0; }
+  .stage-content .stage-content-inner { padding-right: 0; }
+  .hero-stage .orbit-badge { right: clamp(1rem, 4vw, 3.5rem); transform: none; }
   .stage-content .hero-statement { font-size: 0.95rem; }
   .stage-content .stage-content-inner { grid-template-columns: 1fr; gap: 0.9rem; }
   .stage-content .stage-content-inner > div:last-child { padding-right: 0; }
