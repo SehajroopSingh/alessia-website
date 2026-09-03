@@ -1011,6 +1011,58 @@ section { padding-block: var(--section-pad); }
   .question-content { max-width: 100%; }
 }
 
+/* ==========================================================================
+   DIAGRAM BAND — the system→outcome diagram over the stakeholders photo,
+   as colourful cartoon pills that pop in and bob (reference-site style).
+   ========================================================================== */
+.diagram-band { position: relative; overflow: hidden; padding-block: clamp(3rem, 8vw, 5rem); }
+.diagram-bg { position: absolute; inset: 0; }
+.diagram-bg img {
+  position: absolute;
+  left: 0;
+  top: -10%;
+  width: 100%;
+  height: 120%;
+  object-fit: cover;
+  object-position: 50% 35%;
+  will-change: transform;
+}
+.diagram-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 12, 24, 0.62) 0%, rgba(10, 12, 24, 0.45) 50%, rgba(10, 12, 24, 0.66) 100%);
+}
+.diagram-content {
+  position: relative;
+  z-index: 2;
+  width: min(100% - 3rem, 1000px);
+  margin-inline: auto;
+  text-align: center;
+}
+.diagram-content > .label { color: rgba(255, 255, 255, 0.92); }
+.diagram-content .diagram-title {
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 3vw, 2.6rem);
+  font-weight: 420;
+  color: #fff;
+  margin: 0 0 1rem;
+}
+.diagram-band .diagram { border: 0; margin-top: 1.25rem; padding: 0; gap: 1rem 1.3rem; }
+.diagram-band .diagram .node {
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  box-shadow: 4px 4px 0 var(--ink);
+  font-size: 0.8rem;
+  padding: 0.85rem 1.5rem;
+  background: #fff;
+  color: var(--ink);
+}
+.diagram-band .diagram .node--violet { background: var(--analyse); color: #fff; font-style: italic; }
+.diagram-band .diagram .node--lime { background: var(--translate-soft); color: var(--ink); }
+.diagram-band .diagram .node--blue { background: var(--build-soft); color: var(--ink); }
+.diagram-band .diagram .node--ink { background: var(--ink); color: #fff; border-color: #fff; box-shadow: 4px 4px 0 rgba(255, 255, 255, 0.85); }
+.diagram-band .diagram .arrow { color: #fff; font-size: 1.35rem; }
+
 /* Full-bleed photo band with a gentle parallax drift (the veil chapter) */
 .photo-band {
   position: relative;
@@ -2070,17 +2122,32 @@ section { padding-block: var(--section-pad); }
   transform: translateY(-5%) scale(0.93) rotate(var(--rot));
 }
 
-/* --- Diagram scene: nodes pop like stamps, arrows grow from the left --- */
+/* --- Diagram scene: pills pop in with a springy tilt, then bob gently --- */
 .scene-on.scene--diagram .node[data-scene-item] {
-  transform: scale(0.5);
-  transition: opacity 0.3s ease, transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --tilt: 0deg;
+  transform: scale(0.3) rotate(-9deg);
+  transition: opacity 0.35s ease, transform 0.7s cubic-bezier(0.3, 1.7, 0.45, 1);
 }
+.scene-on.scene--diagram .node:nth-of-type(1) { --tilt: -2deg;  --bob-delay: 0s; }
+.scene-on.scene--diagram .node:nth-of-type(3) { --tilt: 1.6deg; --bob-delay: 0.5s; }
+.scene-on.scene--diagram .node:nth-of-type(5) { --tilt: -1.6deg; --bob-delay: 1s; }
+.scene-on.scene--diagram .node:nth-of-type(7) { --tilt: 2deg;   --bob-delay: 1.5s; }
+.scene-on.scene--diagram .node:nth-of-type(9) { --tilt: -1.2deg; --bob-delay: 2s; }
 .scene-on.scene--diagram .arrow[data-scene-item] {
   transform: scaleX(0);
   transform-origin: left center;
   transition: opacity 0.3s ease, transform 0.45s cubic-bezier(0.22, 0.65, 0.2, 1);
 }
-.scene-on.scene--diagram [data-scene-item].is-on { opacity: 1; transform: none; }
+.scene-on.scene--diagram .arrow[data-scene-item].is-on { opacity: 1; transform: none; }
+.scene-on.scene--diagram .node[data-scene-item].is-on {
+  opacity: 1;
+  transform: rotate(var(--tilt));
+  animation: node-bob 3.2s ease-in-out 1.4s infinite alternate;
+}
+@keyframes node-bob {
+  from { transform: rotate(var(--tilt)) translateY(0); }
+  to   { transform: rotate(var(--tilt)) translateY(-5px); }
+}
 
 /* --- Cascade: children of a data-cascade container deal in one by one
        (per-child delays are set by js/main.js) --- */

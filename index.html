@@ -27,7 +27,7 @@
   <meta property="og:title" content="Alessia Canuto | Policy, Technology &amp; Sustainability">
   <meta property="og:description" content="Alessia Canuto is a policy and sustainability professional working at the intersection of ESG regulation, AI governance, socioeconomic development, behavioural science and technology.">
 
-  <link rel="stylesheet" href="css/style.css?v=13">
+  <link rel="stylesheet" href="css/style.css?v=14">
 </head>
 <body>
 
@@ -347,27 +347,35 @@
         </p>
       </div>
 
-      <!-- A quiet diagram: systems are experienced through human perception.
-           Scroll SCENE: the diagram pins and connects node by node as you
-           scroll. Delete data-scene from the wrapper div to turn that off. -->
-      <div class="scene scene--diagram" data-scene style="--scene-length: 2.6;">
-      <div class="scene-viewport">
-        <span class="label label--ink" style="text-align: center;">How a system becomes an outcome</span>
-        <div class="diagram" role="img" aria-label="Diagram: a system passes through human perception, interpretation and decision before producing an outcome">
-          <span class="node" data-scene-item>System</span>
-          <span class="arrow" data-scene-item aria-hidden="true">&rarr;</span>
-          <span class="node node--veil" data-scene-item>Human perception</span>
-          <span class="arrow" data-scene-item aria-hidden="true">&rarr;</span>
-          <span class="node" data-scene-item>Interpretation</span>
-          <span class="arrow" data-scene-item aria-hidden="true">&rarr;</span>
-          <span class="node" data-scene-item>Decision</span>
-          <span class="arrow" data-scene-item aria-hidden="true">&rarr;</span>
-          <span class="node" data-scene-item>Outcome</span>
+      </div>
+
+    <!-- The system→outcome diagram: a full-bleed band over the stakeholder
+         photo — cartoon pills that pop in one by one as you scroll.
+         Delete data-scene from the wrapper to turn the pinning off. -->
+    <div class="scene scene--diagram" data-scene style="--scene-length: 2.6;">
+      <div class="scene-viewport diagram-band">
+        <div class="diagram-bg" data-parallax aria-hidden="true">
+          <img src="images/work-stakeholders.jpg" alt="">
+        </div>
+        <div class="diagram-scrim" aria-hidden="true"></div>
+        <div class="diagram-content">
+          <span class="label">04½ — The mechanism</span>
+          <h3 class="diagram-title">How a system becomes an outcome</h3>
+          <div class="diagram" role="img" aria-label="Diagram: a system passes through human perception, interpretation and decision before producing an outcome">
+            <span class="node" data-scene-item>System</span>
+            <span class="arrow" data-scene-item aria-hidden="true">&rarr;</span>
+            <span class="node node--violet" data-scene-item>Human perception</span>
+            <span class="arrow" data-scene-item aria-hidden="true">&rarr;</span>
+            <span class="node node--lime" data-scene-item>Interpretation</span>
+            <span class="arrow" data-scene-item aria-hidden="true">&rarr;</span>
+            <span class="node node--blue" data-scene-item>Decision</span>
+            <span class="arrow" data-scene-item aria-hidden="true">&rarr;</span>
+            <span class="node node--ink" data-scene-item>Outcome</span>
+          </div>
         </div>
       </div>
       </div>
-    </div>
-  </section>
+    </section>
 
   <!-- ═══════════════════════════ SELECTED WORK ═══════════════════════════ -->
   <section class="chapter--translate" aria-labelledby="selected-heading">
@@ -551,6 +559,6 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=13"></script>
+<script src="js/main.js?v=14"></script>
 </body>
 </html>
