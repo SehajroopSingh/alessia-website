@@ -946,7 +946,26 @@ section { padding-block: var(--section-pad); }
   color: #F5EBDC;   /* warm cream — the giant name on the violet field */
   text-align: center;
 }
+/* Staggered lines: "Alessia" leans right, "Canuto" leans left.
+   NOTE: the word-split script replaces the h1's children with .split-mask
+   spans, so these target the h1's DIRECT children — that matches the
+   original spans without JS and the mask spans with JS. */
+.hero-stage .stage-name > span:first-child { transform: translateX(1em); }
+.hero-stage .stage-name > span:last-child { transform: translateX(-1em); }
 .hero-stage .stage-name .stage-line2 { margin-top: clamp(0.5rem, 9vh, 7rem); }
+/* Entrance: "Alessia" slides in from the left, "Canuto" from the right.
+   The usual word-by-word rise is switched off for the hero name only. */
+.js .hero-stage .stage-name .split-mask { overflow: visible; }
+.js .hero-stage .stage-name .split-word { transform: none; transition: none; }
+.js .hero-stage .stage-name > span {
+  opacity: 0;
+  transition: transform 1.25s cubic-bezier(0.22, 0.65, 0.2, 1), opacity 0.9s ease;
+}
+.js .hero-stage .stage-name > span:first-child { transform: translateX(calc(1em - 48vw)); transition-delay: 0.1s; }
+.js .hero-stage .stage-name > span:last-child { transform: translateX(calc(-1em + 48vw)); transition-delay: 0.28s; }
+.js .hero-stage .stage-name.split-visible > span { opacity: 1; }
+.js .hero-stage .stage-name.split-visible > span:first-child { transform: translateX(1em); }
+.js .hero-stage .stage-name.split-visible > span:last-child { transform: translateX(-1em); }
 .hero-stage .orbit-badge { left: auto; right: calc(var(--page2) / 2); transform: translateX(50%); bottom: clamp(13rem, 30vh, 16rem); z-index: 6; }
 /* slightly slimmer buttons so the pair fits beside the fold */
 .hero-stage .btn { padding: 1rem 1.5rem; }
