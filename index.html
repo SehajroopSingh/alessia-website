@@ -8,20 +8,20 @@
   <title>Alessia Canuto | Policy, Technology &amp; Sustainability</title>
   <meta name="description" content="Alessia Canuto is a policy and sustainability professional working at the intersection of ESG regulation, AI governance, policy research, behavioural science and technology.">
 
-  <!-- Fonts: Fraunces (editorial serif) + Inter (modern sans) -->
+  <!-- Fonts: Playfair Display (editorial serif) + DM Sans (modern sans) + Dancing Script (accent) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
 
   <!-- Browser-tab icon, mobile browser tint, and link-preview cards -->
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
-  <meta name="theme-color" content="#F7F2EA">
+  <meta name="theme-color" content="#FFF8F3">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Alessia Canuto">
   <meta property="og:title" content="Alessia Canuto | Policy, Technology &amp; Sustainability">
   <meta property="og:description" content="Alessia Canuto is a policy and sustainability professional working at the intersection of ESG regulation, AI governance, policy research, behavioural science and technology.">
 
-  <link rel="stylesheet" href="css/style.css?v=2">
+  <link rel="stylesheet" href="css/style.css?v=4">
 </head>
 <body>
 
@@ -74,11 +74,10 @@
           </a>
         </div>
 
-        <!-- The portrait. To change the photo, replace images/portrait.jpg
-             (it is cropped automatically to fit the arch). -->
+        <!-- The portrait. To change the photo, replace images/main-portrait.png -->
         <div class="hero-visual reveal-stage">
-          <div class="arch-frame arch-frame--photo">
-            <img src="images/portrait.jpg" alt="Portrait of Alessia Canuto">
+          <div class="hero-portrait-wrapper">
+            <img src="images/main-portrait.png" alt="Portrait of Alessia Canuto" class="hero-portrait">
           </div>
           <!-- Rotating stamp badge — spins slowly, pauses on hover, links down
                to the central question. Text lives on the SVG circle below. -->
@@ -119,41 +118,62 @@
       <h2 id="question-heading" class="display-l reveal" style="max-width: 18em;">
         How do we design systems that work better for the people who have to <em class="u-draw">navigate</em> them?
       </h2>
-      <div class="split" style="margin-top: 3rem;">
-        <p class="lede reveal">
-          My work moves between structural questions about how systems and institutions
-          are designed and the individual question of how people experience and navigate them.
-        </p>
-        <div>
-          <div class="areas-grid reveal">
-            <div class="area" data-scene-item>
-              <h3>Policy</h3>
-              <p>How institutions regulate, govern and respond to change.</p>
-            </div>
-            <div class="area" data-scene-item>
-              <h3>Sustainability</h3>
-              <p>How organisations translate environmental expectations, regulation and data into action.</p>
-            </div>
-            <div class="area" data-scene-item>
-              <h3>AI Governance</h3>
-              <p>How emerging technologies challenge existing frameworks of accountability, responsibility and regulation.</p>
-            </div>
-            <div class="area" data-scene-item>
-              <h3>Behaviour</h3>
-              <p>How cognitive biases, incentives, emotions and social norms shape the way people interpret and respond to systems.</p>
-            </div>
-            <div class="area area--wide" data-scene-item>
-              <h3>&amp; Building</h3>
-              <p>What changes when you stop studying a technology from the outside and start building with it.</p>
-            </div>
+      <p class="lede reveal" style="margin-top: 1.5rem; max-width: 60ch;">
+        My work moves between structural questions about how systems and institutions
+        are designed and the individual question of how people experience and navigate them.
+      </p>
+
+      <div class="question-cards reveal-stage" data-cascade style="margin-top: 3.5rem;">
+        <article class="q-card" data-scene-item data-area="policy">
+          <div class="q-card-bg"></div>
+          <div class="q-card-content">
+            <span class="q-card-num">01</span>
+            <h3 class="q-card-title">POLICY</h3>
+            <p class="q-card-desc">How institutions regulate, govern and respond to change.</p>
           </div>
-        </div>
+        </article>
+
+        <article class="q-card" data-scene-item data-area="sustainability">
+          <div class="q-card-bg"></div>
+          <div class="q-card-content">
+            <span class="q-card-num">02</span>
+            <h3 class="q-card-title">SUSTAINABILITY</h3>
+            <p class="q-card-desc">How organisations translate environmental expectations, regulation and data into action.</p>
+          </div>
+        </article>
+
+        <article class="q-card" data-scene-item data-area="ai">
+          <div class="q-card-bg"></div>
+          <div class="q-card-content">
+            <span class="q-card-num">03</span>
+            <h3 class="q-card-title">AI GOVERNANCE</h3>
+            <p class="q-card-desc">How emerging technologies challenge existing frameworks of accountability, responsibility and regulation.</p>
+          </div>
+        </article>
+
+        <article class="q-card" data-scene-item data-area="behaviour">
+          <div class="q-card-bg"></div>
+          <div class="q-card-content">
+            <span class="q-card-num">04</span>
+            <h3 class="q-card-title">BEHAVIOUR</h3>
+            <p class="q-card-desc">How cognitive biases, incentives, emotions and social norms shape the way people interpret and respond to systems.</p>
+          </div>
+        </article>
+
+        <article class="q-card q-card--wide" data-scene-item data-area="building">
+          <div class="q-card-bg"></div>
+          <div class="q-card-content">
+            <span class="q-card-num">05</span>
+            <h3 class="q-card-title">& BUILDING</h3>
+            <p class="q-card-desc">What changes when you stop studying a technology from the outside and start building with it.</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
   </div>
 
-  <!-- ═══════════════ THE WORK I KEEP COMING BACK TO ═══════════════
+  <!-- ═══════════════════════ THE WORK I KEEP COMING BACK TOTHE WORK I KEEP COMING BACK TO ═══════════════
        Scroll SCENE: pins while projects 01, 02 and 03 build in one at a
        time. Delete data-scene from the wrapper div to turn that off. -->
   <div class="scene scene--projects" data-scene style="--scene-length: 3.2;">
@@ -531,6 +551,6 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=2"></script>
+<script src="js/main.js?v=4"></script>
 </body>
 </html>
