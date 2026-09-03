@@ -849,23 +849,30 @@ section { padding-block: var(--section-pad); }
   inset: 0;
   z-index: 4;
   pointer-events: none;
-  background: linear-gradient(180deg, transparent 36%, rgba(250, 250, 248, 0.55) 58%, rgba(250, 250, 248, 0.9) 78%, rgba(250, 250, 248, 0.97) 100%);
+  background: linear-gradient(180deg, transparent 52%, rgba(250, 250, 248, 0.5) 72%, rgba(250, 250, 248, 0.92) 88%, rgba(250, 250, 248, 0.97) 100%);
 }
-/* The statement, tagline and buttons sit ON the photo, above the scrim */
+/* The statement, tagline and buttons sit ON the photo, above the scrim —
+   a low two-column band hugging the bottom edge so the photo stays clear
+   at every viewport width. */
 .stage-content {
   position: absolute;
   z-index: 5;
   left: 0;
   right: 0;
-  bottom: clamp(1.25rem, 4.5vh, 3.25rem);
+  bottom: clamp(0.75rem, 2.2vh, 1.75rem);
 }
 .stage-content .stage-content-inner {
   width: min(100% - 3rem, 1200px);
   margin-inline: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: end;
 }
-.stage-content .hero-statement { max-width: 52ch; margin-bottom: 1rem; }
-.stage-content .hero-tagline { margin-bottom: 1.5rem; }
-.stage-content .scroll-cue { margin-top: 1.5rem; }
+.stage-content .hero-statement { max-width: 52ch; margin-bottom: 0; }
+.stage-content .hero-tagline { margin-bottom: 1rem; }
+/* keep the buttons clear of the rotating badge in the corner */
+.stage-content .stage-content-inner > div:last-child { padding-right: clamp(2rem, 4vw, 4rem); }
 .hero-stage .stage-bg,
 .hero-stage .stage-fg {
   position: absolute;
@@ -894,7 +901,7 @@ section { padding-block: var(--section-pad); }
   text-align: center;
 }
 .hero-stage .stage-name .stage-line2 { margin-top: clamp(0.5rem, 9vh, 7rem); }
-.hero-stage .orbit-badge { left: auto; right: clamp(1rem, 4vw, 3.5rem); bottom: clamp(1rem, 5vh, 3rem); z-index: 6; }
+.hero-stage .orbit-badge { left: auto; right: clamp(1rem, 4vw, 3.5rem); bottom: clamp(13rem, 30vh, 16rem); z-index: 6; }
 @media (prefers-reduced-motion: no-preference) {
   .js .hero-stage .stage-bg,
   .js .hero-stage .stage-fg { animation: stage-in 1.7s cubic-bezier(0.22, 0.65, 0.2, 1) both; }
@@ -2014,7 +2021,8 @@ section { padding-block: var(--section-pad); }
   .orbit-badge { width: 100px; height: 100px; left: -10px; bottom: 18px; }
   .hero-stage::after { background: linear-gradient(180deg, transparent 30%, rgba(250, 250, 248, 0.6) 52%, rgba(250, 250, 248, 0.92) 74%, rgba(250, 250, 248, 0.97) 100%); }
   .stage-content .hero-statement { font-size: 0.95rem; }
-  .stage-content .scroll-cue { display: none; }
+  .stage-content .stage-content-inner { grid-template-columns: 1fr; gap: 0.9rem; }
+  .stage-content .stage-content-inner > div:last-child { padding-right: 0; }
   .portrait-band .split { grid-template-columns: 1fr; }
   .portrait-band .split .blend-photo { order: -1; max-width: 320px; }  /* photo first on mobile */
 
