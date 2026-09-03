@@ -892,6 +892,68 @@ section { padding-block: var(--section-pad); }
 .chapter--build { background: color-mix(in srgb, var(--build) 4%, var(--paper)); }
 .section-dark--build { background: #0C1030; }   /* the Build-blue night chapter */
 
+/* ==========================================================================
+   PROJECT CARDS — the "Three projects" section as reference-style cards:
+   photo on top, number + action eyebrow, serif title, question, button.
+   ========================================================================== */
+.project-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+.project-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.3s ease;
+}
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 36px rgba(21, 21, 21, 0.09);
+  border-color: var(--ink-faint);
+}
+.project-card-photo { margin: 0; overflow: hidden; }
+.project-card-photo img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.22, 0.65, 0.2, 1);
+}
+.project-card:hover .project-card-photo img { transform: scale(1.04); }
+.project-card-body {
+  padding: 1.6rem 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.project-card-num {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--ink-faint);
+  margin: 0 0 0.6rem;
+}
+.project-card .project-kicker { margin: 0 0 0.6rem; }
+.project-card h3 {
+  font-size: clamp(1.25rem, 1.8vw, 1.6rem);
+  font-weight: 460;
+  margin: 0 0 0.7rem;
+}
+.project-card .body-copy { font-size: 0.92rem; }
+.project-card .project-question {
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  margin: 0.75rem 0 1.25rem;
+}
+.project-card .btn { margin-top: auto; align-self: flex-start; }
+.btn--small { padding: 0.7rem 1.4rem; font-size: 0.7rem; }
+@media (max-width: 900px) {
+  .project-cards { grid-template-columns: 1fr; }
+}
+
 /* Teaser rows carry their own photograph */
 .project-photo { margin: 0; }
 .project-photo img {
@@ -900,7 +962,7 @@ section { padding-block: var(--section-pad); }
   object-fit: cover;
   display: block;
 }
-.scene-on.scene--projects .project-photo img { aspect-ratio: 16 / 9; max-height: 15vh; }
+
 
 /* ==========================================================================
    THE QUESTION over the Edinburgh portrait — photo background that
@@ -1893,25 +1955,24 @@ section { padding-block: var(--section-pad); }
 .scene-on.scene--question .action-row p { font-size: 0.9rem; margin-top: 0.3rem; }
 .scene-on.scene--question .action-focus-note { padding-top: 0.55rem; font-size: 0.8rem; line-height: 1.45; }
 .scene-on.scene--projects .display-l { margin-bottom: 0.4rem; font-size: clamp(1.8rem, 3vw, 2.9rem); }
-.scene-on.scene--projects .container > div { margin-top: 1rem !important; }
-.scene-on.scene--projects .project-row { padding-block: clamp(0.6rem, 1.4vh, 1.1rem); }
-.scene-on.scene--projects .project-row h3 { font-size: clamp(1.2rem, 1.9vw, 1.5rem); margin-bottom: 0.4rem; }
-.scene-on.scene--projects .project-row .body-copy {
-  font-size: 0.88rem;
+.scene-on.scene--projects .project-cards { margin-top: 1.25rem; }
+.scene-on.scene--projects .project-card-photo img { max-height: 21vh; }
+.scene-on.scene--projects .project-card-body { padding: 1.1rem 1.2rem 1.25rem; }
+.scene-on.scene--projects .project-card .body-copy {
+  font-size: 0.86rem;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
-.scene-on.scene--projects .project-question {
-  font-size: 1.02rem;
-  margin-bottom: 0.5rem;
+.scene-on.scene--projects .project-card .project-question {
+  font-size: 0.98rem;
+  margin: 0.6rem 0 0.9rem;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
 }
-.scene-on.scene--projects .big-number { font-size: clamp(2.1rem, 3.6vw, 3.2rem); }
 .scene-on.scene--diagram .diagram { margin-top: 1.5rem; }
 
 /* The MemSurf section zooms up to full size as it scrolls into view.
@@ -1974,21 +2035,14 @@ section { padding-block: var(--section-pad); }
   clip-path: inset(0 0 0 0);
 }
 
-/* --- Projects scene: rows slide from alternating sides, numbers stamp --- */
+/* --- Projects scene: cards rise in one by one with a settle --- */
 .scene-on.scene--projects [data-scene-item] {
   opacity: 0;
-  transform: translateX(-72px);
-  transition: opacity 0.55s ease, transform 0.75s cubic-bezier(0.22, 0.65, 0.2, 1);
+  transform: translateY(56px) scale(0.96);
+  transition: opacity 0.55s ease,
+              transform 0.75s cubic-bezier(0.22, 0.9, 0.3, 1.04);
 }
-.scene-on.scene--projects [data-scene-item]:nth-of-type(even) { transform: translateX(72px); }
 .scene-on.scene--projects [data-scene-item].is-on { opacity: 1; transform: none; }
-.scene-on.scene--projects [data-scene-item] .big-number {
-  opacity: 0;
-  transform: scale(1.7);
-  transition: opacity 0.4s ease 0.15s,
-              transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s;
-}
-.scene-on.scene--projects [data-scene-item].is-on .big-number { opacity: 1; transform: none; }
 
 /* --- Diagram scene: nodes pop like stamps, arrows grow from the left --- */
 .scene-on.scene--diagram .node[data-scene-item] {
