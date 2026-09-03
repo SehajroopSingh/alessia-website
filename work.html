@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Work | Alessia Canuto</title>
-  <meta name="description" content="Case studies from Alessia Canuto's work across policy analysis, CSRD/ESRS sustainability reporting, AI governance research, behavioural communication and entrepreneurship.">
+  <meta name="description" content="Six case studies from Alessia Canuto's work — analysing policy and AI systems, translating ESG regulation for the people who act on it, and building with emerging technology.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,9 +16,9 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Alessia Canuto">
   <meta property="og:title" content="Work | Alessia Canuto">
-  <meta property="og:description" content="Case studies from Alessia Canuto's work across policy analysis, CSRD/ESRS sustainability reporting, AI governance research, behavioural communication and entrepreneurship.">
+  <meta property="og:description" content="Six case studies — analysing policy and AI systems, translating ESG regulation for the people who act on it, and building with emerging technology.">
 
-  <link rel="stylesheet" href="css/style.css?v=4">
+  <link rel="stylesheet" href="css/style.css?v=5">
 </head>
 <body>
 
@@ -44,184 +44,57 @@
 
 <main id="main">
 
-  <!-- ═══════════════════ PAGE INTRO + FILTERS ═══════════════════ -->
+  <!-- ═══════════════════ PAGE INTRO + ACTION FILTERS ═══════════════════
+       WORK is built around exactly six case studies — two per Action
+       (BRIEF.md). Everything else lives on the CV and as Journey pins.
+       Do not re-inflate this page. -->
   <section class="hero" aria-labelledby="work-heading">
     <div class="container">
-      <span class="label reveal">Work</span>
+      <span class="label label--ink reveal">Work</span>
       <h1 id="work-heading" class="display-l" data-split style="max-width: 18em;">
-        Different fields. <em class="u-draw">The same question,</em> asked from different angles.
+        Six case studies. <em class="u-draw">Three ways of working.</em>
       </h1>
       <p class="body-copy reveal" style="margin-top: 1.5rem;">
-        Each case study below follows the same structure — the context, the question
-        underneath it, what I did, what emerged, and what I learned. Filter by the lens
-        that interests you.
+        Everything here sits at the intersection of one <strong>Action</strong> — how I
+        worked — and the <strong>Focus</strong> areas it touched. The colour codes the
+        Action; the tags name the subjects. Each study follows the same arc: context, the
+        question underneath it, what I did, the evidence, and what I learned.
       </p>
 
-      <!-- Filter buttons. data-filter values must match the
-           data-categories on the <article class="case"> blocks below. -->
-      <div class="filter-bar reveal" data-filter-bar role="group" aria-label="Filter case studies by category" style="margin-top: 2.5rem; margin-bottom: 0;">
+      <!-- Filters follow the Action colour code: violet / green / blue -->
+      <div class="filter-bar reveal" data-filter-bar role="group" aria-label="Filter case studies by action" style="margin-top: 2.5rem; margin-bottom: 0;">
         <button class="filter-btn" data-filter="all" aria-pressed="true">All</button>
-        <button class="filter-btn" data-filter="policy" aria-pressed="false">Policy</button>
-        <button class="filter-btn" data-filter="esg" aria-pressed="false">ESG</button>
-        <button class="filter-btn" data-filter="ai" aria-pressed="false">AI</button>
-        <button class="filter-btn" data-filter="behaviour" aria-pressed="false">Behaviour</button>
-        <button class="filter-btn" data-filter="research" aria-pressed="false">Research</button>
-        <button class="filter-btn" data-filter="communications" aria-pressed="false">Communications</button>
-        <button class="filter-btn" data-filter="entrepreneurship" aria-pressed="false">Entrepreneurship</button>
+        <button class="filter-btn" data-filter="analyse" aria-pressed="false">Analyse</button>
+        <button class="filter-btn" data-filter="translate" aria-pressed="false">Translate</button>
+        <button class="filter-btn" data-filter="build" aria-pressed="false">Build</button>
       </div>
       <!-- Live count, updated by the filter script -->
       <p class="meta reveal" data-filter-count aria-live="polite" style="margin-top: 1.25rem;"></p>
     </div>
   </section>
 
-  <!-- ═══════════════════ CASE STUDIES ═══════════════════
-       To add a new case study: copy one whole <article class="case"> block,
-       give it a unique id, and set data-categories (space-separated). -->
-  <section class="section--tight" aria-label="Case studies" style="padding-top: 0;">
+  <!-- ═══════════════════ ANALYSE ═══════════════════ -->
+  <section class="section--tight" aria-label="Analyse case studies" style="padding-top: 0;">
     <div class="container">
 
-      <!-- ─────────────── MEMSURF ─────────────── -->
-      <article class="case reveal-stage" id="memsurf" data-categories="entrepreneurship ai behaviour">
-        <div class="case-meta">
-          <span class="work-cat">Entrepreneurship · AI · Behaviour</span>
-          <h2 class="serif">MemSurf</h2>
-          <span class="meta">Co-Founder &amp; Chief Operating Officer<br>
-          January 2026 – Present<br>
-          Los Angeles / Remote</span>
-        </div>
-        <div>
-          <div class="case-part">
-            <h3>Context</h3>
-            <p>MemSurf is an AI-native edtech startup: a learning app designed to make
-            learning more accessible and effective through micro-learning, active recall
-            and spaced repetition. It currently serves 100+ users across Italy and the US.</p>
-          </div>
-          <div class="case-part">
-            <h3>Question</h3>
-            <p class="project-question">Can we use AI not simply to automate learning, but to design around how humans actually think, learn and make decisions?</p>
-          </div>
-          <div class="case-part">
-            <h3>What I do</h3>
-            <ul>
-              <li>Adaptive quiz architecture and lesson structures</li>
-              <li>Product and content decisions, grounded in behavioural design</li>
-              <li>User interviews and product analytics with Amplitude</li>
-              <li>Product strategy and experimentation</li>
-            </ul>
-          </div>
-          <div class="case-part">
-            <h3>What has emerged</h3>
-            <p>A working product with real users in two markets — and a continuous stream of
-            evidence about how people actually learn, where they drop off, and which design
-            decisions change behaviour.</p>
-          </div>
-          <div class="case-part">
-            <h3>What I'm learning</h3>
-            <p>Building is the most honest test of ideas about behaviour and systems. Every
-            assumption about how people learn gets confronted with analytics, interviews and
-            retention data — quickly, and without mercy.</p>
-          </div>
-        </div>
-      </article>
+      <div class="chapter-break reveal" data-categories="analyse" aria-hidden="true">
+        <h2 class="action--analyse">Analyse.</h2>
+        <p class="chapter-sub">Researching how a system actually works, for the people trying to understand or change it.</p>
+      </div>
 
-      <!-- ─────────────── CSRD / ESRS DISCLOSURE ─────────────── -->
-      <article class="case reveal-stage" id="csrd" data-categories="esg research communications">
+      <!-- ─────────────── 01 · DREAMOCRACY ─────────────── -->
+      <article class="case reveal-stage" id="dreamocracy" data-categories="analyse">
         <div class="case-meta">
-          <span class="work-cat">ESG / CSRD</span>
-          <h2 class="serif">Designing better sustainability disclosure</h2>
-          <span class="meta">Disal Consulting · Consultant<br>
-          August 2025 – Present<br>
-          Rome</span>
-        </div>
-        <div>
-          <div class="case-part">
-            <h3>Context</h3>
-            <p>A multinational fibre and plastics client facing the EU's Corporate
-            Sustainability Reporting Directive — a framework that asks organisations to
-            translate complex regulatory requirements into reliable internal systems.</p>
-          </div>
-          <div class="case-part">
-            <h3>Question</h3>
-            <p class="project-question">How do organisations turn complex sustainability requirements into systems people can actually use?</p>
-          </div>
-          <div class="case-part">
-            <h3>What I did</h3>
-            <p>Authored a CSRD/ESRS-aligned sustainability disclosure report — including ESG
-            data collection and verification, double materiality analysis and audit-ready
-            documentation.</p>
-          </div>
-          <div class="case-part">
-            <h3>What emerged</h3>
-            <p>A disclosure report built to stand up to audit — and, underneath it, a clearer
-            picture of how sustainability data actually moves through a multinational
-            organisation.</p>
-          </div>
-          <div class="case-part">
-            <h3>What I learned</h3>
-            <p>A reporting framework is only as good as the human system behind it. The
-            hardest part of CSRD is not interpreting the standard — it is designing data
-            collection that real people, in real departments, can sustain.</p>
-          </div>
-        </div>
-      </article>
-
-      <!-- ─────────────── AI GOVERNANCE RESEARCH ─────────────── -->
-      <article class="case reveal-stage" id="ai-governance" data-categories="ai research policy">
-        <div class="case-meta">
-          <span class="work-cat">AI Governance</span>
-          <h2 class="serif">Understanding AI before trying to govern it</h2>
-          <span class="meta">World AI Film Festival<br>
-          Six months of research<br>
-          Nice</span>
-        </div>
-        <div>
-          <div class="case-part">
-            <h3>Context</h3>
-            <p>The audiovisual industries are among the first to feel AI's full disruptive
-            force — creatively, economically and legally. The World AI Film Festival sits
-            exactly at that fault line.</p>
-          </div>
-          <div class="case-part">
-            <h3>Question</h3>
-            <p class="project-question">What happens when technological change moves faster than the institutions designed to govern it?</p>
-          </div>
-          <div class="case-part">
-            <h3>What I did</h3>
-            <p>Led six months of cross-sector qualitative research, interviewing experts
-            across technology, cinema and the audiovisual industries on:</p>
-            <ul>
-              <li>The EU AI Act</li>
-              <li>Copyright and intellectual property</li>
-              <li>Misinformation and deepfakes</li>
-              <li>Platform responsibility</li>
-              <li>AI adoption</li>
-            </ul>
-          </div>
-          <div class="case-part">
-            <h3>What emerged</h3>
-            <p>A cross-sector picture of how practitioners — not just regulators — actually
-            understand, adopt and worry about AI, and where existing governance frameworks
-            meet or miss their reality.</p>
-          </div>
-          <div class="case-part">
-            <h3>What I learned</h3>
-            <p>Governance debates conducted at a distance from practice tend to regulate an
-            imagined technology. Talking to the people building and using AI changes which
-            questions seem urgent.</p>
-          </div>
-        </div>
-      </article>
-
-      <!-- ─────────────── DREAMOCRACY ─────────────── -->
-      <article class="case reveal-stage" id="dreamocracy" data-categories="policy behaviour research">
-        <div class="case-meta">
-          <span class="work-cat">Policy / Behaviour</span>
-          <h2 class="serif">Dreamocracy — public-interest interventions</h2>
-          <span class="meta">Policy Researcher and Analyst<br>
+          <span class="case-num">Project 01</span>
+          <span class="action-tag action--analyse">Analyse</span>
+          <span class="focus-tags">Socioeconomic Development · Behavioural Science</span>
+          <h2 class="serif">Understanding how policy works in practice</h2>
+          <span class="meta">Dreamocracy · Policy Researcher and Analyst<br>
           June 2024 – July 2025<br>
           Brussels</span>
         </div>
         <div>
+          <p class="case-frame">A policy that looks perfect on paper still has to survive contact with actual people.</p>
           <div class="case-part">
             <h3>Context</h3>
             <p>Dreamocracy works on collective intelligence and public-interest innovation —
@@ -241,7 +114,8 @@
             <h3>What emerged</h3>
             <p>A more granular understanding of why well-designed policies succeed or stall:
             rarely because of their formal logic, usually because of the incentives,
-            emotions and institutional dynamics surrounding them.</p>
+            emotions and institutional dynamics surrounding them. That research also fed
+            directly into a workshop we then built and ran — <a href="#workshop">Project 06</a>.</p>
           </div>
           <div class="case-part">
             <h3>What I learned</h3>
@@ -251,217 +125,54 @@
         </div>
       </article>
 
-      <!-- ─────────────── TAGETIK ESG DATA ─────────────── -->
-      <article class="case reveal-stage" id="tagetik" data-categories="esg">
+      <!-- ─────────────── 02 · WORLD AI FILM FESTIVAL ─────────────── -->
+      <article class="case reveal-stage" id="waiff" data-categories="analyse">
         <div class="case-meta">
-          <span class="work-cat">ESG Data</span>
-          <h2 class="serif">Tagetik sustainability data architecture</h2>
-          <span class="meta">Disal Consulting · Consultant<br>
-          Rome</span>
+          <span class="case-num">Project 02</span>
+          <span class="action-tag action--analyse">Analyse</span>
+          <span class="focus-tags">AI · Socioeconomic Development</span>
+          <h2 class="serif">Understanding AI before trying to govern it</h2>
+          <span class="meta">World AI Film Festival<br>
+          Six months of cross-sector research<br>
+          Nice</span>
         </div>
         <div>
+          <p class="case-frame">Governance debates conducted at a distance from practice tend to regulate an imagined technology.</p>
           <div class="case-part">
             <h3>Context</h3>
-            <p>Sustainability disclosure is, underneath the prose, a data problem: figures
-            have to be collected, structured, verified and traced across an organisation.</p>
+            <p>The audiovisual industries are among the first to feel AI's full disruptive
+            force — creatively, economically and legally. The World AI Film Festival sits
+            exactly at that fault line.</p>
           </div>
           <div class="case-part">
             <h3>Question</h3>
-            <p class="project-question">What does it take for ESG data to be trustworthy enough to report?</p>
+            <p class="project-question">What happens when technological change moves faster than the institutions designed to govern it?</p>
           </div>
           <div class="case-part">
             <h3>What I did</h3>
-            <p>Worked with sustainability data structures and reporting workflows in Tagetik,
-            supporting ESG data collection and disclosure processes.</p>
-          </div>
-          <div class="case-part">
-            <h3>What I learned</h3>
-            <p>The credibility of a sustainability report is decided long before the writing
-            begins — in how the underlying data architecture is designed and maintained.</p>
-          </div>
-        </div>
-      </article>
-
-      <!-- ─────────────── BEHAVIOURAL COMMUNICATION ─────────────── -->
-      <article class="case reveal-stage" id="behavioural-comms" data-categories="behaviour communications">
-        <div class="case-meta">
-          <span class="work-cat">Behaviour · Communications</span>
-          <h2 class="serif">Behavioural communication for credit management</h2>
-          <span class="meta">Disal Consulting · Consultant<br>
-          Rome</span>
-        </div>
-        <div>
-          <div class="case-part">
-            <h3>Context</h3>
-            <p>Credit management communication reaches people in financially stressful
-            moments — exactly when cognitive shortcuts, emotions and framing matter most.</p>
-          </div>
-          <div class="case-part">
-            <h3>Question</h3>
-            <p class="project-question">How does the framing of a message change what a person under pressure actually does?</p>
-          </div>
-          <div class="case-part">
-            <h3>What I did</h3>
-            <p>Developed behavioural communication strategy for a credit management context —
-            applying behavioural science to how messages are structured, framed and timed.</p>
-          </div>
-          <div class="case-part">
-            <h3>What I learned</h3>
-            <p>Communication is part of the system, not decoration on top of it. The same
-            information, framed differently, produces different behaviour.</p>
-          </div>
-        </div>
-      </article>
-
-      <!-- ─────────────── SME DIAGNOSTICS ─────────────── -->
-      <article class="case reveal-stage" id="diagnostics" data-categories="behaviour research communications">
-        <div class="case-meta">
-          <span class="work-cat">Organisations</span>
-          <h2 class="serif">SME organisational diagnostics</h2>
-          <span class="meta">Disal Consulting · Consultant<br>
-          Rome</span>
-        </div>
-        <div>
-          <div class="case-part">
-            <h3>Context</h3>
-            <p>Small and medium organisations are systems too — with structures, incentives
-            and communication patterns that shape how well they work.</p>
-          </div>
-          <div class="case-part">
-            <h3>Question</h3>
-            <p class="project-question">Why does an organisation behave the way it does — and where is the gap between how it is designed and how it actually runs?</p>
-          </div>
-          <div class="case-part">
-            <h3>What I did</h3>
-            <p>Contributed to organisational diagnostics for SMEs — examining structure,
-            incentives, communication and stakeholder dynamics.</p>
-          </div>
-          <div class="case-part">
-            <h3>What I learned</h3>
-            <p>Organisational charts describe intentions. Diagnosing an organisation means
-            looking at how information, incentives and decisions actually flow.</p>
-          </div>
-        </div>
-      </article>
-
-      <!-- ─────────────── CENTER FOR BEHAVIORAL DECISIONS ─────────────── -->
-      <article class="case reveal-stage" id="cbd" data-categories="behaviour communications research">
-        <div class="case-meta">
-          <span class="work-cat">Behaviour · Writing</span>
-          <h2 class="serif">Center for Behavioral Decisions</h2>
-          <span class="meta">Contributing Author<br>
-          November 2024 – Present<br>
-          Prague / Remote</span>
-        </div>
-        <div>
-          <div class="case-part">
-            <h3>Context</h3>
-            <p>The Center for Behavioral Decisions publishes applied behavioural science —
-            translating research on how people decide into accessible writing.</p>
-          </div>
-          <div class="case-part">
-            <h3>What I do</h3>
-            <p>Write essays on behavioural economics and decision-making, including
-            <em>Feed the self, not just the shelf: The ROI of Happiness</em>,
-            <em>The Memory Market and Gut Feelings</em> and
-            <em>Every news story is biased: The only question is how</em>.</p>
-          </div>
-          <div class="case-part">
-            <h3>What I learned</h3>
-            <p>Writing for a general audience is the best test of whether you actually
-            understand the research. See the <a href="thinking.html" class="text-link" style="text-transform:none;letter-spacing:0;font-family:var(--sans);">essays on the Thinking page</a></p>
-          </div>
-        </div>
-      </article>
-
-      <!-- ─────────────── THE ASTANA TIMES ─────────────── -->
-      <article class="case reveal-stage" id="astana" data-categories="policy communications research">
-        <div class="case-meta">
-          <span class="work-cat">Policy &amp; International Affairs</span>
-          <h2 class="serif">The Astana Times</h2>
-          <span class="meta">EU Columnist<br>
-          June 2023 – September 2024<br>
-          Astana / Remote</span>
-        </div>
-        <div>
-          <div class="case-part">
-            <h3>Context</h3>
-            <p>The Astana Times covers Kazakhstan and Central Asia for an international
-            readership — a vantage point on how the EU engages a strategically important
-            region.</p>
-          </div>
-          <div class="case-part">
-            <h3>Question</h3>
-            <p class="project-question">How does EU policy read from the other side of the relationship?</p>
-          </div>
-          <div class="case-part">
-            <h3>What I did</h3>
-            <p>Wrote 8 policy analysis columns on EU–Central Asia relations —
-            covering sustainability, energy, development, gender and education.</p>
-          </div>
-          <div class="case-part">
-            <h3>What I learned</h3>
-            <p>Policy analysis sharpens when it has to make sense to readers outside the
-            Brussels bubble. Writing for a Central Asian audience forced me to explain the
-            EU as others experience it.</p>
-          </div>
-        </div>
-      </article>
-
-      <!-- ─────────────── ORGANIZATION FOR WORLD PEACE ─────────────── -->
-      <article class="case reveal-stage" id="owp" data-categories="policy research communications">
-        <div class="case-meta">
-          <span class="work-cat">International Research</span>
-          <h2 class="serif">The Organization for World Peace</h2>
-          <span class="meta">Senior Correspondent / Junior Correspondent<br>
-          December 2022 – August 2023<br>
-          Toronto / Remote</span>
-        </div>
-        <div>
-          <div class="case-part">
-            <h3>Context</h3>
-            <p>The Organization for World Peace publishes analysis of global conflicts and
-            humanitarian issues, advocating non-combative solutions.</p>
-          </div>
-          <div class="case-part">
-            <h3>What I did</h3>
-            <p>Wrote 14 articles covering international law, humanitarian issues, gender,
-            health and geopolitical conflict — progressing from Junior to Senior
-            Correspondent.</p>
-          </div>
-          <div class="case-part">
-            <h3>What I learned</h3>
-            <p>Rigour and readability are not in tension. Covering conflict and humanitarian
-            crises taught me to handle serious subjects with precision and restraint.</p>
-          </div>
-        </div>
-      </article>
-
-      <!-- ─────────────── DISAL CONSULTING (role overview) ─────────────── -->
-      <article class="case reveal-stage" id="disal" data-categories="esg communications behaviour ai research">
-        <div class="case-meta">
-          <span class="work-cat">Consulting</span>
-          <h2 class="serif">Disal Consulting</h2>
-          <span class="meta">Consultant<br>
-          August 2025 – Present<br>
-          Rome</span>
-        </div>
-        <div>
-          <div class="case-part">
-            <h3>The role behind several of the case studies above</h3>
-            <p>At Disal Consulting I work across B2B and B2C communication, ESG
-            communication, CSRD/ESRS reporting, double materiality, ESG data and Tagetik,
-            EcoVadis, behavioural communication, organisational diagnostics, AI research,
-            webinars, a podcast and stakeholder engagement.</p>
-          </div>
-          <div class="case-part">
-            <h3>Selected activity</h3>
+            <p>Led six months of cross-sector qualitative research, interviewing experts
+            across technology, cinema and the audiovisual industries on:</p>
             <ul>
-              <li>4 webinars organised, with attendance up 40% year on year</li>
-              <li>CSRD/ESRS disclosure and double materiality work (see the case study above)</li>
-              <li>Behavioural communication and organisational diagnostics for SMEs</li>
-              <li>Stakeholder engagement and editorial work, including a podcast</li>
+              <li>EU AI Act compliance</li>
+              <li>Copyright and intellectual property</li>
+              <li>Labour displacement in the creative industries</li>
+              <li>Misinformation, deepfakes and content authenticity</li>
+              <li>Platform responsibility and AI adoption</li>
             </ul>
+            <p>Including comparative analysis of AI legislation across the EU, the Americas
+            and Asia.</p>
+          </div>
+          <div class="case-part">
+            <h3>What emerged</h3>
+            <p>A cross-sector picture of how practitioners — not just regulators — actually
+            understand, adopt and worry about AI, and where existing governance frameworks
+            meet or miss their reality.</p>
+          </div>
+          <div class="case-part">
+            <h3>What I learned</h3>
+            <p>Talking to the people building and using AI changes which questions seem
+            urgent. Six months of interviews taught me more about where governance will
+            succeed or fail than any framework document.</p>
           </div>
         </div>
       </article>
@@ -469,8 +180,236 @@
     </div>
   </section>
 
+  <!-- ═══════════════════ TRANSLATE ═══════════════════ -->
+  <section class="section--tight" aria-label="Translate case studies" style="padding-top: 0;">
+    <div class="container">
+
+      <div class="chapter-break reveal" data-categories="translate" aria-hidden="true">
+        <h2 class="action--translate">Translate.</h2>
+        <p class="chapter-sub">Turning complex regulatory, data and policy requirements into something a specific audience can act on.</p>
+      </div>
+
+      <!-- ─────────────── 03 · CSRD / TAGETIK (AQUAFIL) ─────────────── -->
+      <article class="case reveal-stage" id="csrd" data-categories="translate">
+        <div class="case-meta">
+          <span class="case-num">Project 03</span>
+          <span class="action-tag action--translate">Translate</span>
+          <span class="focus-tags">ESG &amp; Sustainability</span>
+          <h2 class="serif">Designing better sustainability disclosure</h2>
+          <span class="meta">Disal Consulting · Consultant · Client: Aquafil<br>
+          August 2025 – Present<br>
+          Rome</span>
+        </div>
+        <div>
+          <p class="case-frame">A disclosure is only as credible as the data architecture underneath it.</p>
+          <div class="case-part">
+            <h3>Context</h3>
+            <p>Aquafil, a multinational fibre and plastics company, facing the EU's
+            Corporate Sustainability Reporting Directive — a framework that asks
+            organisations to translate complex regulatory requirements into reliable
+            internal systems. One client, one underlying data problem: the report and the
+            architecture beneath it are a single story.</p>
+          </div>
+          <div class="case-part">
+            <h3>Question</h3>
+            <p class="project-question">How do organisations turn complex sustainability requirements into systems people can actually use?</p>
+          </div>
+          <div class="case-part">
+            <h3>What I did</h3>
+            <p>Authored a CSRD/ESRS-aligned sustainability disclosure report — ESG data
+            collection and verification across Scope 1, 2 and 3 emissions, gender pay gap
+            and whistleblowing indicators, double materiality analysis, and audit-ready
+            documentation. In parallel, worked on the underlying Tagetik data
+            architecture: a custom CSRD-compliant configuration with a full audit trail,
+            plus an EcoVadis value-chain analysis.</p>
+          </div>
+          <div class="case-part">
+            <h3>Evidence</h3>
+            <p>The report was filed via ESEF ahead of deadline, built on a data
+            architecture designed to make every figure traceable to its source.</p>
+          </div>
+          <div class="case-part">
+            <h3>What I learned</h3>
+            <p>The hardest part of CSRD is not interpreting the standard — it is designing
+            data collection that real people, in real departments, can sustain year after
+            year.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ─────────────── 04 · MAKING REGULATION LEGIBLE ─────────────── -->
+      <article class="case reveal-stage" id="comms" data-categories="translate">
+        <div class="case-meta">
+          <span class="case-num">Project 04</span>
+          <span class="action-tag action--translate">Translate</span>
+          <span class="focus-tags">Behavioural Science · ESG &amp; Sustainability</span>
+          <h2 class="serif">Making regulation and change legible</h2>
+          <span class="meta">Disal Consulting · Consultant<br>
+          August 2025 – Present<br>
+          Rome</span>
+        </div>
+        <div>
+          <p class="case-frame">Regulation only works when the people it affects can understand what it asks of them.</p>
+          <div class="case-part">
+            <h3>Context</h3>
+            <p>Sustainability regulation moves fast, and the businesses, consumers and
+            stakeholders it affects mostly experience it as noise. Someone has to turn
+            regulatory and policy developments into something their audiences can follow
+            and act on.</p>
+          </div>
+          <div class="case-part">
+            <h3>Question</h3>
+            <p class="project-question">How do you make regulatory and policy developments legible to the audiences who have to act on them?</p>
+          </div>
+          <div class="case-part">
+            <h3>What I did</h3>
+            <p>Led B2B/B2C stakeholder communication and convening for a multinational
+            client: an Instagram, blog and newsletter strategy; four webinars and eight
+            podcast episodes with EU stakeholders on EPR and textiles, eco-design, and
+            government and industry perspectives; and contributed to organising and
+            delivering ABCD, a national cross-sector event.</p>
+          </div>
+          <div class="case-part">
+            <h3>Evidence</h3>
+            <ul>
+              <li>42K Instagram followers, +7% engagement over 10 months</li>
+              <li>Webinar and podcast attendance up 40% year on year</li>
+              <li>ABCD: 1,398 tickets, 52% overall attendance, 86% paid-ticket conversion</li>
+            </ul>
+          </div>
+          <div class="case-part">
+            <h3>What I learned</h3>
+            <p>Communication is part of the system, not decoration on top of it. The same
+            regulatory development, framed for the right audience at the right moment,
+            produces engagement instead of noise.</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════ BUILD ═══════════════════ -->
+  <section class="section--tight" aria-label="Build case studies" style="padding-top: 0;">
+    <div class="container">
+
+      <div class="chapter-break reveal" data-categories="build" aria-hidden="true">
+        <h2 class="action--build">Build.</h2>
+        <p class="chapter-sub">Building a new system from scratch, tested against real users.</p>
+      </div>
+
+      <!-- ─────────────── 05 · MEMSURF ─────────────── -->
+      <article class="case reveal-stage" id="memsurf" data-categories="build">
+        <div class="case-meta">
+          <span class="case-num">Project 05</span>
+          <span class="action-tag action--build">Build</span>
+          <span class="focus-tags">AI · Behavioural Science · Socioeconomic Development</span>
+          <h2 class="serif">MemSurf</h2>
+          <span class="meta">Co-Founder &amp; Chief Operating Officer<br>
+          January 2026 – Present<br>
+          Los Angeles / Remote</span>
+        </div>
+        <div>
+          <p class="case-frame">The most honest test of ideas about how people learn is a product whose survival depends on them.</p>
+          <div class="case-part">
+            <h3>Context</h3>
+            <p>MemSurf is an AI-native edtech startup: a learning app designed to make
+            learning more accessible and effective through micro-learning, active recall
+            and spaced repetition.</p>
+          </div>
+          <div class="case-part">
+            <h3>Question</h3>
+            <p class="project-question">Can we use AI not simply to automate learning, but to design around how humans actually think, learn and make decisions?</p>
+          </div>
+          <div class="case-part">
+            <h3>What I do</h3>
+            <ul>
+              <li>Adaptive quiz architecture and lesson structures</li>
+              <li>Product and content decisions, grounded in behavioural design</li>
+              <li>User interviews and product analytics with Amplitude</li>
+              <li>Product strategy and experimentation</li>
+            </ul>
+          </div>
+          <div class="case-part">
+            <h3>Evidence</h3>
+            <p>100+ users across Italy and the US — and a continuous stream of retention
+            and behaviour data on how people actually learn, where they drop off, and
+            which design decisions change behaviour.</p>
+          </div>
+          <div class="case-part">
+            <h3>What I'm learning</h3>
+            <p>Building is the most honest test of ideas about behaviour and systems. Every
+            assumption about how people learn gets confronted with analytics, interviews
+            and retention data — quickly, and without mercy.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ─────────────── 06 · EMOTIONS IN POLICYMAKING WORKSHOP ─────────────── -->
+      <article class="case reveal-stage" id="workshop" data-categories="build">
+        <div class="case-meta">
+          <span class="case-num">Project 06</span>
+          <span class="action-tag action--build">Build</span>
+          <span class="focus-tags">Socioeconomic Development · Behavioural Science</span>
+          <h2 class="serif">Emotions in policymaking — the workshop</h2>
+          <span class="meta">Dreamocracy · Co-moderator &amp; designer<br>
+          Brussels</span>
+        </div>
+        <div>
+          <p class="case-frame">Emotions are data about how a policy will actually land — so we built the tools to put them on the table.</p>
+          <div class="case-part">
+            <h3>Context</h3>
+            <p>The research in <a href="#dreamocracy">Project 01</a> kept pointing to the
+            same gap: policy discussions have no vocabulary for the emotional dynamics
+            that decide how policies land. Rather than write another paper about it, we
+            built a room where those dynamics could be worked with directly.</p>
+          </div>
+          <div class="case-part">
+            <h3>Question</h3>
+            <p class="project-question">Can emotional dynamics be made a working input to policy discussions — not an afterthought?</p>
+          </div>
+          <div class="case-part">
+            <h3>What I did</h3>
+            <p>Co-moderated a policy workshop on emotions in policymaking, collaborating
+            with academic and policy institutions — and designed the engagement tools and
+            cards that structured the discussion, turning an abstract behavioural insight
+            into something 70 people could physically work with.</p>
+          </div>
+          <div class="case-part">
+            <h3>Evidence</h3>
+            <p>70 attendees from academia, government, business and civil society, working
+            through the emotional dimensions of policy design with the tools we built.</p>
+          </div>
+          <div class="case-part">
+            <h3>What I learned</h3>
+            <p>A tool in someone's hands does what a recommendation in a report cannot:
+            it changes how the conversation itself runs. Building the format was the
+            analysis, made usable.</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════ BEYOND THESE SIX ═══════════════════ -->
+  <section class="section--soft section--tight" aria-labelledby="beyond-heading">
+    <div class="container">
+      <span class="label label--ink reveal">The rest of the record</span>
+      <h2 id="beyond-heading" class="display-m reveal">Beyond these six</h2>
+      <p class="body-copy reveal" style="margin-top: 1rem;">
+        The Astana Times columns, the Organization for World Peace correspondence, the
+        Center for Behavioral Decisions essays, and Disal's credit-management and SME
+        diagnostics work are all real and documented — as entries on the
+        <a href="cv.html">CV</a>, pins on the <a href="journey.html">Journey map</a>, and
+        (for the essays) in full on <a href="thinking.html">Thinking</a>. Keeping this
+        page to six studies is deliberate: depth over inventory.
+      </p>
+    </div>
+  </section>
+
   <!-- ═══════════════════ CLOSING CTA ═══════════════════ -->
-  <section class="section--soft" aria-labelledby="work-cta-heading">
+  <section aria-labelledby="work-cta-heading">
     <div class="container" style="text-align: center;">
       <h2 id="work-cta-heading" class="display-l reveal">Something here resonate?</h2>
       <p class="body-copy reveal" style="margin-inline: auto;">
@@ -506,6 +445,6 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=4"></script>
+<script src="js/main.js?v=5"></script>
 </body>
 </html>

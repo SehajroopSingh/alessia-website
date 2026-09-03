@@ -318,12 +318,14 @@
     var filterItems = document.querySelectorAll("[data-categories]");
     var filterCount = document.querySelector("[data-filter-count]");
 
+    var caseTotal = document.querySelectorAll(".case[data-categories]").length || filterItems.length;
+
     function updateFilterCount(filter, visible) {
       if (!filterCount) return;
       filterCount.textContent =
         filter === "all"
-          ? "Showing all " + filterItems.length + " case studies"
-          : "Showing " + visible + " of " + filterItems.length + " case studies";
+          ? "Showing all " + caseTotal + " case studies"
+          : "Showing " + visible + " of " + caseTotal + " case studies";
     }
 
     filterButtons.forEach(function (btn) {
@@ -341,7 +343,8 @@
           var show = filter === "all" || cats.indexOf(filter) !== -1;
           item.classList.toggle("is-filtered-out", !show);
           if (show) {
-            visible++;
+            // Chapter-break headers filter with their group but aren't counted
+            if (item.classList.contains("case")) visible++;
             // Re-deal the matching cases with a small staggered pop
             if (!prefersReducedMotion) {
               item.classList.remove("filter-pop");
@@ -357,7 +360,7 @@
       });
     });
 
-    updateFilterCount("all", filterItems.length);
+    updateFilterCount("all", caseTotal);
   }
 
   /* ------------------------------------------------------------------

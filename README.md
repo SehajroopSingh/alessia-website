@@ -17,8 +17,9 @@ text file, you can edit this site.
 | `contact.html` | Contact details + contact form |
 | `css/style.css` | **All** the styling. Colours & fonts are at the very top. |
 | `js/main.js` | All the interactivity (menu, animations, filters, form) |
-| `images/` | Put photos here (empty for now) |
-| `documents/` | Put the CV PDF and theses here (empty for now) |
+| `images/` | Photos (portraits, journey pictures) |
+| `documents/` | CV, thesis and certificate PDFs |
+| `BRIEF.md` | The working design/content brief — read before structural changes |
 
 ## How to preview the site
 
@@ -33,8 +34,8 @@ so you can find each section quickly.
 
 ### Change the colours or fonts
 Open `css/style.css`. The first block (called **1. DESIGN TOKENS**) contains every
-colour and font. For example, change `--accent: #A8552E;` to recolour every accent on
-the site at once.
+colour and font. For example, change `--accent` to recolour the default accent, or the three Action colours
+(`--analyse`, `--translate`, `--build`) to re-code the whole taxonomy at once.
 
 ### Add a real photo (replacing a placeholder)
 1. Put the photo in the `images/` folder (e.g. `images/portrait.jpg`).
@@ -53,19 +54,22 @@ In `thinking.html`, copy one whole `<article class="article-card"> … </article
 paste it next to the others, and edit the title, description and link.
 
 ### Add a new case study to Work
-In `work.html`, copy one whole `<article class="case"> … </article>` block. Give it:
+The Work page is deliberately limited to six case studies — two per Action
+(see BRIEF.md before adding more). To swap or edit one, copy a whole
+`<article class="case"> … </article>` block. Give it:
 - a unique `id="..."` (so it can be linked to),
-- `data-categories="..."` — space-separated, matching the filter buttons
-  (`policy esg ai behaviour research communications entrepreneurship`).
+- `data-categories="..."` — one of the three Actions: `analyse`, `translate`, `build`.
+Focus areas (ESG & Sustainability, AI, Socioeconomic Development, Behavioural
+Science) are plain-text tags in the `focus-tags` span — never coloured.
 
 ### Edit the pre-typed contact messages
 In `js/main.js`, find `starters = { … }` (section 6). Each entry is the text inserted
 when a visitor picks that topic. The visitor can always edit it before sending.
 
 ### If your edits don't show up in the browser
-Every page loads `css/style.css?v=2` and `js/main.js?v=2`. If you change the CSS or
-JavaScript and a browser stubbornly shows the old version, bump the number (`?v=3`)
-in all the HTML files — a find-and-replace of `?v=2` → `?v=3` across the folder.
+Every page loads `css/style.css?v=5` and `js/main.js?v=5`. If you change the CSS or
+JavaScript and a browser stubbornly shows the old version, bump the number (`?v=6`)
+in all the HTML files — a find-and-replace of `?v=5` → `?v=6` across the folder.
 
 ### Turn a scroll "scene" on or off
 On desktop, three homepage sections **pin in place** while you scroll: the central
@@ -105,7 +109,7 @@ the submit handler in `js/main.js` (section 6b).
 
 ## Design notes (for future edits)
 
-- **Serif** (Fraunces) is for headlines and quotes; **sans-serif** (Inter) is for
+- **Serif** (Playfair Display) is for headlines and quotes; **sans-serif** (DM Sans) is for
   labels, body text and interface. Both load from Google Fonts (see the `<link>` tags
   in each page's `<head>`).
 - Animations are subtle on purpose, and automatically switch off for visitors whose
