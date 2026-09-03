@@ -1081,6 +1081,45 @@ section { padding-block: var(--section-pad); }
 .diagram-band .diagram .node--ink { background: var(--ink); color: #fff; border-color: #fff; box-shadow: 4px 4px 0 rgba(255, 255, 255, 0.85); }
 .diagram-band .diagram .arrow { color: #fff; font-size: 1.35rem; }
 
+/* ==========================================================================
+   STAMP CTA — the closing portrait as a big tilted stamp: paper mat on a
+   pastel backing plate, slamming in from large to its resting angle,
+   with the "Let's talk." text (and its underline) following after.
+   ========================================================================== */
+.cta-chapter .stamp-in { max-width: 470px; width: 100%; justify-self: end; }
+.stamp-frame {
+  position: relative;
+  background: #fff;
+  padding: 14px 14px 20px;
+  border: 2.5px solid var(--ink);
+  box-shadow: 10px 12px 0 var(--ink);
+  transform: rotate(-5deg);
+}
+.stamp-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: rotate(4.5deg) translate(8px, 12px);
+  background: color-mix(in srgb, var(--analyse) 16%, #fff);
+  border: 2.5px solid var(--ink);
+  z-index: -1;
+}
+.stamp-frame img { width: 100%; display: block; }
+/* Entrance: slams from big to its resting tilt, then the text follows */
+.js .stamp-in .stamp-frame {
+  opacity: 0;
+  transform: scale(1.65) rotate(-13deg);
+  transition: transform 0.7s cubic-bezier(0.2, 0.85, 0.3, 1.12), opacity 0.35s ease;
+}
+.js .stamp-in.is-visible .stamp-frame { opacity: 1; transform: scale(1) rotate(-5deg); }
+.cta-chapter h2.reveal,
+.cta-chapter .body-copy.reveal,
+.cta-chapter div.reveal { transition-delay: 0.75s; }
+.cta-chapter .u-draw { transition-delay: 1.5s; }
+@media (max-width: 900px) {
+  .cta-chapter .stamp-in { max-width: 340px; justify-self: start; margin-top: 2rem; }
+}
+
 /* Full-bleed photo band with a gentle parallax drift (the veil chapter) */
 .photo-band {
   position: relative;
@@ -1914,6 +1953,7 @@ section { padding-block: var(--section-pad); }
   .js .rule-reveal .article-card--featured { border-top-color: var(--accent); }
   .js .hero-visual .hero-portrait-wrapper { opacity: 1; transform: none; transition: none; }
   .js .hero-visual .orbit-badge { opacity: 1; transform: none; }
+  .js .stamp-in .stamp-frame { opacity: 1; transform: rotate(-5deg); transition: none; }
   .js .arch-reveal .arch-frame { clip-path: none; transition: none; }
   .js .reveal.veil-lift { filter: none; }
   .js .quote-grow { border-left-color: var(--accent); }
