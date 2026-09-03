@@ -898,60 +898,77 @@ section { padding-block: var(--section-pad); }
    ========================================================================== */
 .project-cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   gap: clamp(1.25rem, 2.5vw, 2rem);
   margin-top: clamp(2rem, 4vw, 3rem);
 }
 .project-card {
-  background: var(--paper);
-  border: 1px solid var(--line);
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.3s ease;
-}
-.project-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 36px rgba(21, 21, 21, 0.09);
-  border-color: var(--ink-faint);
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  border-radius: 24px;
+  border: 2.5px solid var(--ink);
+  box-shadow: 9px 9px 0 var(--ink);
+  overflow: hidden;
+  min-height: clamp(320px, 42vh, 480px);
 }
 .project-card-photo { margin: 0; overflow: hidden; }
 .project-card-photo img {
   width: 100%;
-  aspect-ratio: 3 / 2;
+  height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.6s cubic-bezier(0.22, 0.65, 0.2, 1);
 }
-.project-card:hover .project-card-photo img { transform: scale(1.04); }
 .project-card-body {
-  padding: 1.6rem 1.5rem 1.75rem;
+  padding: clamp(1.5rem, 2.5vw, 2.5rem);
   display: flex;
   flex-direction: column;
-  flex: 1;
+  justify-content: center;
 }
 .project-card-num {
   font-family: var(--serif);
-  font-size: 1.6rem;
-  font-weight: 300;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  font-weight: 340;
   line-height: 1;
-  color: var(--ink-faint);
   margin: 0 0 0.6rem;
+  opacity: 0.85;
 }
-.project-card .project-kicker { margin: 0 0 0.6rem; }
+.project-card .project-kicker { margin: 0 0 0.7rem; }
 .project-card h3 {
-  font-size: clamp(1.25rem, 1.8vw, 1.6rem);
-  font-weight: 460;
-  margin: 0 0 0.7rem;
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
+  font-weight: 480;
+  margin: 0 0 0.75rem;
 }
-.project-card .body-copy { font-size: 0.92rem; }
+.project-card .body-copy { font-size: 0.95rem; }
 .project-card .project-question {
-  font-size: clamp(1rem, 1.3vw, 1.15rem);
-  margin: 0.75rem 0 1.25rem;
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  margin: 0.8rem 0 1.4rem;
 }
-.project-card .btn { margin-top: auto; align-self: flex-start; }
+.project-card .btn { align-self: flex-start; }
 .btn--small { padding: 0.7rem 1.4rem; font-size: 0.7rem; }
+
+/* Card colourways — bold, playful, still the Action palette */
+.project-card--violet { background: var(--analyse); }
+.project-card--green  { background: var(--translate-ink); }
+.project-card--lime   { background: var(--translate-soft); }
+.project-card--violet, .project-card--green { color: #fff; }
+.project-card--violet h3, .project-card--green h3,
+.project-card--violet .project-card-num, .project-card--green .project-card-num,
+.project-card--violet .project-question, .project-card--green .project-question { color: #fff; }
+.project-card--violet .body-copy, .project-card--green .body-copy { color: rgba(255, 255, 255, 0.88); }
+.project-card--violet .body-copy strong, .project-card--green .body-copy strong { color: #fff; }
+.project-card--violet .project-kicker, .project-card--green .project-kicker { color: rgba(255, 255, 255, 0.75); }
+.project-card--violet .project-kicker span, .project-card--green .project-kicker span { color: #fff !important; }
+.project-card--violet .btn, .project-card--green .btn { border-color: #fff; color: #fff; }
+.project-card--violet .btn:hover, .project-card--green .btn:hover { background: #fff; color: var(--ink); }
+.project-card--lime { color: var(--ink); }
+.project-card--lime .body-copy { color: rgba(21, 21, 21, 0.8); }
+.project-card--lime .project-kicker { color: rgba(21, 21, 21, 0.65); }
+.project-card--lime .project-kicker span { color: var(--ink) !important; }
+
 @media (max-width: 900px) {
-  .project-cards { grid-template-columns: 1fr; }
+  .project-card { grid-template-columns: 1fr; min-height: 0; }
+  .project-card-photo img { aspect-ratio: 16 / 10; height: auto; }
+  .project-card { box-shadow: 6px 6px 0 var(--ink); }
 }
 
 /* Teaser rows carry their own photograph */
@@ -1955,19 +1972,13 @@ section { padding-block: var(--section-pad); }
 .scene-on.scene--question .action-row p { font-size: 0.9rem; margin-top: 0.3rem; }
 .scene-on.scene--question .action-focus-note { padding-top: 0.55rem; font-size: 0.8rem; line-height: 1.45; }
 .scene-on.scene--projects .display-l { margin-bottom: 0.4rem; font-size: clamp(1.8rem, 3vw, 2.9rem); }
-.scene-on.scene--projects .project-cards { margin-top: 1.25rem; }
-.scene-on.scene--projects .project-card-photo img { max-height: 21vh; }
-.scene-on.scene--projects .project-card-body { padding: 1.1rem 1.2rem 1.25rem; }
 .scene-on.scene--projects .project-card .body-copy {
-  font-size: 0.86rem;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
 .scene-on.scene--projects .project-card .project-question {
-  font-size: 0.98rem;
-  margin: 0.6rem 0 0.9rem;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
@@ -2035,14 +2046,32 @@ section { padding-block: var(--section-pad); }
   clip-path: inset(0 0 0 0);
 }
 
-/* --- Projects scene: cards rise in one by one with a settle --- */
-.scene-on.scene--projects [data-scene-item] {
-  opacity: 0;
-  transform: translateY(56px) scale(0.96);
-  transition: opacity 0.55s ease,
-              transform 0.75s cubic-bezier(0.22, 0.9, 0.3, 1.04);
+/* --- Projects scene: a stacked deck — each card slides up over the
+       previous one, which settles back with a slight scale-down --- */
+.scene-on.scene--projects .project-cards {
+  position: relative;
+  height: clamp(380px, calc(100vh - 310px), 560px);
+  margin-top: 1.25rem;
+  overflow: visible;
 }
-.scene-on.scene--projects [data-scene-item].is-on { opacity: 1; transform: none; }
+.scene-on.scene--projects .project-card {
+  position: absolute;
+  inset: 0;
+  min-height: 0;
+  --rot: 0deg;
+  transform: translateY(118%) rotate(3deg);
+  transition: transform 0.85s cubic-bezier(0.22, 0.85, 0.25, 1.02);
+}
+.scene-on.scene--projects .project-card:nth-child(1) { --rot: -0.8deg; z-index: 1; }
+.scene-on.scene--projects .project-card:nth-child(2) { --rot: 0.7deg;  z-index: 2; }
+.scene-on.scene--projects .project-card:nth-child(3) { --rot: -0.5deg; z-index: 3; }
+.scene-on.scene--projects .project-card.is-on { transform: translateY(0) rotate(var(--rot)); }
+.scene-on.scene--projects .project-card.is-on:has(~ .project-card.is-on) {
+  transform: translateY(-2.5%) scale(0.965) rotate(var(--rot));
+}
+.scene-on.scene--projects .project-card.is-on:has(~ .project-card.is-on ~ .project-card.is-on) {
+  transform: translateY(-5%) scale(0.93) rotate(var(--rot));
+}
 
 /* --- Diagram scene: nodes pop like stamps, arrows grow from the left --- */
 .scene-on.scene--diagram .node[data-scene-item] {
