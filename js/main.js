@@ -281,8 +281,10 @@
         if (rect.bottom < 0 || rect.top > vh) return;
         var progress, shift;
         if (scene) {
+          // Pinned container: the image itself must drift upward as the
+          // user scrolls down (same direction as the page, just slower).
           progress = (rect.top + rect.height / 2 - vh / 2) / rect.height;
-          shift = Math.max(-8, Math.min(8, progress * -16));
+          shift = Math.max(-8, Math.min(8, progress * 16));
         } else {
           progress = (rect.top + rect.height / 2 - vh / 2) / vh;
           shift = progress * -6;
