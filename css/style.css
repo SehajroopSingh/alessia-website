@@ -893,7 +893,7 @@ section { padding-block: var(--section-pad); }
 .stage-core {
   position: relative;
   height: 100%;
-  aspect-ratio: 1200 / 1799;
+  aspect-ratio: 1200 / 1560;   /* a touch wider than the photo itself */
   max-width: 100%;
   flex: 0 0 auto;
 }
@@ -904,7 +904,7 @@ section { padding-block: var(--section-pad); }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 22%;
+  object-position: 50% 62%;   /* biases the crop upward: she sits lower */
   /* edges fade into the blurred backdrop (identical masks keep the two
      layers pixel-aligned) */
   -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%);
