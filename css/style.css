@@ -841,6 +841,8 @@ section { padding-block: var(--section-pad); }
   overflow: hidden;
   background: #E9E7E3;
   padding-block: 0;   /* cancel the default <section> padding */
+  display: flex;
+  justify-content: center;   /* centres the full-height photo core */
 }
 /* Soft paper scrim over the lower photo so the overlaid text reads */
 .hero-stage::after {
@@ -873,6 +875,28 @@ section { padding-block: var(--section-pad); }
 .stage-content .hero-tagline { margin-bottom: 1rem; }
 /* keep the buttons clear of the rotating badge in the corner */
 .stage-content .stage-content-inner > div:last-child { padding-right: clamp(2rem, 4vw, 4rem); }
+/* Blurred continuation of the photo fills the sides on wide viewports */
+.hero-stage .stage-blur {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 22%;
+  filter: blur(46px) brightness(1.03) saturate(1.05);
+  transform: scale(1.18);
+  z-index: 0;
+}
+/* The sharp photo keeps its full height, centred; on narrow screens it
+   fills the width again (and crops) exactly as before. NO transform here —
+   the name layer must be able to slot between its children. */
+.stage-core {
+  position: relative;
+  height: 100%;
+  aspect-ratio: 1200 / 1799;
+  max-width: 100%;
+  flex: 0 0 auto;
+}
 .hero-stage .stage-bg,
 .hero-stage .stage-fg {
   position: absolute;
@@ -881,7 +905,12 @@ section { padding-block: var(--section-pad); }
   height: 100%;
   object-fit: cover;
   object-position: 50% 22%;
+  /* edges fade into the blurred backdrop (identical masks keep the two
+     layers pixel-aligned) */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%);
 }
+.hero-stage .stage-bg { z-index: 1; }
 .hero-stage .stage-fg { z-index: 3; pointer-events: none; }
 .hero-stage .stage-name {
   position: absolute;
@@ -905,7 +934,9 @@ section { padding-block: var(--section-pad); }
 @media (prefers-reduced-motion: no-preference) {
   .js .hero-stage .stage-bg,
   .js .hero-stage .stage-fg { animation: stage-in 1.7s cubic-bezier(0.22, 0.65, 0.2, 1) both; }
+  .js .hero-stage .stage-blur { animation: blur-in 1.7s ease both; }
 }
+@keyframes blur-in { from { opacity: 0; } to { opacity: 1; } }
 @keyframes stage-in {
   from { transform: scale(1.045); opacity: 0; }
   to   { transform: scale(1); opacity: 1; }
