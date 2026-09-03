@@ -851,6 +851,31 @@ section { padding-block: var(--section-pad); }
   padding-block: 0;   /* cancel the default <section> padding */
   display: flex;
   justify-content: center;   /* centres the full-height cutout core */
+  /* Width of the "second page" sliver on the right (the magazine fold
+     sits just left of it) — change this to widen/narrow the sliver */
+  --page2: clamp(56px, 7vw, 110px);
+}
+/* Magazine-gutter shading: the left page eases into a dark crease, a
+   thin highlight catches where the second page curves back up, then a
+   soft shadow settles over the sliver. Shading only for now — the
+   sliver itself stays the violet field. */
+.hero-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent calc(100% - var(--page2) - clamp(120px, 14vw, 220px)),
+    rgba(24, 10, 60, 0.10) calc(100% - var(--page2) - clamp(40px, 5vw, 80px)),
+    rgba(24, 10, 60, 0.34) calc(100% - var(--page2) - 6px),
+    rgba(16, 6, 44, 0.55) calc(100% - var(--page2)),
+    rgba(255, 255, 255, 0.16) calc(100% - var(--page2) + 3px),
+    rgba(255, 255, 255, 0.05) calc(100% - var(--page2) + 14px),
+    rgba(24, 10, 60, 0.16) calc(100% - var(--page2) + 46px),
+    rgba(24, 10, 60, 0.10) 100%
+  );
 }
 /* Deep violet scrim over the lower edge so the overlaid text reads */
 .hero-stage::after {
@@ -921,7 +946,7 @@ section { padding-block: var(--section-pad); }
   text-align: center;
 }
 .hero-stage .stage-name .stage-line2 { margin-top: clamp(0.5rem, 9vh, 7rem); }
-.hero-stage .orbit-badge { left: auto; right: clamp(1rem, 4vw, 3.5rem); bottom: clamp(13rem, 30vh, 16rem); z-index: 6; }
+.hero-stage .orbit-badge { left: auto; right: calc(var(--page2) + clamp(1rem, 3vw, 2.5rem)); bottom: clamp(13rem, 30vh, 16rem); z-index: 6; }
 /* Light-on-violet versions of the bottom band's text and buttons */
 .hero-stage .label--ink { color: rgba(255, 255, 255, 0.78); }
 .hero-stage .hero-statement { color: rgba(255, 255, 255, 0.94); }
@@ -2056,6 +2081,9 @@ section { padding-block: var(--section-pad); }
   .hero-grid .hero-visual { order: -1; max-width: 420px; }
   .orbit-badge { width: 100px; height: 100px; left: -10px; bottom: 18px; }
   .hero-stage::after { background: linear-gradient(180deg, transparent 26%, rgba(44, 22, 96, 0.38) 54%, rgba(32, 14, 76, 0.72) 100%); }
+  /* the magazine fold needs room — skip it on small screens */
+  .hero-stage::before { display: none; }
+  .hero-stage .orbit-badge { right: clamp(1rem, 4vw, 3.5rem); }
   .stage-content .hero-statement { font-size: 0.95rem; }
   .stage-content .stage-content-inner { grid-template-columns: 1fr; gap: 0.9rem; }
   .stage-content .stage-content-inner > div:last-child { padding-right: 0; }
