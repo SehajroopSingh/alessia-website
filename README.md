@@ -11,7 +11,7 @@ text file, you can edit this site.
 | `index.html` | Homepage (hero, central question, The Work — six case-study cards, figures, recent writing, the veil, contact) |
 | `about.html` | About page (essay, "How I work", FAQ) |
 | `work.html` | All case studies, with category filters |
-| `thinking.html` | Writing & research (essays, columns, thesis) |
+| `thinking.html` | Writing & research — academic papers and articles, grouped by institution/publication |
 | `journey.html` | Interactive map of cities, with year filters |
 | `cv.html` | Expandable CV + document library |
 | `contact.html` | Contact details + contact form |
@@ -49,9 +49,15 @@ colour and font. For example, change `--accent` to recolour the default accent, 
 2. In `cv.html` (and `thinking.html` for the thesis), find the "PDF — coming soon" card —
    a comment above it shows the exact download link to paste in.
 
-### Add a new article to Thinking
-In `thinking.html`, copy one whole `<article class="article-card"> … </article>` block,
-paste it next to the others, and edit the title, description and link.
+### Add a new paper or article to Thinking
+The Thinking page is a "bento" archive in two parts — Academic writing, then Articles &
+opinion writing — grouped by institution or publication. In `thinking.html`, copy one
+whole `<article class="bento-card"> … </article>` block into the right group and edit
+the title, date, summary and link (label it `PDF` for a PDF, `Read article` otherwise).
+Academic cards also hold an `Abstract, question, methodology & findings` section.
+Add `bento-card--wide` to a card's class to make it twice as wide (useful for filling
+a gap at the end of a group). Each group's dark tile shows the institution's name as
+text; a comment inside it shows how to swap in an official logo image.
 
 ### Add a new case study to Work
 The Work page is deliberately limited to six case studies — two per Action
@@ -130,7 +136,7 @@ the submit handler in `js/main.js` (section 6b).
 - Each inner page has its own signature too (section 19d of the CSS): About's text
   sharpens from a blur ("the veil lifts") with a reading-progress line under the header;
   Work's case-study cards rise into place and filters re-deal the results with a
-  live count; Thinking's essay titles take a highlighter sweep on hover; Journey's map
+  live count; Thinking's archive cards cascade in by group; Journey's map
   assembles west-to-east while its routes march like a flight path; the CV's documents
   lay down like papers; and the Contact form assembles field by field.
 - **Printing works**: any page prints as a clean black-on-white document (navigation,

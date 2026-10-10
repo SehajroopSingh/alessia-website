@@ -1477,6 +1477,189 @@ section { padding-block: var(--section-pad); }
   margin-bottom: 1.5rem;
 }
 
+/* ==========================================================================
+   BENTO ARCHIVE (Thinking page) — writing grouped by institution or
+   publication. Each group is a 12-column grid: a dark logo tile first, then
+   the cards (4 columns each; bento-card--wide = 8, bento-card--half = 6).
+   An academic card opened to read its abstract widens to the full row.
+   ========================================================================== */
+.bento-heading {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 440;
+  line-height: 1.1;
+  padding-bottom: 1rem;
+  border-bottom: 1.5px solid var(--ink);
+  margin: 0 0 clamp(1.5rem, 3vw, 2.25rem);
+}
+.bento {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-auto-flow: dense;
+  gap: clamp(0.75rem, 1.4vw, 1.1rem);
+  margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
+}
+.bento:last-child { margin-bottom: 0; }
+.bento-org,
+.bento-card {
+  border-radius: 20px;
+  padding: clamp(1.25rem, 2.2vw, 1.75rem);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.bento-org {
+  grid-column: span 4;
+  gap: 0.7rem;
+  background: var(--ink);
+  color: #fff;
+}
+.bento-org--tall { grid-row: span 2; }
+.bento-org h3 {
+  font-family: var(--serif);
+  font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+  font-weight: 440;
+  line-height: 1.15;
+  color: #fff;
+  margin: auto 0 0;
+}
+.bento-org p {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.68);
+  margin: 0;
+}
+.bento-org .bento-link { margin-top: 0.4rem; color: #fff; }
+.bento-card {
+  grid-column: span 4;
+  background: #fff;
+  border: 1px solid var(--line);
+  transition: box-shadow 0.3s ease;
+}
+.bento-card:hover { box-shadow: 0 18px 36px -24px rgba(21, 21, 21, 0.35); }
+.bento-card--wide { grid-column: span 8; }
+.bento-card--half { grid-column: span 6; }
+.bento-card:has(.bento-more[open]) { grid-column: 1 / -1; }
+.bento-card h4 {
+  font-family: var(--serif);
+  font-size: clamp(1.05rem, 1.4vw, 1.22rem);
+  font-weight: 480;
+  line-height: 1.3;
+  margin: 1rem 0 0.45rem;
+}
+.bento-card--wide h4 { font-size: clamp(1.2rem, 1.8vw, 1.55rem); }
+.bento-date {
+  font-family: var(--sans);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.7;
+  color: var(--ink-faint);
+  margin: 0 0 0.75rem;
+}
+.bento-summary {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0 0 1.1rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+.bento-card:has(.bento-more[open]) .bento-summary { -webkit-line-clamp: unset; }
+.bento-link {
+  margin-top: auto;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1.5px solid currentColor;
+  padding-bottom: 2px;
+  transition: color 0.25s;
+}
+a.bento-link[target="_blank"]::after,
+a.bento-link::after { content: " \2192"; }
+.bento-link:hover { color: var(--accent); }
+
+/* Typographic stand-ins for the logos (swap for <img class="org-logo">) */
+.org-mark {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.32em 0.75em;
+  border: 1.5px solid var(--ink);
+  border-radius: 6px;
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  color: var(--ink);
+}
+.org-mark--lg {
+  font-size: 0.85rem;
+  padding: 0.45em 0.9em;
+  border-color: rgba(255, 255, 255, 0.9);
+  color: #fff;
+}
+.org-logo { height: 44px; width: auto; display: block; }
+
+/* Academic cards: abstract, research question, methodology & findings */
+.bento-more {
+  width: 100%;
+  margin-top: 1.1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--line);
+}
+.bento-more summary {
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.bento-more summary::-webkit-details-marker { display: none; }
+.bento-more summary::after { content: "  +"; }
+.bento-more[open] summary::after { content: "  \2212"; }
+.bento-more-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.4rem clamp(1.5rem, 4vw, 3rem);
+  margin-top: 1.25rem;
+}
+.bento-more h5 {
+  font-family: var(--sans);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0 0 0.45rem;
+}
+.bento-more p { font-size: 0.92rem; line-height: 1.6; color: var(--ink-soft); margin: 0; }
+
+@media (max-width: 1100px) {
+  .bento-org, .bento-org--tall { grid-column: 1 / -1; grid-row: auto; }
+  .bento-org h3 { margin-top: 0.25rem; }
+  .bento-card, .bento-card--wide, .bento-card--half { grid-column: span 6; }
+}
+@media (max-width: 700px) {
+  .bento-card, .bento-card--wide, .bento-card--half { grid-column: 1 / -1; }
+  .bento-more-grid { grid-template-columns: 1fr; }
+}
+
 /* Article cards on the Thinking page */
 .article-grid {
   display: grid;
