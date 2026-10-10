@@ -228,7 +228,10 @@
       // data-scene-end="0.75" makes all items finish by 75% of the pin,
       // leaving the remainder as a quiet reading hold before release.
       var endF = parseFloat(scene.getAttribute("data-scene-end")) || 1;
-      tracked.push({ el: scene, items: items, endF: endF });
+      // data-scene-lead shows the first item from the start (the rest
+      // follow evenly), instead of waiting for the first step.
+      var lead = scene.hasAttribute("data-scene-lead");
+      tracked.push({ el: scene, items: items, endF: endF, lead: lead, on: -1 });
     });
 
     function update() {
@@ -241,8 +244,20 @@
         // Continuous progress for CSS-driven scrubbing (e.g. the stamp CTA)
         scene.el.style.setProperty("--sp", p.toFixed(4));
         var n = scene.items.length;
+        var on = 0;
         for (var i = 0; i < n; i++) {
-          scene.items[i].classList.toggle("is-on", p >= ((i + 1) / (n + 1)) * scene.endF);
+          var step = scene.lead ? i / n : (i + 1) / (n + 1);
+          var isOn = p >= step * scene.endF;
+          scene.items[i].classList.toggle("is-on", isOn);
+          if (isOn) on++;
+        }
+        // --depth: how many shown items sit on top of each one (0 = front).
+        // The case-study deck uses it to stack cards back like a hand of cards.
+        if (on !== scene.on) {
+          scene.on = on;
+          for (var j = 0; j < n; j++) {
+            scene.items[j].style.setProperty("--depth", Math.max(on - 1 - j, 0));
+          }
         }
       });
 

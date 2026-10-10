@@ -27,7 +27,7 @@
   <meta property="og:title" content="Alessia Canuto | Policy, Technology &amp; Sustainability">
   <meta property="og:description" content="Alessia Canuto is a policy and sustainability professional working at the intersection of ESG regulation, AI governance, socioeconomic development, behavioural science and technology.">
 
-  <link rel="stylesheet" href="css/style.css?v=35">
+  <link rel="stylesheet" href="css/style.css?v=36">
 </head>
 <body>
 
@@ -129,7 +129,6 @@
     <div class="question-scrim" aria-hidden="true"></div>
     <div class="container">
       <div class="question-content">
-      <span class="label label--ink reveal">01 — The question</span>
       <h2 id="question-heading" class="display-xxl" data-split style="margin-bottom: 0;">
         How do we design systems that work better for the people who have to <em class="u-draw">navigate</em> them?
       </h2>
@@ -167,141 +166,90 @@
   </section>
   </div>
 
-  <!-- ═══════════════════════ THE WORK I KEEP COMING BACK TOTHE WORK I KEEP COMING BACK TO ═══════════════
-       Scroll SCENE: pins while projects 01, 02 and 03 build in one at a
-       time. Delete data-scene from the wrapper div to turn that off. -->
-  <div class="scene scene--projects" data-scene data-scene-end="0.75" style="--scene-length: 6.6;">
-  <section class="section--soft scene-viewport" aria-labelledby="three-projects-heading">
+  <!-- ═══════════════════════ SIX CASE STUDIES ═══════════════════════
+       Scroll SCENE: pins while the six case-study cards stack up one by
+       one, like a deck. Each card's colour is its Action (two shades
+       each: Analyse violet, Translate green, Build blue); its background
+       photo is tinted to match in css/style.css ("COLOUR CARDS").
+       Every card opens the full, expanded version on the Work page.
+       Delete data-scene from the wrapper div to turn the pinning off. -->
+  <div class="scene scene--deck" data-scene data-scene-lead style="--scene-length: 4.6;">
+  <section class="deck-section scene-viewport" aria-labelledby="deck-heading">
     <div class="container">
-      <span class="label label--ink reveal">02 — The work I keep coming back to</span>
-      <h2 id="three-projects-heading" class="display-l reveal">Three projects. <em class="u-draw">One question.</em></h2>
+      <div class="deck-head">
+        <h2 id="deck-heading" class="display-l reveal">Six case studies. <em class="u-draw">Three ways of working.</em></h2>
+        <p class="body-copy reveal">
+          Two studies under each Action — Analyse, Translate, Build. The colour tells you
+          how I worked; the tags tell you what on.
+        </p>
+      </div>
 
-      <!-- Reference-style cards: photo, number, action eyebrow, title,
-           question, button. The pinned scene brings them in one by one. -->
-      <div class="project-cards">
+      <div class="deck">
 
-        <article class="project-card project-card--violet reveal" data-scene-item>
-          <figure class="project-card-photo">
-            <img src="images/journey-nice.jpg" alt="Closing discussion on ethics and justice in the digital world, Nice" loading="lazy">
-          </figure>
-          <div class="project-card-body">
-            <p class="project-card-num">01</p>
-            <p class="project-kicker"><span class="action--analyse">Analyse</span> · AI, Socioeconomic Development</p>
+        <a class="deck-card colour-card colour-card--violet" href="work.html#dreamocracy" data-scene-item>
+          <figure class="colour-card-bg" aria-hidden="true"><img src="images/case-dreamocracy.jpg" alt="" loading="lazy"></figure>
+          <div class="deck-card-body">
+            <p class="deck-card-kicker"><span class="deck-card-action">Analyse</span> Socioeconomic Development · Behavioural Science</p>
+            <h3>Understanding how policy works in practice</h3>
+            <p>Public-interest interventions and policy effectiveness with Dreamocracy — behavioural drivers, incentives, institutional dynamics.</p>
+            <span class="deck-card-link">Read the case study</span>
+          </div>
+        </a>
+
+        <a class="deck-card colour-card colour-card--amethyst" href="work.html#waiff" data-scene-item>
+          <figure class="colour-card-bg" aria-hidden="true"><img src="images/case-waiff.jpg" alt="" loading="lazy"></figure>
+          <div class="deck-card-body">
+            <p class="deck-card-kicker"><span class="deck-card-action">Analyse</span> AI · Socioeconomic Development</p>
             <h3>Understanding AI before trying to govern it</h3>
-            <p class="body-copy">
-              Six months of cross-sector qualitative research for the World AI Film
-              Festival — the EU AI Act, copyright, misinformation, deepfakes, platform
-              responsibility and AI adoption.
-            </p>
-            <p class="project-question">What happens when technological change moves faster than the institutions designed to govern it?</p>
-            <a class="btn btn--small" href="work.html#waiff">Read the case study</a>
+            <p>Six months of cross-sector qualitative research for the World AI Film Festival on AI governance and adoption in the audiovisual industries.</p>
+            <span class="deck-card-link">Read the case study</span>
           </div>
-        </article>
+        </a>
 
-        <article class="project-card project-card--green reveal" data-scene-item>
-          <figure class="project-card-photo">
-            <img src="images/work-climate-fresk.jpg" alt="Taking part in a Climate Fresk workshop" loading="lazy">
-          </figure>
-          <div class="project-card-body">
-            <p class="project-card-num">02</p>
-            <p class="project-kicker"><span class="action--translate">Translate</span> · ESG &amp; Sustainability</p>
+        <a class="deck-card colour-card colour-card--green" href="work.html#csrd" data-scene-item>
+          <figure class="colour-card-bg" aria-hidden="true"><img src="images/case-csrd.jpg" alt="" loading="lazy"></figure>
+          <div class="deck-card-body">
+            <p class="deck-card-kicker"><span class="deck-card-action">Translate</span> ESG &amp; Sustainability</p>
             <h3>Designing better sustainability disclosure</h3>
-            <p class="body-copy">
-              A CSRD/ESRS-aligned sustainability report for a multinational fibre and
-              plastics client — double materiality, audit-ready documentation, and the
-              Tagetik data architecture that made the reporting traceable.
-            </p>
-            <p class="project-question">How do organisations turn complex sustainability requirements into systems people can actually use?</p>
-            <a class="btn btn--small" href="work.html#csrd">Read the case study</a>
+            <p>An audit-ready CSRD/ESRS sustainability report for Aquafil — and the Tagetik data architecture underneath it.</p>
+            <span class="deck-card-link">Read the case study</span>
           </div>
-        </article>
+        </a>
 
-        <article class="project-card project-card--lime reveal" data-scene-item>
-          <figure class="project-card-photo">
-            <img src="images/work-abcd.jpg" alt="The team on stage at the ABCD national cross-sector event" loading="lazy">
-          </figure>
-          <div class="project-card-body">
-            <p class="project-card-num">03</p>
-            <p class="project-kicker"><span class="action--translate">Translate</span> · Behavioural Science, ESG</p>
+        <a class="deck-card colour-card colour-card--lime" href="work.html#comms" data-scene-item>
+          <figure class="colour-card-bg" aria-hidden="true"><img src="images/case-comms.jpg" alt="" loading="lazy"></figure>
+          <div class="deck-card-body">
+            <p class="deck-card-kicker"><span class="deck-card-action">Translate</span> Behavioural Science · ESG &amp; Sustainability</p>
             <h3>Making regulation and change legible</h3>
-            <p class="body-copy">
-              B2B/B2C stakeholder communication — an Instagram, blog and newsletter
-              strategy, four webinars and eight podcast episodes with EU stakeholders,
-              and the ABCD national cross-sector event.
-            </p>
-            <p class="project-question">How do you make regulatory and policy developments legible to the audiences who have to act on them?</p>
-            <a class="btn btn--small" href="work.html#comms">Read the case study</a>
+            <p>Stakeholder communication and convening — social strategy, webinars, a podcast, and the ABCD national event.</p>
+            <span class="deck-card-link">Read the case study</span>
           </div>
-        </article>
+        </a>
+
+        <a class="deck-card colour-card colour-card--blue" href="work.html#memsurf" data-scene-item>
+          <figure class="colour-card-bg" aria-hidden="true"><img src="images/case-memsurf.jpg" alt="" loading="lazy"></figure>
+          <div class="deck-card-body">
+            <p class="deck-card-kicker"><span class="deck-card-action">Build</span> AI · Behavioural Science · Socioeconomic Development</p>
+            <h3>MemSurf</h3>
+            <p>I don't just study emerging technology — I build with it. Co-founding an AI-native learning app designed around how people actually learn: 100+ users across Italy and the US.</p>
+            <span class="deck-card-link">Read the case study</span>
+          </div>
+        </a>
+
+        <a class="deck-card colour-card colour-card--sky" href="work.html#workshop" data-scene-item>
+          <figure class="colour-card-bg" aria-hidden="true"><img src="images/case-workshop.jpg" alt="" loading="lazy"></figure>
+          <div class="deck-card-body">
+            <p class="deck-card-kicker"><span class="deck-card-action">Build</span> Socioeconomic Development · Behavioural Science</p>
+            <h3>Emotions in policymaking — the workshop</h3>
+            <p>Co-moderating a 70-attendee policy workshop, and designing the engagement tools and cards that ran it.</p>
+            <span class="deck-card-link">Read the case study</span>
+          </div>
+        </a>
 
       </div>
     </div>
   </section>
   </div>
-
-  <!-- ═══════════════════════════ MEMSURF ═══════════════════════════
-       data-zoom makes this dark section scale up to full size as it
-       scrolls into view (desktop only). Remove the attribute to disable. -->
-  <section class="section-dark section-dark--build" id="memsurf" data-zoom aria-labelledby="memsurf-heading">
-    <div class="container">
-      <span class="label label--build reveal">03 — Build</span>
-      <h2 id="memsurf-heading" class="display-l reveal" style="max-width: 16em;">
-        I don't just study emerging technology. <em class="u-draw">I build with it.</em>
-      </h2>
-
-      <div class="split" style="margin-top: 3.5rem;">
-        <div>
-          <h3 class="display-m reveal">MemSurf</h3>
-          <p class="meta reveal" style="color: #9E9584; margin-bottom: 1.5rem;">Co-Founder &amp; Chief Operating Officer</p>
-          <p class="body-copy reveal">
-            MemSurf is an AI-native learning app designed to make learning more accessible
-            and effective through micro-learning, active recall and spaced repetition.
-          </p>
-          <p class="body-copy reveal">
-            Building MemSurf is an extension of the same question that has guided much of my
-            work: how do we design systems that work better for the people who have to
-            navigate them?
-          </p>
-          <div class="memsurf-stats reveal">
-            <div>
-              <div class="stat-num">100+</div>
-              <div class="stat-label">Users</div>
-            </div>
-            <div>
-              <div class="stat-num">2</div>
-              <div class="stat-label">Markets — Italy &amp; US</div>
-            </div>
-          </div>
-          <a class="btn btn--light reveal" href="work.html#memsurf">Explore MemSurf</a>
-        </div>
-
-        <div>
-          <p class="body-copy reveal">
-            Inside MemSurf I work across <strong>adaptive quiz architecture</strong>,
-            <strong>lesson structures</strong>, product and content decisions,
-            <strong>behavioural design</strong>, user interviews,
-            <strong>Amplitude analytics</strong>, product strategy and experimentation.
-          </p>
-          <blockquote class="pull-quote reveal quote-grow">
-            With MemSurf, I am interested in building infrastructure that makes learning more
-            accessible, adaptive and ultimately more equitable — using AI not simply to
-            automate learning, but to design around how humans actually think, learn and
-            make decisions.
-          </blockquote>
-        </div>
-      </div>
-
-      <!-- Placeholder tiles: swap for real product screenshots later.
-           Replace a tile with: <img src="images/memsurf-1.png" alt="MemSurf quiz screen"> -->
-      <div class="shot-row tilt-grid reveal">
-        <div class="shot-tile">Product<br>screenshot</div>
-        <div class="shot-tile">Adaptive quiz<br>flow</div>
-        <div class="shot-tile">Lesson<br>structure</div>
-        <div class="shot-tile">Analytics<br>view</div>
-        <div class="shot-tile">User<br>journey</div>
-      </div>
-    </div>
-  </section>
 
   <!-- ═══════════════════════ THE HUMAN LENS / MAYA ═══════════════════════
        Full-bleed photo band: Amritsar at dusk — the tradition the Maya
@@ -311,7 +259,6 @@
       <img src="images/thinking-amritsar.jpg" alt="The Golden Temple in Amritsar, India, at dusk">
       <div class="band-title">
         <div class="container">
-          <span class="label">04 — The human lens</span>
           <h2 id="veil-heading" class="display-l">The veil we work through</h2>
         </div>
       </div>
@@ -355,7 +302,6 @@
         </div>
         <div class="diagram-scrim" aria-hidden="true"></div>
         <div class="diagram-content">
-          <span class="label">04½ — The mechanism</span>
           <h3 class="diagram-title">How a system becomes an outcome</h3>
           <div class="diagram" role="img" aria-label="Diagram: a system passes through human perception, interpretation and decision before producing an outcome">
             <span class="node" data-scene-item>System</span>
@@ -373,68 +319,11 @@
       </div>
     </section>
 
-  <!-- ═══════════════════════════ SELECTED WORK ═══════════════════════════ -->
-  <section class="chapter--translate" aria-labelledby="selected-heading">
-    <div class="container">
-      <div class="split" style="align-items: end; margin-bottom: 3rem;">
-        <div>
-          <span class="label label--ink reveal">05 — Selected work</span>
-          <h2 id="selected-heading" class="display-l reveal" style="margin-bottom: 0;">Six case studies. Three ways of working.</h2>
-        </div>
-        <p class="body-copy reveal" style="justify-self: end;">
-          Two studies under each Action — Analyse, Translate, Build. The colour tells you
-          how I worked; the tags tell you what on. Full narratives live on the
-          <a href="work.html">Work page</a>.
-        </p>
-      </div>
-
-      <div class="work-grid reveal-stage" data-cascade>
-        <a class="work-card" href="work.html#dreamocracy">
-          <span class="work-cat action--analyse">Analyse</span>
-          <h3>Understanding how policy works in practice</h3>
-          <p>Public-interest interventions and policy effectiveness with Dreamocracy — behavioural drivers, incentives, institutional dynamics.</p>
-          <span class="text-link">Case study</span>
-        </a>
-        <a class="work-card" href="work.html#waiff">
-          <span class="work-cat action--analyse">Analyse</span>
-          <h3>World AI Film Festival research</h3>
-          <p>Six months of cross-sector qualitative research on AI governance and adoption in the audiovisual industries.</p>
-          <span class="text-link">Case study</span>
-        </a>
-        <a class="work-card" href="work.html#csrd">
-          <span class="work-cat action--translate">Translate</span>
-          <h3>CSRD/ESRS disclosure &amp; Tagetik architecture</h3>
-          <p>An audit-ready sustainability report for Aquafil — and the data architecture underneath it.</p>
-          <span class="text-link">Case study</span>
-        </a>
-        <a class="work-card" href="work.html#comms">
-          <span class="work-cat action--translate">Translate</span>
-          <h3>Making regulation and change legible</h3>
-          <p>Stakeholder communication and convening — social strategy, webinars, podcast, and the ABCD national event.</p>
-          <span class="text-link">Case study</span>
-        </a>
-        <a class="work-card" href="work.html#memsurf">
-          <span class="work-cat action--build">Build</span>
-          <h3>MemSurf</h3>
-          <p>Co-founding an AI-native learning app designed around how people actually learn. 100+ users across Italy and the US.</p>
-          <span class="text-link">Case study</span>
-        </a>
-        <a class="work-card" href="work.html#workshop">
-          <span class="work-cat action--build">Build</span>
-          <h3>Emotions in policymaking — the workshop</h3>
-          <p>Co-moderating a 70-attendee policy workshop and designing the engagement tools and cards that ran it.</p>
-          <span class="text-link">Case study</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
   <!-- ═══════════════════════ IMPACT NUMBERS ═══════════════════════
        The numbers animate on scroll. The visible text is the final value,
        so the section still reads correctly if JavaScript is off. -->
   <section class="section--tight chapter--build" aria-labelledby="numbers-heading">
     <div class="container">
-      <span class="label reveal">06 — In numbers</span>
       <h2 id="numbers-heading" class="display-m reveal" style="max-width: 24em;">
         A few figures from the work
       </h2>
@@ -480,7 +369,6 @@
     <div class="container">
       <div class="split" style="align-items: end; margin-bottom: 3rem;">
         <div>
-          <span class="label reveal">07 — Thinking</span>
           <h2 id="thinking-teaser-heading" class="display-l reveal" style="margin-bottom: 0;">Recent writing</h2>
         </div>
         <p class="body-copy reveal" style="justify-self: end;">
@@ -562,6 +450,6 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=35"></script>
+<script src="js/main.js?v=36"></script>
 </body>
 </html>

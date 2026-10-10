@@ -8,7 +8,7 @@ text file, you can edit this site.
 
 | File / folder | What it is |
 |---|---|
-| `index.html` | Homepage (hero, central question, three projects, MemSurf, the veil, selected work, numbers) |
+| `index.html` | Homepage (hero, central question, the six case-study cards, the veil, numbers) |
 | `about.html` | About page (essay, "How I work", FAQ) |
 | `work.html` | All case studies, with category filters |
 | `thinking.html` | Writing & research (essays, columns, thesis) |
@@ -73,12 +73,20 @@ in all the HTML files — a find-and-replace of `?v=6` → `?v=7` across the fol
 
 ### Turn a scroll "scene" on or off
 On desktop, three homepage sections **pin in place** while you scroll: the central
-question (its four areas light up one by one), the three projects (01, 02, 03 appear in
-turn) and the system→outcome diagram (connects node by node). The MemSurf section also
-zooms up to full size as it arrives. Each one is marked with a `data-scene` (or
-`data-zoom`) attribute in `index.html` and a comment right above it — **delete the
-attribute to switch that scene off**. On phones, and for visitors who prefer reduced
+question (its areas light up one by one), the six case-study cards (they stack up like
+a hand of cards), the system→outcome diagram (connects node by node) and the closing
+"Let's talk" stamp. Each one is marked with a `data-scene` attribute in `index.html` and
+a comment right above it — **delete the attribute to switch that scene off**. On phones, and for visitors who prefer reduced
 motion, the page automatically behaves like a normal scrolling page.
+
+### Edit a case-study card
+Each of the six case studies appears twice, as the same colour card: small on the
+homepage (`index.html`, search for `deck-card`) and expanded on the Work page
+(`work.html`, each `<article class="case colour-card ...">`). If you change a title or
+the tags, change both. A card's colour comes from its class — `colour-card--violet` /
+`--amethyst` (Analyse), `--green` / `--lime` (Translate), `--blue` / `--sky` (Build) —
+and its background photo is the `<img>` inside `colour-card-bg` (the `images/case-*.jpg`
+files). The photo is tinted to the card's colour automatically, so any photo works.
 
 ### Change the words on the rotating badge
 The little spinning stamp on the homepage hero lives in `index.html` — search for
@@ -115,13 +123,12 @@ the submit handler in `js/main.js` (section 6b).
 - Animations are subtle on purpose, and automatically switch off for visitors whose
   system asks for reduced motion.
 - Every homepage section arrives in its own way — the arch wipes up, the question's
-  areas wipe open sideways, the projects slide in from alternating sides while their
-  numbers stamp down, MemSurf zooms, the diagram pops together, the work cards cascade,
-  and the article rules draw themselves. These all live in one commented block of
+  areas wipe open sideways, the six case-study cards stack up like a hand of cards,
+  the diagram pops together, and the article rules draw themselves. These all live in one commented block of
   `css/style.css` (section 19c) if you ever want to adjust or remove one.
 - Each inner page has its own signature too (section 19d of the CSS): About's text
   sharpens from a blur ("the veil lifts") with a reading-progress line under the header;
-  Work's case studies converge from both sides and filters re-deal the results with a
+  Work's case-study cards rise into place and filters re-deal the results with a
   live count; Thinking's essay titles take a highlighter sweep on hover; Journey's map
   assembles west-to-east while its routes march like a flight path; the CV's documents
   lay down like papers; and the Contact form assembles field by field.
@@ -129,7 +136,7 @@ the submit handler in `js/main.js` (section 6b).
   buttons and decoration are stripped, and CV accordions open automatically). Until the
   CV PDF exists, "print the CV page" is a perfectly presentable stand-in.
 - Small details that are easy to miss but deliberate: the browser-tab icon
-  (`images/favicon.svg`), the numbered section labels on the homepage, the drop cap on
+  (`images/favicon.svg`), the drop cap on
   the About page, the faint paper grain over the background, and the colophon line in
   the footer. Each is marked with a comment where it lives.
 - Every number shown on the site is real. Please keep it that way — the site's
