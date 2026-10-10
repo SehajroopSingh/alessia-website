@@ -228,8 +228,9 @@
       // data-scene-end="0.75" makes all items finish by 75% of the pin,
       // leaving the remainder as a quiet reading hold before release.
       var endF = parseFloat(scene.getAttribute("data-scene-end")) || 1;
-      // data-scene-lead shows the first item from the start (the rest
-      // follow evenly), instead of waiting for the first step.
+      // data-scene-lead brings the first item in as soon as the section
+      // settles into place (the rest follow evenly), instead of waiting
+      // a full step.
       var lead = scene.hasAttribute("data-scene-lead");
       tracked.push({ el: scene, items: items, endF: endF, lead: lead, on: -1 });
     });
@@ -247,7 +248,7 @@
         var on = 0;
         for (var i = 0; i < n; i++) {
           var step = scene.lead ? i / n : (i + 1) / (n + 1);
-          var isOn = p >= step * scene.endF;
+          var isOn = p >= Math.max(step * scene.endF, 0.015);
           scene.items[i].classList.toggle("is-on", isOn);
           if (isOn) on++;
         }
