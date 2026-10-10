@@ -8,7 +8,7 @@ text file, you can edit this site.
 
 | File / folder | What it is |
 |---|---|
-| `index.html` | Homepage (hero, central question, the six case-study cards, the veil, numbers) |
+| `index.html` | Homepage (hero, central question, The Work — six case-study cards, figures, recent writing, the veil, contact) |
 | `about.html` | About page (essay, "How I work", FAQ) |
 | `work.html` | All case studies, with category filters |
 | `thinking.html` | Writing & research (essays, columns, thesis) |
@@ -82,8 +82,9 @@ motion, the page automatically behaves like a normal scrolling page.
 ### Edit a case-study card
 Each of the six case studies appears twice, as the same colour card: small on the
 homepage (`index.html`, search for `deck-card`) and expanded on the Work page
-(`work.html`, each `<article class="case colour-card ...">`). If you change a title or
-the tags, change both. A card's colour comes from its class — `colour-card--violet` /
+(`work.html`, each `<article class="case colour-card ...">`). Both show the same
+fields — number / Action, organisation, role, project type and title — so if you
+change one of those, change it in both places. A card's colour comes from its class — `colour-card--violet` /
 `--amethyst` (Analyse), `--green` / `--lime` (Translate), `--blue` / `--sky` (Build) —
 and its background photo is the `<img>` inside `colour-card-bg` (the `images/case-*.jpg`
 files). The photo is tinted to the card's colour automatically, so any photo works.

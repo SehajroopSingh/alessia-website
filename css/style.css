@@ -1025,8 +1025,10 @@ section { padding-block: var(--section-pad); }
   mix-blend-mode: lighten;
 }
 
-/* Shared card type: Action pill + plain Focus tags, serif title */
-.deck-card-kicker {
+/* Shared card anatomy (small card and expanded case alike):
+     .card-head  top-left    — "01 / Analyse" pill, organisation, role
+     .card-main  bottom-left — project type, title, summary / framing */
+.card-index {
   font-family: var(--sans);
   font-size: 0.66rem;
   font-weight: 600;
@@ -1035,6 +1037,33 @@ section { padding-block: var(--section-pad); }
   color: rgba(255, 255, 255, 0.8);   /* Focus is metadata: never coloured */
   margin: 0 0 1rem;
   line-height: 2.2;
+}
+.card-org {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0;
+}
+.card-org span {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.92rem;
+  font-weight: 450;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: rgba(255, 255, 255, 0.82);
+}
+.card-type {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.78);
+  margin: 0 0 0.65rem;
 }
 .deck-card-action {
   display: inline-block;
@@ -1067,8 +1096,8 @@ section { padding-block: var(--section-pad); }
 }
 .deck-card {
   display: flex;
-  align-items: flex-end;
-  min-height: clamp(400px, 48vw, 540px);
+  align-items: stretch;
+  min-height: clamp(440px, 50vw, 560px);
   text-decoration: none;
   box-shadow: 0 28px 56px -30px rgba(21, 21, 21, 0.5);
 }
@@ -1085,23 +1114,27 @@ section { padding-block: var(--section-pad); }
     transparent 74%);
 }
 .deck-card-body {
-  padding: clamp(1.75rem, 3.4vw, 3.25rem);
-  max-width: min(36rem, 64%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: clamp(1.6rem, 3vw, 2.75rem);
+  max-width: min(38rem, 64%);
 }
 .deck-card h3 {
   font-family: var(--serif);
-  font-size: clamp(1.6rem, 2.7vw, 2.5rem);
+  font-size: clamp(1.5rem, 2.5vw, 2.3rem);
   font-weight: 440;
   line-height: 1.12;
   color: #fff;
   margin: 0 0 0.8rem;
 }
-.deck-card-body p:not(.deck-card-kicker) {
-  font-size: 0.98rem;
+.card-desc {
+  font-size: 0.95rem;
   line-height: 1.55;
   color: rgba(255, 255, 255, 0.88);
-  margin: 0 0 1.5rem;
-  max-width: 46ch;
+  margin: 0 0 1.4rem;
+  max-width: 50ch;
 }
 .deck-card-link {
   display: inline-block;
@@ -1123,7 +1156,7 @@ section { padding-block: var(--section-pad); }
 @media (max-width: 900px) {
   .deck-head { grid-template-columns: 1fr; }
   .deck-head .body-copy { justify-self: start; }
-  .deck-card { min-height: 460px; }
+  .deck-card { min-height: 560px; }
   .deck-card-body { max-width: 100%; }
   .deck-card::after {
     background: linear-gradient(0deg,
@@ -1735,10 +1768,11 @@ section { padding-block: var(--section-pad); }
 .case-head {
   position: relative;
   isolation: isolate;
-  min-height: clamp(380px, 42vw, 540px);
+  min-height: clamp(460px, 46vw, 600px);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
   padding: clamp(1.75rem, 4vw, 3.5rem);
   background: var(--deep);
   color: #fff;
@@ -1801,7 +1835,7 @@ section { padding-block: var(--section-pad); }
 }
 @media (max-width: 900px) {
   .case-body { grid-template-columns: 1fr; }
-  .case-head { min-height: 420px; }
+  .case-head { min-height: 520px; }
   .case-head::after {
     background: linear-gradient(0deg,
       color-mix(in srgb, var(--deep) 96%, transparent) 0%,
@@ -2290,6 +2324,16 @@ section { padding-block: var(--section-pad); }
 .scene-on.scene--question .action-row p { font-size: 0.9rem; margin-top: 0.3rem; }
 .scene-on.scene--question .action-focus-note { padding-top: 0.55rem; font-size: 0.8rem; line-height: 1.45; }
 .scene-on.scene--deck .display-l { font-size: clamp(1.8rem, 3vw, 2.9rem); }
+.scene-on.scene--deck .card-desc {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}
+@media (max-height: 800px) {
+  .scene-on.scene--deck .card-desc { -webkit-line-clamp: 2; margin-bottom: 1rem; }
+  .scene-on.scene--deck .deck-card h3 { font-size: clamp(1.35rem, 2.2vw, 1.9rem); }
+}
 .scene-on.scene--diagram .diagram { margin-top: 1.5rem; }
 
 /* A section with data-zoom scales up to full size as it scrolls into
@@ -2357,7 +2401,7 @@ section { padding-block: var(--section-pad); }
        edges peek out above it, like a hand of cards. --depth (0 = front)
        is set on each card by js/main.js. --- */
 .scene-on.scene--deck .deck {
-  --card-h: clamp(300px, calc(100vh - 350px), 500px);
+  --card-h: clamp(320px, calc(100vh - 310px), 520px);
   --peek: 18px;
   position: relative;
   display: block;
@@ -2687,7 +2731,7 @@ section { padding-block: var(--section-pad); }
   .accordion summary::after { display: none; }
   .accordion summary { padding: 0.8rem 0 0.2rem; }
   .case, .case-head { background: #fff; color: #000; box-shadow: none; min-height: 0; }
-  .case-head h2, .case-head .case-frame, .case-head-meta, .deck-card-kicker { color: #000; }
+  .case-head h2, .case-head .case-frame, .case-head-meta, .card-index, .card-org, .card-org span, .card-type { color: #000; }
   .colour-card-bg, .case-head::after { display: none; }
   .case-body { grid-template-columns: 1fr; }
 
